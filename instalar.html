@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#0f2a56">
+<title>Instalar ASARVET</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<style>
+:root{--primary-blue:#0f2a56;--accent-blue:#1e4b8f;--bg:#f4f7f9}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+body{background:var(--bg);min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{background:#fff;max-width:420px;width:100%;border-radius:20px;padding:36px 28px;text-align:center;box-shadow:0 10px 30px rgba(15,42,86,.12)}
+.logo{width:120px;height:120px;border-radius:24px;margin-bottom:18px;box-shadow:0 6px 18px rgba(15,42,86,.25)}
+h1{color:var(--primary-blue);font-size:1.5rem;margin-bottom:6px}
+p.subtitle{color:#666;font-size:.9rem;margin-bottom:28px;line-height:1.5}
+button#installBtn{display:none;width:100%;padding:15px;background:var(--primary-blue);color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;margin-bottom:14px}
+button#installBtn:active{background:var(--accent-blue)}
+a.open-link{display:block;padding:14px;color:var(--primary-blue);font-weight:600;font-size:.9rem;text-decoration:none;border:1.5px solid #dbe4ee;border-radius:12px}
+.instructions{display:none;text-align:left;margin-top:22px;background:#f0f4f8;border-radius:12px;padding:16px 18px;font-size:.85rem;color:#333;line-height:1.7}
+.instructions ol{padding-left:18px}
+.badge{display:inline-block;background:#e8eef5;color:var(--primary-blue);font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:20px;margin-bottom:14px;letter-spacing:.5px}
+</style>
+</head>
+<body>
+<div class="card">
+  <img src="./logo.png" alt="ASARVET" class="logo">
+  <div class="badge">APLICACIÓN OFICIAL</div>
+  <h1>ASARVET</h1>
+  <p class="subtitle">Alimentación segura para mascotas. Instala la app en tu teléfono, funciona incluso sin internet.</p>
+
+  <button id="installBtn">Instalar app</button>
+  <a class="open-link" href="./index.html">Abrir sin instalar</a>
+
+  <div class="instructions" id="iosInstructions">
+    <strong>Para instalar en iPhone/iPad:</strong>
+    <ol>
+      <li>Abre esta página con <strong>Safari</strong> (no funciona desde otros navegadores en iOS).</li>
+      <li>Toca el botón de <strong>Compartir</strong> (el cuadrado con la flecha hacia arriba).</li>
+      <li>Selecciona <strong>"Añadir a pantalla de inicio"</strong>.</li>
+      <li>Toca <strong>"Añadir"</strong>. Listo, el icono de ASARVET quedará en tu pantalla.</li>
+    </ol>
+  </div>
+
+  <div class="instructions" id="androidFallback">
+    <strong>Para instalar en Android:</strong>
+    <ol>
+      <li>Toca el menú (⋮) arriba a la derecha del navegador.</li>
+      <li>Selecciona <strong>"Instalar app"</strong> o <strong>"Añadir a pantalla de inicio"</strong>.</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const isAndroid = /android/i.test(navigator.userAgent);
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = 'block';
+});
+
+installBtn.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  installBtn.style.display = 'none';
+});
+
+if (isIOS) {
+  document.getElementById('iosInstructions').style.display = 'block';
+} else if (isAndroid) {
+  // Si el navegador no dispara beforeinstallprompt (algunos navegadores Android
+  // no Chrome), mostramos igual las instrucciones manuales tras un momento.
+  setTimeout(() => {
+    if (!deferredPrompt) document.getElementById('androidFallback').style.display = 'block';
+  }, 1500);
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch(() => {});
+}
+</script>
+</body>
+</html>

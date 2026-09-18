@@ -1,0 +1,43 @@
+ASARVET - App instalable (PWA)
+================================
+
+QUÉ HAY EN ESTA CARPETA
+------------------------
+- index.html        -> tu app (el archivo que ya tenías, con los ajustes de PWA)
+- instalar.html      -> página de bienvenida/instalación (la que escaneará el QR)
+- manifest.json      -> configuración de la app (nombre, colores, iconos)
+- sw.js              -> hace que la app funcione sin internet
+- logo.png           -> tu logo, usado dentro de la app
+- icons/             -> tu logo ya redimensionado en todos los tamaños necesarios
+
+CÓMO PUBLICARLA GRATIS (sin tiendas)
+--------------------------------------
+Opción más simple: Netlify Drop (no requiere cuenta)
+
+1. Entra a https://app.netlify.com/drop
+2. Arrastra ESTA CARPETA COMPLETA (todos los archivos juntos) a la página.
+3. En segundos te dará una URL como: https://algo-al-azar.netlify.app
+4. Esa URL ya es tu app funcionando. Pruébala desde el celular.
+
+Si quieres un nombre más bonito (ej. asarvet.netlify.app):
+- Crea una cuenta gratis en netlify.com
+- Sube la carpeta igual (o conéctala a un repositorio)
+- En "Site settings" > "Change site name" pones el nombre que quieras
+
+Alternativas igual de gratuitas: GitHub Pages, Cloudflare Pages, Vercel.
+
+IMPORTANTE
+----------
+- La URL que quieres compartir en el QR es la de "instalar.html", por ejemplo:
+  https://asarvet.netlify.app/instalar.html
+- Una vez tengas esa URL funcionando, pásasela a Claude para generar el
+  código QR final que apunte exactamente ahí.
+
+SI ACTUALIZAS LA APP MÁS ADELANTE
+-----------------------------------
+Cada vez que subas una nueva versión, abre sw.js y cambia:
+  const CACHE_VERSION = "asarvet-v1";
+por:
+  const CACHE_VERSION = "asarvet-v2";
+(y así sucesivamente). Esto obliga a los teléfonos a bajar la versión nueva
+en vez de quedarse con la vieja guardada en caché.

@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover,user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#0f2a56">
+<meta name="orientation" content="any">
+<title>Alimentación Segura para Mascotas - ASARVET</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16.png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--primary-blue:#0f2a56;--accent-blue:#1e4b8f;--text-dark:#1a1a1a;--text-light:#666;--bg-color:#f4f7f9;--white:#fff;--danger:#d32f2f;--danger-bg:#ffebee;--success-bg:#e8f5e9;--success-text:#2e7d32;--warning-bg:#fff3cd;--warning-text:#856404;--puppy-bg:#fff8f4;--puppy-border:#ffd9c0;--puppy-accent:#ff8c5a;--puppy-accent-dark:#e87a4a;--puppy-text:#6b4a3a;--puppy-text-soft:#8a6a5a;--puppy-muted:#b39080;--med-bg:#f3e5f5;--med-border:#6a1b9a;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px)}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Nunito Sans',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;overflow-wrap:break-word;word-wrap:break-word}
+h1,h2,h3,h4,h5,label,.tab-btn{font-family:'Poppins',sans-serif}
+html{scroll-behavior:smooth}
+body{background-color:var(--bg-color);color:var(--text-dark);min-height:100vh;min-height:100dvh;padding:20px;padding-left:calc(20px + var(--safe-left));padding-right:calc(20px + var(--safe-right));padding-top:calc(20px + var(--safe-top));padding-bottom:calc(20px + var(--safe-bottom));display:block;overflow-x:clip}
+.container{background-color:var(--white);width:100%;max-width:720px;margin:0 auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,42,86,.08);padding:30px;border-top:6px solid var(--primary-blue);overflow:hidden}
+header{text-align:center;margin-bottom:20px}
+.logo{max-width:180px;height:auto;margin-bottom:15px}
+h1{font-size:1.35rem;color:var(--primary-blue);font-weight:700;margin-bottom:5px;line-height:1.3}
+.subtitle{font-size:.8rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1.2px;font-weight:600}
+.tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:24px;padding:6px;background-color:#f0f4f8;border-radius:12px}
+@media(min-width:480px){.tabs{grid-template-columns:repeat(3,1fr);gap:8px}}
+@media(min-width:640px){.tabs{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}}
+.tab-btn{padding:12px 10px;background-color:var(--white);border:1.5px solid transparent;border-radius:8px;font-size:.73rem;font-weight:600;color:var(--text-light);cursor:pointer;transition:all .25s ease;text-align:center;line-height:1.35;box-shadow:0 1px 3px rgba(15,42,86,.05);min-width:0;display:flex;align-items:center;justify-content:center;gap:4px;min-height:52px}
+.tab-btn.active{background-color:var(--primary-blue);color:var(--white);box-shadow:0 3px 8px rgba(15,42,86,.25)}
+.tab-btn:hover:not(.active){background-color:#e2eaf5;color:var(--primary-blue)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.search-box{background:linear-gradient(135deg,#f0f4f8,#e8eef5);border-radius:12px;padding:18px;margin-bottom:20px;border:1.5px solid #dbe4ee}
+.search-box label{font-size:.85rem;font-weight:600;color:var(--primary-blue);margin-bottom:8px;display:block}
+.search-input-wrapper{display:flex;gap:10px;flex-wrap:wrap}
+.search-input-wrapper input{flex:1;min-width:180px;padding:12px 15px;border:1.5px solid #c9d5e3;border-radius:8px;font-size:1rem;background-color:var(--white)}
+.search-input-wrapper input:focus{outline:none;border-color:var(--accent-blue);box-shadow:0 0 0 3px rgba(30,75,143,.1)}
+.search-input-wrapper button{padding:12px 20px;background-color:var(--primary-blue);color:var(--white);border:none;border-radius:8px;font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap}
+.search-input-wrapper button:hover{background-color:var(--accent-blue)}
+.search-result{margin-top:15px;padding:15px;border-radius:10px;display:none;line-height:1.5}
+.search-result.toxic{background-color:var(--danger-bg);border-left:4px solid var(--danger)}
+.search-result.danger{background-color:#fff3e0;border-left:4px solid #e65100}
+.search-result.unsuitable{background-color:#fce4ec;border-left:4px solid #ad1457}
+.search-result.safe{background-color:var(--success-bg);border-left:4px solid var(--success-text)}
+.search-result.legume{background-color:#e8f5e9;border-left:4px solid #2e7d32}
+.search-result.vegetable{background-color:#e8f5e9;border-left:4px solid #2e7d32}
+.search-result.fruit{background-color:#fff8e1;border-left:4px solid #f9a825}
+.search-result.meat{background-color:#fbe9e7;border-left:4px solid #bf360c}
+.search-result.unknown{background-color:var(--warning-bg);border-left:4px solid #ffc107}
+.search-result .result-icon{font-size:2rem;margin-right:10px;vertical-align:middle;line-height:1}
+.search-result .result-title{font-size:1.05rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+.search-result .result-message{font-size:.85rem;color:var(--text-dark);line-height:1.6}
+.section-title{font-size:1rem;color:var(--primary-blue);margin:20px 0 12px;border-bottom:2px solid #f0f4f8;padding-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.section-title:first-child{margin-top:0}
+.info-card{background-color:#f8fafc;border-radius:10px;padding:15px;margin-bottom:12px;border:1px solid #e2e8f0}
+.info-card p{font-size:.85rem;color:var(--text-dark);line-height:1.6;margin-bottom:8px}
+.info-card p:last-child{margin-bottom:0}
+.info-card strong{color:var(--primary-blue)}
+.highlight-box{background-color:var(--success-bg);color:var(--success-text);padding:14px;border-radius:10px;font-size:.85rem;margin-top:10px;border-left:4px solid var(--success-text);line-height:1.5}
+.warning-box{background-color:var(--warning-bg);color:var(--warning-text);padding:14px;border-radius:10px;font-size:.82rem;margin-top:12px;border-left:4px solid #ffc107;line-height:1.5}
+.danger-box{background-color:var(--danger-bg);color:var(--danger);padding:14px;border-radius:10px;font-size:.82rem;margin-top:12px;border-left:4px solid var(--danger);line-height:1.5}
+.medication-box{background-color:var(--med-bg);color:var(--med-border);padding:14px;border-radius:10px;font-size:.82rem;margin-top:12px;border-left:4px solid var(--med-border);line-height:1.5}
+.principle-box{background:linear-gradient(135deg,#fff8e1,#fffde7);border:1.5px solid #ffe082;border-radius:12px;padding:15px;margin-bottom:15px;text-align:center}
+.principle-box .principle-text{font-size:.95rem;font-weight:700;color:#856404;font-family:'Poppins',sans-serif;line-height:1.4}
+.principle-box .principle-icon{font-size:1.8rem;display:block;margin-bottom:6px}
+.alert-item{display:flex;gap:10px;padding:10px 12px;background-color:#fff8f8;border-radius:8px;margin-bottom:8px;border-left:3px solid var(--danger);font-size:.83rem;line-height:1.5}
+.alert-item .alert-icon{flex-shrink:0;font-size:1rem}
+.data-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:10px;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(15,42,86,.05)}
+.data-table th{background-color:var(--primary-blue);color:var(--white);padding:12px 10px;text-align:left;font-weight:600;font-size:.75rem;font-family:'Poppins',sans-serif}
+.data-table td{padding:11px 10px;border-bottom:1px solid #e2e8f0;vertical-align:top;line-height:1.5}
+.data-table tr:nth-child(even){background-color:#f8fafc}
+.data-table tr:last-child td{border-bottom:none}
+.data-table td:first-child{font-weight:600;color:var(--primary-blue)}
+.med-table th{background-color:var(--med-border)}
+.med-table td:first-child{color:var(--med-border)}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:10px;border-radius:10px}
+.table-scroll .data-table{margin-top:0;min-width:520px}
+.pros-cons-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media(max-width:480px){.pros-cons-grid{grid-template-columns:1fr}}
+.pros-box{background-color:var(--success-bg);border-radius:10px;padding:14px;border-left:4px solid var(--success-text)}
+.cons-box{background-color:var(--danger-bg);border-radius:10px;padding:14px;border-left:4px solid var(--danger)}
+.pros-box h5,.cons-box h5{font-size:.85rem;font-weight:700;margin-bottom:8px;font-family:'Poppins',sans-serif}
+.pros-box h5{color:var(--success-text)}
+.cons-box h5{color:var(--danger)}
+.pros-box ul,.cons-box ul{list-style:none;padding:0}
+.pros-box li,.cons-box li{font-size:.78rem;line-height:1.5;margin-bottom:6px;padding-left:18px;position:relative}
+.pros-box li::before{content:"✓";position:absolute;left:0;color:var(--success-text);font-weight:700}
+.cons-box li::before{content:"✗";position:absolute;left:0;color:var(--danger);font-weight:700}
+.bibliography-list{list-style:none;padding:0;counter-reset:bib-counter}
+.bibliography-list li{font-size:.78rem;line-height:1.6;padding:12px 12px 12px 45px;border-bottom:1px solid #f0f4f8;position:relative;counter-increment:bib-counter}
+.bibliography-list li:last-child{border-bottom:none}
+.bibliography-list li::before{content:"[" counter(bib-counter) "]";position:absolute;left:10px;top:12px;color:var(--primary-blue);font-weight:700;font-size:.75rem}
+.bibliography-list li em{color:var(--primary-blue);font-style:italic}
+.bcs-image-wrapper{position:relative;width:100%;max-width:620px;aspect-ratio:1/1;margin:18px auto;background:linear-gradient(90deg,#eef2f7 0%,#dde7f0 50%,#eef2f7 100%);background-size:200% 100%;animation:shimmer 1.8s infinite linear;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.bcs-image-wrapper:hover{border-color:var(--accent-blue);box-shadow:0 0 0 3px rgba(30,75,143,.12)}
+.bcs-image-wrapper .zoom-badge{position:absolute;top:10px;right:10px;background:rgba(15,42,86,.85);color:#fff;font-size:.65rem;font-weight:700;padding:5px 10px;border-radius:20px;pointer-events:none;z-index:3;font-family:'Poppins',sans-serif}
+.bcs-image-cat,.bcs-image-dog{max-width:96%;max-height:96%;width:auto;height:auto;border-radius:6px;object-fit:contain;position:relative;z-index:2;display:block}
+.bcs-image-wrapper.error{animation:none;background:#f8fafc}
+.bcs-image-wrapper.error .bcs-image-cat,.bcs-image-wrapper.error .bcs-image-dog{display:none}
+.bcs-image-wrapper.error::after{content:"📷 Imagen no disponible";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--text-light)}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.zoom-hint{font-size:.78rem;color:var(--accent-blue);font-weight:700;text-align:center;margin-top:12px;font-family:'Poppins',sans-serif}
+.plant-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:15px;margin-top:15px}
+.plant-card{background-color:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(15,42,86,.08);border:1px solid #e2e8f0;transition:box-shadow .2s}
+.plant-card:hover{box-shadow:0 8px 20px rgba(15,42,86,.12)}
+.plant-image-wrapper{position:relative;width:100%;aspect-ratio:4/3;background:linear-gradient(90deg,#eef2f7 0%,#dde7f0 50%,#eef2f7 100%);background-size:200% 100%;animation:shimmer 1.8s infinite linear;overflow:hidden}
+.plant-image{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
+.plant-image-wrapper.error{animation:none;background:#f8fafc}
+.plant-image-wrapper.error .plant-image{display:none}
+.plant-image-wrapper.error::after{content:"📷 Imagen no disponible";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--text-light)}
+.plant-info{padding:12px}
+.plant-name{font-size:.85rem;font-weight:700;color:var(--primary-blue);margin-bottom:4px;font-family:'Poppins',sans-serif}
+.plant-scientific{font-size:.7rem;color:var(--text-light);font-style:italic;margin-bottom:8px}
+.plant-danger{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;background-color:#fce4ec;color:#c62828;margin-bottom:6px}
+.plant-desc{font-size:.75rem;color:var(--text-dark);line-height:1.5}
+.lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(6,14,28,.95);z-index:9999;overflow:hidden;touch-action:none}
+.lightbox-overlay.active{display:block}
+.lightbox-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lightbox-image{display:block;pointer-events:auto;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;border-radius:6px;box-shadow:0 12px 50px rgba(0,0,0,.6);background:#fff;max-width:none;max-height:none}
+.lightbox-image.dragging{cursor:grabbing}
+.lightbox-close{position:fixed;top:calc(16px + var(--safe-top));right:calc(16px + var(--safe-right));width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.35);font-size:1.25rem;cursor:pointer;z-index:10001;display:flex;align-items:center;justify-content:center;padding:0}
+.lightbox-close:hover{background:rgba(255,255,255,.3)}
+.lightbox-controls{position:fixed;bottom:calc(18px + var(--safe-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:50px;padding:8px 12px;z-index:10001;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lightbox-controls button{width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.18);color:#fff;font-size:1.15rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;font-family:'Poppins',sans-serif}
+.lightbox-controls button:hover{background:rgba(255,255,255,.38)}
+.lightbox-controls .zoom-level{color:#fff;font-size:.78rem;min-width:52px;text-align:center;font-weight:700;font-family:'Poppins',sans-serif}
+.lightbox-caption{position:fixed;top:calc(18px + var(--safe-top));left:calc(16px + var(--safe-left));right:calc(76px + var(--safe-right));color:rgba(255,255,255,.85);font-size:.78rem;font-weight:600;z-index:10001;line-height:1.3;pointer-events:none;font-family:'Poppins',sans-serif}
+.lightbox-spinner{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border:4px solid rgba(255,255,255,.15);border-top-color:#fff;border-radius:50%;animation:lbSpin .9s linear infinite;z-index:10000;display:none}
+.lightbox-overlay.loading .lightbox-spinner{display:block}
+@keyframes lbSpin{to{transform:rotate(360deg)}}
+.calculator-box{background:linear-gradient(135deg,#f0f4f8,#e8eef5);border-radius:12px;padding:20px;margin-top:15px;border:1.5px solid #dbe4ee}
+.calculator-box h5{font-size:1rem;color:var(--primary-blue);margin-bottom:15px;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.calculator-box .form-group{margin-bottom:14px}
+.calculator-box label{display:block;margin-bottom:6px;font-size:.85rem;font-weight:600;color:var(--text-dark)}
+.calculator-box select,.calculator-box input{width:100%;padding:12px 15px;border:1.5px solid #c9d5e3;border-radius:8px;font-size:.95rem;background-color:var(--white)}
+.calculator-box select:focus,.calculator-box input:focus{outline:none;border-color:var(--accent-blue);box-shadow:0 0 0 3px rgba(30,75,143,.1)}
+.calculator-actions{display:grid;grid-template-columns:2fr 1fr;gap:10px}
+@media(max-width:380px){.calculator-actions{grid-template-columns:1fr}}
+.calculator-actions button{padding:13px;border-radius:8px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;border:1.5px solid var(--primary-blue)}
+.btn-evaluar{background-color:var(--primary-blue);color:var(--white)}
+.btn-evaluar:hover{background-color:var(--accent-blue);border-color:var(--accent-blue)}
+.btn-despejar{background-color:transparent;color:var(--primary-blue)}
+.btn-despejar:hover{background-color:var(--primary-blue);color:var(--white)}
+.calculator-box.formula-box{background:var(--puppy-bg);border:1.5px solid var(--puppy-border);border-radius:14px;padding:22px 20px}
+.calculator-box.formula-box h5{color:var(--puppy-accent-dark);font-size:1rem;margin-bottom:6px;font-weight:700}
+.calculator-box.formula-box label{color:var(--puppy-text);font-weight:600;font-size:.83rem}
+.calculator-box.formula-box select,.calculator-box.formula-box input{border:1.5px solid var(--puppy-border);background-color:#fffdfb;color:var(--puppy-text);border-radius:10px;padding:11px 14px;font-size:.92rem}
+.calculator-box.formula-box select:focus,.calculator-box.formula-box input:focus{border-color:var(--puppy-accent);box-shadow:0 0 0 3px rgba(255,140,90,.15)}
+.calculator-box.formula-box .btn-evaluar{background-color:var(--puppy-accent);border-color:var(--puppy-accent);color:#fff;border-radius:10px}
+.calculator-box.formula-box .btn-evaluar:hover{background-color:var(--puppy-accent-dark);border-color:var(--puppy-accent-dark)}
+.calculator-box.formula-box .btn-despejar{border-color:var(--puppy-accent);color:var(--puppy-accent-dark);background-color:transparent;border-radius:10px}
+.calculator-box.formula-box .btn-despejar:hover{background-color:var(--puppy-accent);color:#fff}
+.puppy-badge{display:inline-flex;align-items:center;gap:6px;background-color:rgba(255,140,90,.12);color:var(--puppy-accent-dark);padding:4px 10px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.3px;text-transform:uppercase;margin-bottom:10px}
+.calc-result{margin-top:15px;padding:15px;border-radius:10px;font-size:.85rem;line-height:1.6;display:none}
+.calc-result.ideal{background-color:var(--success-bg);color:var(--success-text);border-left:4px solid var(--success-text)}
+.calc-result.underweight{background-color:#fff3e0;color:#e65100;border-left:4px solid #e65100}
+.calc-result.overweight{background-color:var(--danger-bg);color:var(--danger);border-left:4px solid var(--danger)}
+.calc-result.error{background-color:var(--warning-bg);color:var(--warning-text);border-left:4px solid #ffc107}
+.calc-result.info{background-color:#e3f2fd;color:#0d47a1;border-left:4px solid #1976d2}
+.calc-result.formula-info{background-color:var(--puppy-bg);color:var(--puppy-text);border-left:4px solid var(--puppy-accent);border-radius:12px;padding:18px}
+.calc-result .big-number{font-size:1.4rem;font-weight:800;color:var(--primary-blue);font-family:'Poppins',sans-serif;display:block;margin:4px 0 2px}
+.calc-result.formula-info .big-number{color:var(--puppy-accent-dark);font-size:1.5rem}
+.calc-result .practical-equivalence{display:block;font-size:.95rem;font-weight:700;color:#1976d2;font-family:'Poppins',sans-serif;margin-bottom:10px;padding:6px 10px;background-color:rgba(25,118,210,.08);border-radius:6px;border-left:3px solid #1976d2}
+.calc-result.formula-info .practical-equivalence{color:var(--puppy-accent-dark);background-color:rgba(255,140,90,.1);border-left-color:var(--puppy-accent)}
+.calc-result .result-row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid rgba(15,42,86,.08);font-size:.82rem;flex-wrap:wrap}
+.calc-result .result-row:last-child{border-bottom:none}
+.calc-result .result-row strong{color:var(--primary-blue)}
+.calc-result.formula-info .result-row{border-bottom-color:rgba(255,140,90,.15)}
+.calc-result.formula-info .result-row strong{color:var(--puppy-accent-dark)}
+.helper-text{font-size:.72rem;color:var(--text-light);margin-top:4px;line-height:1.35;font-style:italic}
+.calculator-box.formula-box .helper-text{color:var(--puppy-muted)}
+.error-msg{color:var(--danger);font-size:.85rem;margin-top:10px;text-align:center;display:none;font-weight:600}
+.recipe-card{background-color:var(--white);border:1.5px solid #dbe4ee;border-radius:12px;padding:16px;margin-bottom:12px}
+.recipe-card h6{font-family:'Poppins',sans-serif;font-size:.92rem;color:var(--primary-blue);margin-bottom:10px;font-weight:700;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.recipe-card .ingredients{font-size:.82rem;color:var(--text-dark);line-height:1.7;margin-bottom:10px;padding-left:4px}
+.recipe-card .ingredients li{margin-left:18px;margin-bottom:4px}
+.recipe-card .steps{font-size:.82rem;color:var(--text-dark);line-height:1.65;padding-left:4px}
+.recipe-card .steps li{margin-left:18px;margin-bottom:6px}
+.recipe-card .recipe-label{display:inline-block;background-color:#fff3cd;color:#856404;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.bcs-scale-bar{display:flex;align-items:center;gap:2px;margin:10px 0;padding:8px;background:#fff;border-radius:8px;border:1px solid #e2e8f0}
+.bcs-scale-segment{flex:1;height:10px;border-radius:3px;transition:all .2s}
+.bcs-scale-segment.active{height:18px;box-shadow:0 0 0 2px rgba(15,42,86,.3)}
+.bcs-marker{font-size:.7rem;font-weight:700;color:var(--primary-blue);text-align:center;margin-top:2px;font-family:'Poppins',sans-serif}
+.version-tag{position:fixed;bottom:calc(8px + var(--safe-bottom));right:calc(10px + var(--safe-right));font-size:.65rem;color:#9aa5b1;font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:.5px;pointer-events:none;z-index:50;opacity:.7}
+@media(max-width:480px){body{padding:10px;padding-left:calc(10px + var(--safe-left));padding-right:calc(10px + var(--safe-right));padding-top:calc(10px + var(--safe-top));padding-bottom:calc(10px + var(--safe-bottom))}.container{padding:18px;border-radius:12px}h1{font-size:1.15rem}.subtitle{font-size:.72rem}.logo{max-width:130px;margin-bottom:10px}.tabs{grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:18px;padding:5px}.tab-btn{font-size:.68rem;padding:10px 4px;min-height:48px}.search-box{padding:14px}.search-input-wrapper{flex-direction:column}.search-input-wrapper input,.search-input-wrapper button{width:100%;min-width:0}.section-title{font-size:.92rem}.info-card,.highlight-box,.warning-box,.danger-box{padding:12px}.info-card p,.highlight-box,.warning-box,.danger-box{font-size:.78rem}.calculator-box{padding:14px}.calculator-box h5{font-size:.92rem}.plant-grid{grid-template-columns:1fr}.bibliography-list li{padding:10px 10px 10px 38px;font-size:.74rem}.bcs-image-wrapper{max-width:100%}.lightbox-controls button{width:38px;height:38px;font-size:1.05rem}.lightbox-close{width:42px;height:42px}.data-table{font-size:.72rem}.data-table th,.data-table td{padding:9px 7px}}
+@media(orientation:landscape) and (max-height:520px){body{padding:8px;padding-left:calc(8px + var(--safe-left));padding-right:calc(8px + var(--safe-right));padding-top:calc(8px + var(--safe-top));padding-bottom:calc(8px + var(--safe-bottom))}.container{max-width:100%;padding:14px 20px}header{margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:14px}.logo{max-width:60px;margin-bottom:0}h1{font-size:1rem;margin-bottom:2px}.subtitle{font-size:.68rem}.tabs{grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:14px}.tab-btn{font-size:.62rem;padding:8px 3px;min-height:44px}.section-title{margin:12px 0 8px}.plant-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}.bcs-image-wrapper{max-width:75%}.pros-cons-grid{grid-template-columns:1fr 1fr}.calc-result .big-number{font-size:1.2rem}}
+@media(min-width:768px) and (max-width:1024px){.container{max-width:820px;padding:34px}h1{font-size:1.5rem}.tab-btn{font-size:.78rem}.search-input-wrapper input,.search-input-wrapper button{font-size:1rem}}
+@media(min-width:1025px){.container{max-width:820px}}
+img,svg,video{max-width:100%;height:auto}
+table{max-width:100%}
+select,input,button,textarea{max-width:100%}
+.result-row span{min-width:0;overflow-wrap:break-word}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<img src="https://i.postimg.cc/KztznXkm/photo-2026-09-15-18-38-27.jpg" alt="ASARVET Logo" class="logo" onerror="this.style.display='none'">
+<div>
+<h1>Alimentación Segura para Mascotas</h1>
+<div class="subtitle">Guía para Tutores · 2026</div>
+</div>
+</header>
+
+<div class="tabs">
+<button type="button" class="tab-btn active" data-tab="consulta">🔍 Consulta</button>
+<button type="button" class="tab-btn" data-tab="casera">🍲 Alimentación Casera</button>
+<button type="button" class="tab-btn" data-tab="barf">🥩 Dieta BARF</button>
+<button type="button" class="tab-btn" data-tab="piensos">🥫 Alimentación con Piensos</button>
+<button type="button" class="tab-btn" data-tab="preparacion">👨‍🍳 Preparación</button>
+<button type="button" class="tab-btn" data-tab="porciones">🍽️ Porciones</button>
+<button type="button" class="tab-btn" data-tab="pesaje">⚖️ Pesaje y Condición</button>
+<button type="button" class="tab-btn" data-tab="plantas">🌿 Plantas Tóxicas</button>
+<button type="button" class="tab-btn" data-tab="medicamentos">💊 Medicamentos Tóxicos</button>
+<button type="button" class="tab-btn" data-tab="referencias">📚 Referencias</button>
+</div>
+
+<!-- CONSULTA -->
+<div id="tab-consulta" class="tab-content active">
+<div class="search-box">
+<label>🔎 Consulta si un alimento es seguro para tu mascota</label>
+<div class="search-input-wrapper">
+<input type="text" id="foodSearch" placeholder="">
+<button type="button" id="btnConsultar">Consultar</button>
+</div>
+<div id="searchResult" class="search-result">
+<div class="result-title" id="resultTitle"></div>
+<div class="result-message" id="resultMessage"></div>
+</div>
+<div class="error-msg" id="searchError" style="text-align:left;margin-top:10px"></div>
+</div>
+
+<h4 class="section-title">📖 Sobre esta guía</h4>
+<div class="info-card">
+<p>La nutrición es uno de los pilares fundamentales de la salud de perros y gatos. Sin embargo, existe una brecha preocupante en la práctica veterinaria: aunque el <strong>83% de los veterinarios</strong> reconoce que la nutrición es clave para la salud, solo un <strong>34%</strong> aborda el tema de forma proactiva con sus clientes.</p>
+<p><strong>Esta guía busca cerrar esa brecha</strong> ofreciendo a los tutores información clara, basada en evidencia y adaptada al contexto latinoamericano sobre qué pueden y qué no pueden comer sus mascotas, cómo preparar los alimentos correctamente, y cómo evaluar su condición corporal.</p>
+<p>Alimentar correctamente a un perro o un gato va mucho más allá de llenar el plato. Es un acto de <strong>medicina preventiva</strong>. La evidencia veterinaria actual es clara: una nutrición adecuada <strong>previene enfermedades, mejora la respuesta inmune y prolonga la vida</strong>.</p>
+</div>
+
+<h4 class="section-title">🎯 El rol de la nutrición en la salud</h4>
+<div class="info-card">
+<p>Los perros y gatos han evolucionado como <strong>carnívoros funcionales</strong>. Los gatos son <strong>carnívoros estrictos</strong> (obligados) y requieren nutrientes específicos como taurina, arginina y vitamina A preformada que no pueden sintetizar eficientemente. Los perros, aunque omnívoros facultativos, prosperan con una dieta rica en proteína animal.</p>
+<p>Una nutrición inadecuada se asocia con: <strong>obesidad, diabetes mellitus, enfermedad renal crónica, pancreatitis, problemas dentales, dermatológicos y articulares</strong>. Por el contrario, una alimentación balanceada mejora la calidad y esperanza de vida.</p>
+</div>
+
+<div class="principle-box">
+<span class="principle-icon">🛡️</span>
+<div class="principle-text">Principio de seguridad: Si no sabes con certeza que un alimento es seguro, mejor no dárselo.</div>
+</div>
+
+<h4 class="section-title">🍽️ Los tres grandes modelos de alimentación</h4>
+<div class="info-card">
+<p><strong>1. Pienso comercial:</strong> Práctico, completo y regulado por estándares (AAFCO, FEDIAF). Ideal para la mayoría de tutores. Calidad variable entre marcas.</p>
+<p><strong>2. Comida casera cocida:</strong> Mayor control sobre los ingredientes, pero <strong>requiere formulación por un veterinario nutricionista</strong> para evitar desequilibrios nutricionales graves.</p>
+<p><strong>3. Dieta BARF o cruda:</strong> Con defensores apasionados, pero también con <strong>riesgos documentados</strong> (microbiológicos, desequilibrios, huesos). No recomendada por la mayoría de organizaciones veterinarias, especialmente en animales en crecimiento o inmunodeprimidos.</p>
+<p><strong>No existe una única dieta "correcta":</strong> la mejor es la que se adapta a cada animal, a su etapa de vida y a las posibilidades del tutor.</p>
+</div>
+
+<h4 class="section-title">🏅 Fundamentos universales</h4>
+<div class="info-card">
+<p><strong>1. Nunca condimentar:</strong> Sin sal, ajo, cebolla, especias ni caldos industriales.</p>
+<p><strong>2. Evitar alimentos peligrosos:</strong> Consulta siempre el buscador de esta guía.</p>
+<p><strong>3. Respetar las porciones:</strong> La sobrealimentación es la causa #1 de obesidad canina y felina.</p>
+<p><strong>4. Garantizar agua fresca:</strong> Siempre disponible, especialmente en gatos (propensos a deshidratación y enfermedad urinaria).</p>
+<p><strong>5. Transición gradual:</strong> 7-10 días al cambiar de alimento, mezclando proporciones crecientes.</p>
+<p><strong>6. Medir con báscula de cocina:</strong> No usar tazas o "puñados" como medida principal.</p>
+<p><strong>7. Premios con moderación:</strong> Máximo 10% de las calorías diarias.</p>
+<p><strong>8. Individualización:</strong> Toda dieta debe ser supervisada por un médico veterinario.</p>
+</div>
+
+<h4 class="section-title">📖 Síntesis: El Enfoque Integral</h4>
+<div class="info-card">
+<p>Alimentar correctamente a un perro o un gato va mucho más allá de llenar el plato. Es un acto de medicina preventiva. La evidencia veterinaria actual es clara: <strong>una nutrición adecuada previene enfermedades, mejora la respuesta inmune y prolonga la vida</strong>.</p>
+<p>Existen tres grandes modelos: el <strong>pienso comercial</strong> (práctico y completo), la <strong>comida casera cocida</strong> (mayor control, requiere formulación profesional) y la <strong>dieta BARF o cruda</strong> (con defensores apasionados pero también con riesgos documentados). No existe una única dieta "correcta": la mejor es la que se adapta a cada animal.</p>
+<p>Principios universales: <strong>nunca condimentar</strong>, evitar alimentos peligrosos, respetar las porciones, y garantizar agua fresca. Los gatos merecen atención especial por su naturaleza de carnívoros estrictos.</p>
+</div>
+
+<h4 class="section-title">🎯 Puntos críticos del cuidado nutricional</h4>
+<div class="info-card">
+<p><strong>1. Individualización:</strong> Toda dieta debe ser supervisada por un médico veterinario.</p>
+<p><strong>2. Medición:</strong> Pesa la comida con báscula de cocina.</p>
+<p><strong>3. Transición gradual:</strong> 7-10 días al cambiar de alimento.</p>
+<p><strong>4. Agua fresca:</strong> Siempre disponible, especialmente en gatos.</p>
+<p><strong>5. Vigilancia:</strong> Monitorea peso, condición corporal, pelaje y heces.</p>
+<p><strong>6. Sin condimentos:</strong> Sin sal, sin ajo, sin cebolla y sin especias.</p>
+<p><strong>7. Premios con moderación:</strong> Máximo 10% de las calorías diarias.</p>
+<p><strong>8. Medicamentos solo con receta.</strong></p>
+<p><strong>9. Consulta profesional ante cualquier duda.</strong></p>
+</div>
+
+<h4 class="section-title">🚨 Señales de Alerta que Requieren Consulta</h4>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Vómitos o diarrea persistentes (más de 24 horas).</span></div>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Decaimiento o pérdida de apetito por más de un día.</span></div>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Temblores, convulsiones o desorientación.</span></div>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Cambios en la frecuencia urinaria.</span></div>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Pérdida de peso repentina o aumento sin causa aparente.</span></div>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Pelaje opaco, seco o con caída excesiva.</span></div>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Sospecha de ingestión de tóxico o cuerpo extraño.</span></div>
+
+<h4 class="section-title">🚑 En caso de Intoxicación</h4>
+<div class="danger-box"><strong>Acude inmediatamente a tu veterinario.</strong> No induzcas el vómito sin indicación profesional. Lleva el envase, la planta, el alimento o el medicamento sospechoso.</div>
+<div class="highlight-box" style="margin-top:15px"><strong>💚 Recuerda:</strong> Invertir tiempo en la alimentación y el cuidado de tu mascota es invertir en su salud, en su felicidad y en los años que compartirán juntos.</div>
+</div>
+
+<!-- ALIMENTACIÓN CASERA -->
+<div id="tab-casera" class="tab-content">
+<h4 class="section-title">🍲 Alimentación Casera para Mascotas</h4>
+<div class="info-card">
+<p>La alimentación casera consiste en <strong>preparar en casa los alimentos de tu mascota</strong> utilizando ingredientes frescos, cocidos o crudos, en lugar de depender exclusivamente de piensos comerciales. Cada vez más tutores optan por esta vía buscando mayor control sobre los ingredientes, mejor palatabilidad y la posibilidad de adaptar la dieta a necesidades específicas.</p>
+<p><strong>Sin embargo, no es una decisión que deba tomarse a la ligera.</strong> Formular una dieta casera nutricionalmente completa y equilibrada es complejo, y los errores pueden causar problemas de salud graves a medio y largo plazo.</p>
+</div>
+<h4 class="section-title">✅ Ventajas y Desventajas</h4>
+<div class="pros-cons-grid">
+<div class="pros-box"><h5>Ventajas</h5><ul>
+<li>Control total sobre los ingredientes.</li>
+<li>Uso de ingredientes frescos y de temporada.</li>
+<li>Sin conservantes, colorantes ni subproductos.</li>
+<li>Alta palatabilidad (suele gustar más).</li>
+<li>Adaptable a alergias e intolerancias.</li>
+<li>Mayor vínculo emocional con el tutor.</li>
+</ul></div>
+<div class="cons-box"><h5>Desventajas</h5><ul>
+<li><strong>Requiere formulación por veterinario nutricionista.</strong></li>
+<li>Riesgo elevado de desequilibrios nutricionales.</li>
+<li>Más tiempo de preparación y almacenamiento.</li>
+<li>Mayor costo en la mayoría de los casos.</li>
+<li>Necesita suplementación (calcio, taurina, etc.).</li>
+<li>No apta para todas las etapas de vida sin ajustes.</li>
+</ul></div>
+</div>
+<h4 class="section-title">🧪 Suplementos Esenciales en Dieta Casera</h4>
+<div class="warning-box"><strong>⚠️ La comida casera SIN suplementar NUNCA es completa.</strong> Estos nutrientes son críticos y deben añadirse siempre, bajo indicación veterinaria:</div>
+<div class="info-card">
+<p><strong>🦴 Calcio:</strong> Las dietas caseras sin hueso son deficientes en calcio. Se suplementa con carbonato de calcio, citrato de calcio o hueso molido. <em>El desequilibrio calcio/fósforo causa problemas óseos graves, especialmente en cachorros.</em></p>
+<p><strong>🐟 Omega-3 (EPA/DHA):</strong> Aceite de pescado (no de hígado). Fundamental para piel, pelaje, articulaciones y sistema inmune.</p>
+<p><strong>🐱 Taurina (gatos):</strong> Esencial para gatos. Su déficit causa ceguera y cardiomiopatía dilatada. Se suplementa o se aporta con corazón de pollo/res.</p>
+<p><strong>💊 Vitaminas y minerales:</strong> Complejo vitamínico-mineral específico para mascotas, especialmente vitaminas A, D, E y del grupo B.</p>
+<p><strong>🧂 Yodo:</strong> Aportado habitualmente por sal yodada o algas, en cantidades controladas.</p>
+</div>
+<h4 class="section-title">📋 Pautas indispensables de la dieta casera</h4>
+<div class="alert-item"><span class="alert-icon">1️⃣</span><span><strong>Consulta siempre a un veterinario nutricionista</strong> antes de iniciar una dieta casera. No improvises.</span></div>
+<div class="alert-item"><span class="alert-icon">2️⃣</span><span><strong>Respeta las proporciones:</strong> la dieta debe tener un balance adecuado de proteína, grasa, carbohidratos, fibra y micronutrientes.</span></div>
+<div class="alert-item"><span class="alert-icon">3️⃣</span><span><strong>Suplementa siempre:</strong> calcio, omega-3, vitaminas y minerales. Nunca omitas este paso.</span></div>
+<div class="alert-item"><span class="alert-icon">4️⃣</span><span><strong>Cocina sin condimentos:</strong> nada de sal, ajo, cebolla, especias ni aceites aromatizados.</span></div>
+<div class="alert-item"><span class="alert-icon">5️⃣</span><span><strong>Controla la conservación:</strong> cocina lotes pequeños y refrigera o congela. La comida cocida se conserva máximo 3-4 días en nevera.</span></div>
+<div class="alert-item"><span class="alert-icon">6️⃣</span><span><strong>Monitoriza el peso y la condición corporal</strong> mensualmente. Ajusta las porciones según la evolución.</span></div>
+<div class="alert-item"><span class="alert-icon">7️⃣</span><span><strong>Análisis periódicos:</strong> cada 6-12 meses, especialmente en animales senior o con patologías.</span></div>
+<h4 class="section-title">❌ Errores Comunes (y peligrosos)</h4>
+<div class="danger-box">
+<p><strong>1. Dar solo carne y arroz:</strong> Dieta incompleta. Falta calcio, vitaminas, ácidos grasos esenciales.</p>
+<p><strong>2. No suplementar calcio:</strong> Causa hiperparatiroidismo nutricional secundario, fracturas espontáneas en cachorros.</p>
+<p><strong>3. Exceso de hígado:</strong> Toxicidad por vitamina A, problemas óseos y hepáticos.</p>
+<p><strong>4. Incluir huesos cocidos:</strong> Se astillan y pueden perforar el intestino.</p>
+<p><strong>5. Condimentar la comida:</strong> Sal, ajo, cebolla y especias son tóxicos o irritantes.</p>
+<p><strong>6. Usar sobras humanas:</strong> Suelen contener condimentos, grasa en exceso y huesos.</p>
+<p><strong>7. No ajustar por etapa de vida:</strong> Un cachorro, un adulto y un senior tienen requerimientos distintos.</p>
+<p><strong>8. Cambiar la dieta bruscamente:</strong> Provoca diarrea y rechazo. Transición en 7-10 días.</p>
+</div>
+<h4 class="section-title">📅 Transición desde Pienso a Comida Casera</h4>
+<div class="info-card">
+<p><strong>Días 1-3:</strong> 75% pienso + 25% comida casera.</p>
+<p><strong>Días 4-6:</strong> 50% pienso + 50% comida casera.</p>
+<p><strong>Días 7-9:</strong> 25% pienso + 75% comida casera.</p>
+<p><strong>Día 10:</strong> 100% comida casera (siempre con formulación profesional).</p>
+<p>Vigila las heces durante todo el proceso. Si aparecen diarreas persistentes, vómitos o rechazo, detén la transición y consulta al veterinario.</p>
+</div>
+<h4 class="section-title">👨‍🍳 Ejemplo de Estructura de Dieta Casera Balanceada</h4>
+<div class="info-card">
+<p><strong>Para un perro adulto sano:</strong></p>
+<p>• <strong>Proteína animal (50-60%):</strong> Pollo, res, pavo, pescado, huevo cocido.</p>
+<p>• <strong>Carbohidratos (20-30%):</strong> Arroz, avena, camote, papa.</p>
+<p>• <strong>Verduras (10-15%):</strong> Zanahoria, calabaza, ejotes, brócoli.</p>
+<p>• <strong>Vísceras (5-10%):</strong> Hígado, corazón, riñón.</p>
+<p>• <strong>Suplementos:</strong> Calcio, omega-3, vitaminas-minerales.</p>
+<p><em>Las proporciones exactas deben ser calculadas por un veterinario nutricionista según peso, edad, actividad y estado de salud.</em></p>
+</div>
+<div class="highlight-box"><strong>💡 Recuerda:</strong> Una dieta casera mal formulada puede ser más peligrosa que un pienso comercial de calidad media. La supervisión profesional no es opcional.</div>
+</div>
+
+<!-- DIETA BARF -->
+<div id="tab-barf" class="tab-content">
+<h4 class="section-title">🥩 ¿Qué es la Dieta BARF?</h4>
+<div class="info-card"><p>La dieta BARF (<em>Biologically Appropriate Raw Food</em>) busca imitar la dieta de los ancestros salvajes. Se compone de <strong>carne cruda, huesos carnosos, vísceras</strong> y en menor medida frutas y verduras.</p></div>
+<h4 class="section-title">✅ Beneficios Percibidos (según defensores)</h4>
+<div class="info-card">
+<p>🐕 <strong>Mejor pelaje y piel.</strong></p>
+<p>🦷 <strong>Mejor salud dental.</strong></p>
+<p>💩 <strong>Heces más consistentes.</strong></p>
+<p>⚡ <strong>Mayor energía y vitalidad.</strong></p>
+<p>⚖️ <strong>Control del peso.</strong></p>
+</div>
+<h4 class="section-title">❌ Riesgos y Contras (evidencia veterinaria)</h4>
+<div class="danger-box"><strong>La mayoría de organizaciones veterinarias desaconsejan las dietas crudas</strong> por los riesgos documentados.</div>
+<div class="alert-item"><span class="alert-icon">🦠</span><span><strong>Riesgo microbiológico:</strong> Salmonella, E. coli, Campylobacter.</span></div>
+<div class="alert-item"><span class="alert-icon">⚖️</span><span><strong>Desequilibrios nutricionales:</strong> Difíciles de evitar sin formulación profesional.</span></div>
+<div class="alert-item"><span class="alert-icon">🦴</span><span><strong>Riesgo con huesos:</strong> Obstrucciones, fracturas dentales, perforaciones.</span></div>
+<div class="alert-item"><span class="alert-icon">🧬</span><span><strong>Bacterias resistentes a antibióticos.</strong></span></div>
+<div class="alert-item"><span class="alert-icon">🔬</span><span><strong>Falta de evidencia científica</strong> sólida sobre los beneficios.</span></div>
+<div class="warning-box"><strong>⚠️ Recomendación veterinaria:</strong> Si consideras una dieta BARF, <strong>consulta obligatoriamente con un médico veterinario nutricionista</strong>.</div>
+</div>
+
+<!-- ALIMENTACIÓN CON PIENSOS -->
+<div id="tab-piensos" class="tab-content">
+<h4 class="section-title">🥫 Alimentación con Piensos Comerciales</h4>
+<div class="info-card">
+<p>Los piensos comerciales son alimentos procesados diseñados para cubrir las necesidades nutricionales de perros y gatos. Se presentan en formato <strong>seco (croquetas), húmedo (latas o sobres) o semihúmedo</strong>.</p>
+<p>Su formulación está regulada por estándares como los de la <strong>AAFCO</strong> o el <strong>FEDIAF</strong> europeo.</p>
+</div>
+<h4 class="section-title">✅ Ventajas y Desventajas de los Piensos</h4>
+<div class="pros-cons-grid">
+<div class="pros-box"><h5>Pros</h5><ul>
+<li>Nutrición completa y equilibrada.</li>
+<li>Prácticos y fáciles de almacenar.</li>
+<li>Económicos frente a dietas caseras.</li>
+<li>Fórmulas específicas por edad y condición.</li>
+<li>Menor riesgo de contaminación bacteriana.</li>
+<li>Facilitan el control de porciones.</li>
+</ul></div>
+<div class="cons-box"><h5>Contras</h5><ul>
+<li>Calidad variable entre marcas.</li>
+<li>Alto contenido de carbohidratos en muchos.</li>
+<li>Pueden contener conservantes y colorantes.</li>
+<li>Bajo contenido de humedad (en seco).</li>
+<li>Riesgo de recalls.</li>
+<li>Pueden causar alergias.</li>
+</ul></div>
+</div>
+<h4 class="section-title">🏷️ Cómo Leer la Etiqueta de un Buen Pienso</h4>
+<div class="info-card">
+<p><strong>1. Perfil nutricional:</strong> Debe indicar si cumple AAFCO o FEDIAF para la etapa correspondiente.</p>
+<p><strong>2. Lista de ingredientes:</strong> Los ingredientes se listan en orden de peso. Busca proteínas animales en los primeros puestos.</p>
+<p><strong>3. Análisis garantizado:</strong> Porcentaje mínimo de proteína y grasa, y máximo de fibra y humedad.</p>
+<p><strong>4. Fecha de caducidad y lote.</strong></p>
+<p><strong>5. Nombre y dirección del fabricante.</strong></p>
+</div>
+<h4 class="section-title">⚠️ Señales de un Pienso de Baja Calidad</h4>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Ingredientes genéricos como "carne y subproductos animales" sin especie.</span></div>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Exceso de cereales como primeros ingredientes.</span></div>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Colorantes artificiales y conservantes como BHA, BHT o etoxiquina.</span></div>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Alto contenido de cenizas (más del 8-10%).</span></div>
+<div class="alert-item"><span class="alert-icon">⚠️</span><span>Precio excesivamente bajo.</span></div>
+<h4 class="section-title">💡 Buenas prácticas con piensos</h4>
+<div class="info-card">
+<p><strong>1. Transición gradual:</strong> 7-10 días mezclando proporciones crecientes.</p>
+<p><strong>2. Ajusta la ración:</strong> Según peso, actividad y condición corporal.</p>
+<p><strong>3. Combina seco y húmedo:</strong> Ayuda a aumentar la ingesta de agua.</p>
+<p><strong>4. Almacena correctamente:</strong> Recipiente hermético, fresco y seco.</p>
+<p><strong>5. Revisa la caducidad.</strong></p>
+<p><strong>6. Consulta con tu veterinario</strong> si hay condiciones de salud específicas.</p>
+</div>
+</div>
+
+<!-- PREPARACION -->
+<div id="tab-preparacion" class="tab-content">
+<h4 class="section-title">👨‍🍳 Cómo Preparar los Alimentos Correctamente</h4>
+<div class="danger-box"><strong>Importante:</strong> La comida de tu mascota NO se condimenta. Nada de sal, ajo, cebolla, especias, aceites aromatizados, salsas ni caldos industriales.</div>
+<h4 class="section-title">🔥 Métodos de Cocción Recomendados</h4>
+<div class="info-card">
+<p><strong>1. Hervido en agua:</strong> El método más sencillo y seguro. Sin sal.</p>
+<p><strong>2. Al vapor:</strong> Conserva mejor los nutrientes.</p>
+<p><strong>3. Al horno:</strong> Sin aceites ni condimentos.</p>
+<p><strong>4. A la plancha:</strong> Sin aceite, sin sal, sin condimentos.</p>
+</div>
+<h4 class="section-title">❌ Errores Comunes</h4>
+<div class="alert-item"><span class="alert-icon">❌</span><span><strong>Condimentar:</strong> Cebolla, ajo, sal y especias son tóxicos o irritantes.</span></div>
+<div class="alert-item"><span class="alert-icon">❌</span><span><strong>Freír:</strong> Las grasas oxidadas causan pancreatitis.</span></div>
+<div class="alert-item"><span class="alert-icon">❌</span><span><strong>Dar huesos cocidos:</strong> Se astillan y pueden perforar el intestino.</span></div>
+<div class="alert-item"><span class="alert-icon">❌</span><span><strong>Usar caldos industriales:</strong> Contienen sal, cebolla, ajo y conservantes.</span></div>
+<div class="alert-item"><span class="alert-icon">❌</span><span><strong>Mezclar con sobras humanas:</strong> Pueden contener condimentos y huesos.</span></div>
+<h4 class="section-title">🍼 Preparación de Fórmulas Maternizadas para Neonatos</h4>
+<div class="warning-box" style="background-color:#fff3cd"><strong>⚠️ Atención:</strong> Esta sección es para <strong>cachorros o gatitos huérfanos (0-4 semanas)</strong> que no pueden ser amamantados por su madre. Siempre que sea posible, use una <strong>fórmula maternizada comercial</strong> (Esbilac, Royal Canin Babydog Milk, KMR, PetLac, etc.) porque están formuladas con todos los nutrientes esenciales y son más seguras. Las recetas caseras son <strong>solo para emergencias</strong> hasta conseguir una comercial.</div>
+<h5 style="font-size:.92rem;color:var(--primary-blue);margin:16px 0 8px;font-family:'Poppins',sans-serif">📦 Fórmula Comercial Maternizada (recomendada)</h5>
+<div class="info-card">
+<p><strong>Marcas comunes:</strong> Esbilac (perros), KMR (gatos), Royal Canin Babydog/Babycat Milk, PetLac, Breeder's Edge.</p>
+<p><strong>Preparación:</strong> Sigue siempre las instrucciones del fabricante. Generalmente se mezcla 1 parte de polvo con 2 partes de agua tibia (nunca hirviendo).</p>
+<p><strong>Temperatura de servicio:</strong> <strong>38 °C</strong> (tibia, como la leche materna).</p>
+<p><strong>Conservación:</strong> La fórmula preparada se guarda en nevera <strong>máximo 24 horas</strong>.</p>
+</div>
+<h5 style="font-size:.92rem;color:var(--primary-blue);margin:16px 0 8px;font-family:'Poppins',sans-serif">🥣 Fórmula de Emergencia para Neonatos (Perros y Gatos)</h5>
+<div class="recipe-card">
+<span class="recipe-label">Solo emergencia</span>
+<h6>🐶🐱 Receta para neonatos (0-4 semanas)</h6>
+<div style="font-size:.78rem;color:var(--text-light);margin-bottom:10px;font-style:italic">Rinde ~300 ml (varias tomas)</div>
+<div class="ingredients"><strong>Ingredientes:</strong><ul>
+<li>240 ml (1 taza) de <strong>leche entera de vaca</strong> (para cachorros) o <strong>leche de cabra / sin lactosa</strong> (para gatitos)</li>
+<li>1 <strong>yema de huevo</strong> (sin clara)</li>
+<li>1 cucharada sopera de <strong>crema de leche / nata líquida</strong></li>
+<li>1 cucharadita de <strong>miel</strong> (o sirope de maíz)</li>
+</ul></div>
+<div class="steps"><strong>Preparación:</strong><ol>
+<li>Mezclar todos los ingredientes en un recipiente limpio.</li>
+<li>Batir hasta que quede homogéneo.</li>
+<li>Calentar al baño María hasta alcanzar <strong>38 °C</strong>.</li>
+<li>Pasar por un colador fino para evitar grumos.</li>
+<li>Servir en biberón esterilizado con tetina pequeña.</li>
+</ol></div>
+</div>
+<h5 style="font-size:.92rem;color:var(--primary-blue);margin:18px 0 8px;font-family:'Poppins',sans-serif">💡 Cuidados esenciales del neonato</h5>
+<div class="highlight-box" style="background-color:#e8f5e9">
+<strong>1. Nunca uses leche de vaca sola:</strong> No tiene la concentración de grasa ni proteína que necesitan los neonatos y puede causar diarrea severa, deshidratación y muerte.<br><br>
+<strong>2. Postura correcta:</strong> El cachorro/gatito debe estar <strong>boca abajo</strong> (nunca boca arriba) para evitar que la fórmula pase a los pulmones (neumonía por aspiración).<br><br>
+<strong>3. Temperatura:</strong> El neonato debe estar <strong>caliente</strong> antes de alimentarlo. Si está frío, primero caliéntalo (nido a 28-32 °C).<br><br>
+<strong>4. Estimular la eliminación:</strong> Después de cada toma, masajea suavemente la zona genital y anal con un algodón tibio.<br><br>
+<strong>5. Pesa a diario:</strong> El neonato debe ganar peso todos los días.<br><br>
+<strong>6. Esteriliza el material:</strong> Biberones y tetinas deben esterilizarse después de cada uso.
+</div>
+<div class="danger-box"><strong>🚨 Consulta veterinaria urgente si:</strong>
+<ul style="margin-top:6px;margin-left:18px;line-height:1.7">
+<li>El neonato no succiona o rechaza el biberón.</li>
+<li>Tiene diarrea, vómitos o heces blandas persistentes.</li>
+<li>Está frío, letárgico o no responde al estímulo.</li>
+<li>Llora constantemente o parece tener dolor.</li>
+<li>La fórmula sale por la nariz durante la toma.</li>
+</ul></div>
+<h4 class="section-title">💧 Hidratación</h4>
+<div class="info-card"><p>El agua fresca debe estar disponible siempre para animales destetados. Los gatos son propensos a la deshidratación. Cambia el agua al menos 2 veces al día y usa recipientes de loza, cristal o acero inoxidable.</p></div>
+</div>
+
+<!-- PORCIONES -->
+<div id="tab-porciones" class="tab-content">
+<h4 class="section-title">🧮 Calculadora de Porciones Diarias</h4>
+<div class="calculator-box">
+<h5>🍽️ Calcula la cantidad según tu mascota</h5>
+<div class="form-group">
+<label for="portionSpecies">Especie:</label>
+<select id="portionSpecies"><option value="dog">🐶 Perro</option><option value="cat">🐱 Gato</option></select>
+</div>
+<div class="form-group">
+<label for="portionBreed">Raza:</label>
+<select id="portionBreed"><option value="">-- Selecciona una raza --</option></select>
+</div>
+<div class="form-group">
+<label for="portionStage">Etapa de vida:</label>
+<select id="portionStage"></select>
+</div>
+<div class="form-group">
+<label for="portionWeight">Peso actual (kg):</label>
+<input type="number" id="portionWeight" step="0.1" min="0.1" placeholder="Ej. 5.5">
+</div>
+<div class="form-group">
+<label for="portionMode">Modo de cálculo:</label>
+<select id="portionMode"><option value="tipo">📦 Por tipo de alimento (recomendado)</option><option value="kcal">🔬 Por kcal conocidas (avanzado)</option></select>
+</div>
+<div class="form-group" id="portionTipoGroup">
+<label for="portionFoodType">Tipo de alimento:</label>
+<select id="portionFoodType">
+<option value="seco_estandar">🥫 Croquetas secas estándar (~350 kcal/100 g)</option>
+<option value="seco_premium">⭐ Croquetas secas premium / alta proteína (~390 kcal/100 g)</option>
+<option value="seco_cachorro">🐶 Croquetas para cachorro / gatito (~400 kcal/100 g)</option>
+<option value="humedo">💧 Comida húmeda — lata o sobre (~90 kcal/100 g)</option>
+<option value="casero">🍲 Comida casera cocida (~140 kcal/100 g)</option>
+<option value="barf">🥩 Dieta BARF / cruda (~170 kcal/100 g)</option>
+</select>
+</div>
+<div class="form-group" id="portionKcalGroup" style="display:none">
+<label for="portionKcal">Calorías del alimento (kcal/100 g):</label>
+<input type="number" id="portionKcal" step="1" min="50" max="700" value="350">
+</div>
+<div class="calculator-actions">
+<button type="button" class="btn-evaluar" id="btnCalcularPorcion">Calcular Porción</button>
+<button type="button" class="btn-despejar" id="btnResetPorcion">Despejar</button>
+</div>
+<div id="portionResult" class="calc-result"></div>
+</div>
+<h4 class="section-title">🍼 Calculadora de Fórmula Maternizada</h4>
+<div class="calculator-box formula-box">
+<span class="puppy-badge">🐶 🐱 Neonatos huérfanos</span>
+<h5>🍼 Fórmula para neonatos</h5>
+<div class="form-group">
+<label for="formulaSpecies">Especie:</label>
+<select id="formulaSpecies"><option value="dog">🐶 Cachorro</option><option value="cat">🐱 Gatito</option></select>
+</div>
+<div class="form-group">
+<label for="formulaBreed">Raza:</label>
+<select id="formulaBreed"><option value="">-- Selecciona una raza --</option></select>
+</div>
+<div class="form-group">
+<label for="formulaAge">Edad:</label>
+<select id="formulaAge">
+<option value="w1">Semana 1 (0 - 7 días)</option>
+<option value="w2">Semana 2 (7 - 14 días)</option>
+<option value="w3">Semana 3 (14 - 21 días)</option>
+<option value="w4">Semana 4 (21 - 28 días)</option>
+</select>
+</div>
+<div class="form-group">
+<label for="formulaWeight" id="formulaWeightLabel">Peso actual (gramos):</label>
+<input type="number" id="formulaWeight" step="5" min="50" placeholder="Ej. 200" data-unit="g">
+<div class="helper-text" id="formulaWeightHelper">Usa una balanza de cocina o de bebé. En neonatos el peso se mide en gramos.</div>
+</div>
+<div class="form-group">
+<label for="formulaType">Tipo de fórmula:</label>
+<select id="formulaType">
+<option value="comercial">📦 Comercial maternizada (recomendada)</option>
+<option value="casera">🥣 Casera de emergencia (solo si no hay comercial)</option>
+</select>
+</div>
+<div class="calculator-actions">
+<button type="button" class="btn-evaluar" id="btnCalcularFormula">Calcular Fórmula</button>
+<button type="button" class="btn-despejar" id="btnResetFormula">Despejar</button>
+</div>
+<div id="formulaResult" class="calc-result"></div>
+</div>
+</div>
+
+<!-- PESAJE Y CONDICIÓN -->
+<div id="tab-pesaje" class="tab-content">
+<h4 class="section-title">⚖️ Pesaje y Condición Corporal</h4>
+<div class="info-card">
+<p>La <strong>Puntuación de Condición Corporal (BCS)</strong> es una herramienta subjetiva pero esencial que evalúa la cantidad de grasa y masa muscular. Se considera el "estándar de oro" porque es más fiable que el peso aislado.</p>
+<p>El sistema más aceptado es la <strong>escala de 9 puntos</strong>.</p>
+</div>
+<div class="principle-box">
+<span class="principle-icon">💡</span>
+<div class="principle-text">La condición corporal ideal es <strong>4-5 sobre 9 en perros</strong> y <strong>5 sobre 9 en gatos</strong>.</div>
+</div>
+<h4 class="section-title">🐶 Escala de Condición Corporal - Perros</h4>
+<div class="info-card">
+<p>Esta guía visual te ayudará a determinar la puntuación de tu perro:</p>
+<div class="bcs-image-wrapper" onclick="abrirLightbox('https://i.postimg.cc/QM4gRT0q/Final-Dog-BCS-2026.webp','Escala de Condición Corporal para Perros',0)">
+<span class="zoom-badge">🔍 Ampliar</span>
+<img src="https://i.postimg.cc/QM4gRT0q/Final-Dog-BCS-2026.webp" alt="Escala de Condición Corporal para Perros" class="bcs-image-dog" decoding="async" onerror="this.parentElement.classList.add('error')">
+</div>
+<p class="zoom-hint">🔍 Toca o haz clic en la imagen para ampliarla</p>
+</div>
+<h4 class="section-title">🐱 Escala de Condición Corporal - Gatos</h4>
+<div class="info-card">
+<p>Esta guía visual te ayudará a determinar la puntuación de tu gato:</p>
+<div class="bcs-image-wrapper" onclick="abrirLightbox('https://i.postimg.cc/GmMs21YP/Final-Client-Cat-BCS-2026.webp','Escala de Condición Corporal para Gatos',0)">
+<span class="zoom-badge">🔍 Ampliar</span>
+<img src="https://i.postimg.cc/GmMs21YP/Final-Client-Cat-BCS-2026.webp" alt="Escala de Condición Corporal para Gatos" class="bcs-image-cat" decoding="async" onerror="this.parentElement.classList.add('error')">
+</div>
+<p class="zoom-hint">🔍 Toca o haz clic en la imagen para ampliarla</p>
+</div>
+<h4 class="section-title">🧮 Calculadora de Peso Ideal</h4>
+<div class="calculator-box">
+<h5>⚖️ Evalúa el peso de tu mascota</h5>
+<div class="form-group">
+<label for="calcSpecies">Especie:</label>
+<select id="calcSpecies"><option value="dog">🐶 Perro</option><option value="cat">🐱 Gato</option></select>
+</div>
+<div class="form-group">
+<label for="calcBreed">Raza:</label>
+<select id="calcBreed"><option value="">-- Selecciona una raza --</option></select>
+</div>
+<div class="form-group" id="mestizoSizeGroup" style="display:none">
+<label for="calcMestizoSize">Tamaño estimado del mestizo (según los padres):</label>
+<select id="calcMestizoSize">
+<option value="">-- Selecciona el tamaño --</option>
+<option value="pequeno">🐕 Pequeño</option>
+<option value="mediano">🐕 Mediano</option>
+<option value="grande">🐕 Grande</option>
+<option value="gigante">🐕 Gigante</option>
+</select>
+</div>
+<div class="form-group">
+<label for="calcAge">Edad:</label>
+<select id="calcAge"><option value="">-- Selecciona la edad --</option></select>
+</div>
+<div class="form-group">
+<label for="calcWeight">Peso actual (kg):</label>
+<input type="number" id="calcWeight" step="0.1" min="0.1" placeholder="Ej. 5.5">
+</div>
+<div class="calculator-actions">
+<button type="button" class="btn-evaluar" id="btnEvaluarPeso">Evaluar Peso</button>
+<button type="button" class="btn-despejar" id="btnResetPeso">Despejar</button>
+</div>
+<div id="calcResult" class="calc-result"></div>
+</div>
+<h4 class="section-title">💪 Calificación de la Condición Muscular (MCS)</h4>
+<div class="info-card">
+<p>Además de la grasa, es crucial evaluar la masa muscular. La <strong>pérdida de masa muscular</strong> puede ocurrir incluso si el peso se mantiene estable, especialmente en animales senior o con enfermedades crónicas.</p>
+<p><strong>¿Cómo evaluarla?</strong> Palpa la columna, los omóplatos y los huesos de la cadera. Un músculo normal se siente firme y redondeado.</p>
+<p><strong>Escala de 4 puntos:</strong></p>
+<p>✅ <strong>Músculo normal.</strong></p>
+<p>🟡 <strong>Pérdida muscular leve.</strong></p>
+<p>🟠 <strong>Pérdida muscular moderada.</strong></p>
+<p>🔴 <strong>Pérdida muscular grave.</strong></p>
+<p>Si notas pérdida muscular, consulta a un veterinario para descartar enfermedades subyacentes.</p>
+</div>
+</div>
+
+<!-- PLANTAS TÓXICAS -->
+<div id="tab-plantas" class="tab-content">
+<h4 class="section-title">🌿 Plantas Tóxicas Comunes</h4>
+<div class="warning-box">Muchas plantas ornamentales comunes representan un riesgo grave. Estas son las más peligrosas. <strong>Identifícalas y mantén a tus mascotas alejadas.</strong></div>
+<div class="plant-grid" id="plantGrid"></div>
+<div class="highlight-box" style="margin-top:20px"><strong>💡 Recomendación práctica:</strong> Si tienes estas plantas en casa, colócalas en macetas colgantes o en habitaciones inaccesibles. Si sospechas de ingestión, acude inmediatamente al veterinario.</div>
+</div>
+
+<!-- MEDICAMENTOS TÓXICOS -->
+<div id="tab-medicamentos" class="tab-content">
+<h4 class="section-title">💊 Medicamentos Humanos Contraindicados</h4>
+<div class="medication-box"><strong>NUNCA administres medicamentos humanos a tu mascota sin prescripción veterinaria explícita.</strong> Los perros y gatos metabolizan los fármacos de forma muy diferente a los humanos. Una dosis aparentemente inofensiva puede ser letal.</div>
+
+<h4 class="section-title">🔴 Analgésicos y Antiinflamatorios (AINEs)</h4>
+<div class="table-scroll">
+<table class="data-table med-table">
+<thead><tr><th>Medicamento</th><th>Nombres Comerciales</th><th>Efectos en Mascotas</th></tr></thead>
+<tbody>
+<tr><td>Ibuprofeno</td><td>Advil, Motrin, Nurofen</td><td>Ulceración gastrointestinal, sangrado, falla renal aguda y muerte. Dosis tóxica: 50-125 mg/kg en perros.</td></tr>
+<tr><td>Naproxeno</td><td>Aleve, Naprosyn</td><td>Altamente tóxico. Ulceración gastrointestinal severa, falla renal.</td></tr>
+<tr><td>Paracetamol / Acetaminofén</td><td>Tylenol, Panadol</td><td><strong>Contraindicado en gatos a cualquier dosis.</strong> En perros: daño hepático y metahemoglobinemia (encías azuladas, dificultad respiratoria).</td></tr>
+<tr><td>Aspirina</td><td>Aspirina, AAS, Ecotrin</td><td>Ulceración gástrica, sangrado gastrointestinal, daño renal y síndrome de Reye.</td></tr>
+<tr><td>Diclofenaco</td><td>Cataflam, Voltaren</td><td>Ulceración gastrointestinal grave, sangrado y falla renal.</td></tr>
+<tr><td>Dipirona (Metamizol)</td><td>Novalgina, Anador</td><td>Daño hepático y renal, agranulocitosis (falta de glóbulos blancos).</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4 class="section-title">🔴 Antidepresivos y Ansiolíticos</h4>
+<div class="table-scroll">
+<table class="data-table med-table">
+<thead><tr><th>Medicamento</th><th>Nombres Comerciales</th><th>Efectos en Mascotas</th></tr></thead>
+<tbody>
+<tr><td>Fluoxetina</td><td>Prozac</td><td>Síndrome serotoninérgico: agitación, temblores, hipertermia, convulsiones.</td></tr>
+<tr><td>Venlafaxina</td><td>Effexor</td><td><strong>Particularmente peligroso para gatos.</strong> Síndrome serotoninérgico grave.</td></tr>
+<tr><td>Sertralina</td><td>Zoloft</td><td>Síndrome serotoninérgico.</td></tr>
+<tr><td>Escitalopram</td><td>Lexapro</td><td>Sedación, ataxia, convulsiones.</td></tr>
+<tr><td>Duloxetina</td><td>Cymbalta</td><td>Síndrome serotoninérgico.</td></tr>
+<tr><td>Alprazolam</td><td>Xanax</td><td>Depresión del SNC, agitación paradójica.</td></tr>
+<tr><td>Diazepam</td><td>Valium</td><td>Sedación profunda, depresión respiratoria.</td></tr>
+<tr><td>Zolpidem</td><td>Ambien</td><td>Agitación, ataxia, letargo.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4 class="section-title">🔴 Estimulantes (ADD/ADHD)</h4>
+<div class="table-scroll">
+<table class="data-table med-table">
+<thead><tr><th>Medicamento</th><th>Nombres Comerciales</th><th>Efectos en Mascotas</th></tr></thead>
+<tbody>
+<tr><td>Anfetaminas</td><td>Adderall</td><td>Hiperactividad severa, convulsiones. Dosis letal en perros: 20-27 mg/kg.</td></tr>
+<tr><td>Metilfenidato</td><td>Ritalin, Concerta</td><td>Agitación, temblores, arritmias, convulsiones.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4 class="section-title">🔴 Medicamentos Cardiovasculares</h4>
+<div class="table-scroll">
+<table class="data-table med-table">
+<thead><tr><th>Medicamento</th><th>Nombres Comerciales</th><th>Efectos en Mascotas</th></tr></thead>
+<tbody>
+<tr><td>Bloqueadores Beta</td><td>Propranolol, Atenolol, Metoprolol</td><td>Bradicardia severa, hipotensión, colapso.</td></tr>
+<tr><td>Bloqueadores de Canales de Calcio</td><td>Diltiazem, Amlodipino, Verapamilo</td><td>Hipotensión grave, bradicardia, arritmias.</td></tr>
+<tr><td>Inhibidores de la ECA</td><td>Enalapril, Captopril, Lisinopril</td><td>Hipotensión severa, daño renal secundario.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4 class="section-title">🔴 Vitaminas y Suplementos</h4>
+<div class="table-scroll">
+<table class="data-table med-table">
+<thead><tr><th>Medicamento</th><th>Nombres Comerciales</th><th>Efectos en Mascotas</th></tr></thead>
+<tbody>
+<tr><td>Vitamina D (Colecalciferol)</td><td>Suplementos de vitamina D</td><td>Hipercalcemia severa, calcificación de tejidos, daño renal y muerte.</td></tr>
+<tr><td>Hierro (sales ferrosas)</td><td>Suplementos de hierro, vitaminas prenatales</td><td>Ulceración gastrointestinal severa, shock, falla hepática.</td></tr>
+<tr><td>5-HTP</td><td>Suplementos para dormir</td><td>Síndrome serotoninérgico, convulsiones.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4 class="section-title">🔴 Otros Medicamentos Peligrosos</h4>
+<div class="table-scroll">
+<table class="data-table med-table">
+<thead><tr><th>Medicamento</th><th>Uso Humano</th><th>Efectos en Mascotas</th></tr></thead>
+<tbody>
+<tr><td>Pseudoefedrina</td><td>Descongestionante nasal (Sudafed)</td><td>Hiperactividad, temblores, hipertensión, arritmias, convulsiones. 30 mg pueden ser letales en un gato.</td></tr>
+<tr><td>Baclofeno</td><td>Relajante muscular</td><td>Sedación profunda, ataxia, convulsiones.</td></tr>
+<tr><td>5-Fluorouracilo</td><td>Quimioterapia tópica (Efudex, Fluoroplex)</td><td>Altamente letal. Muerte en 6-12 horas.</td></tr>
+<tr><td>Isoniazida</td><td>Tratamiento de tuberculosis (Isoniazid, Nydrazid)</td><td>Convulsiones severas, falla hepática y renal.</td></tr>
+<tr><td>Permetrina</td><td>Tratamiento de piojos tópico (Nix, Elimite)</td><td><strong>Extremadamente tóxica para gatos.</strong> Temblores, salivación, convulsiones, muerte.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="medication-box" style="margin-top:20px"><strong>⚠️ Recuerda:</strong> Esta lista no es exhaustiva. Ante cualquier sospecha de ingestión de medicamentos, acude inmediatamente al veterinario o llama a un centro de toxicología veterinaria.</div>
+</div>
+
+<!-- REFERENCIAS -->
+<div id="tab-referencias" class="tab-content">
+<h4 class="section-title">📚 Fuentes Bibliográficas</h4>
+<div class="info-card">
+<p style="font-size:.85rem;color:var(--text-dark);line-height:1.6;margin-bottom:15px">Esta guía ha sido elaborada a partir de las siguientes fuentes de referencia en nutrición, toxicología y bienestar animal.</p>
+<ol class="bibliography-list">
+<li>American Animal Hospital Association (2024) <em>AAHA Nutrition and Weight Management Guidelines for Dogs and Cats</em>. Lakewood, CO: AAHA Press. <em>[Nutrición general, BCS, manejo de peso]</em></li>
+<li>American Animal Hospital Association &amp; American Association of Feline Practitioners (2021) <em>AAHA/AAFP Feline Life Stage Guidelines</em>. Lakewood, CO: AAHA Press. <em>[Etapas de vida felinas, edad senior en gatos]</em></li>
+<li>American Society for the Prevention of Cruelty to Animals (2024) <em>People Foods to Avoid Feeding Your Pets</em>. New York: ASPCA. <em>[Alimentos tóxicos y peligrosos]</em></li>
+<li>Association of American Feed Control Officials (2024) <em>AAFCO Official Publication</em>. Champaign, IL: AAFCO. <em>[Estándares de piensos comerciales]</em></li>
+<li>Banfield Pet Hospital (2023) <em>State of Pet Health Report</em>. Portland, OR: Banfield Pet Hospital. <em>[Edades senior por tamaño de raza]</em></li>
+<li>Cornell University College of Veterinary Medicine (2023) <em>Toxic Plants for Cats and Dogs</em>. Ithaca, NY: Cornell University. <em>[Plantas tóxicas]</em></li>
+<li>European Pet Food Industry Federation (2024) <em>Nutritional Guidelines for Complete and Complementary Pet Food for Cats and Dogs</em>. Brussels: FEDIAF. <em>[Estándares europeos de piensos]</em></li>
+<li>Freeman, L.M., Chandler, M.L., Hamper, B.A. and Weeth, L.P. (2018) 'Current knowledge about the risks and benefits of raw meat-based diets for dogs and cats', <em>JAVMA</em>, 243(11), pp. 1549-1558. <em>[Riesgos de dietas crudas / BARF]</em></li>
+<li>Hand, M.S., Thatcher, C.D., Remillard, R.L., Roudebush, P. and Novotny, B.J. (2010) <em>Small Animal Clinical Nutrition</em>. 5th edn. Topeka, KS: Mark Morris Institute. <em>[Nutrición clínica veterinaria]</em></li>
+<li>Merck &amp; Co. (2025) <em>Merck Veterinary Manual</em>. 12th edn. Rahway, NJ: Merck &amp; Co. <em>[Referencia clínica general y toxicología de medicamentos]</em></li>
+<li>National Research Council (2006) <em>Nutrient Requirements of Dogs and Cats</em>. Washington, DC: National Academies Press. <em>[Fórmulas RER/MER, requerimientos nutricionales]</em></li>
+<li>Pet Poison Helpline (2024) <em>Toxic and Non-Toxic Plants</em>. Minneapolis: Pet Poison Helpline. <em>[Toxicidad de plantas y medicamentos]</em></li>
+<li>Purina Institute (2025) <em>Nutritional Assessment Guidelines</em>. St. Louis, MO: Nestlé Purina. <em>[Evaluación nutricional, BCS, MCS]</em></li>
+<li>Tufts University Cummings School of Veterinary Medicine (2023) <em>Pet Nutrition Resources</em>. North Grafton, MA: Tufts University. <em>[Recursos de nutrición para tutores]</em></li>
+<li>World Small Animal Veterinary Association (2024) <em>Global Nutrition Guidelines</em>. Gloucester: WSAVA. <em>[Guías globales de nutrición, etapas de vida]</em></li>
+</ol>
+</div>
+<div class="highlight-box"><strong>💡 Nota:</strong> Si deseas consultar alguna de estas fuentes, puedes buscar los títulos en Google Scholar o en la web oficial de cada organismo.</div>
+<div class="warning-box"><strong>⚠️ Aviso:</strong> Esta guía es material educativo para tutores y no sustituye la consulta con un médico veterinario. Cada mascota es única y requiere una evaluación individual.</div>
+</div>
+
+</div>
+
+<div class="version-tag">V1.0.0</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="if(event.target===this)cerrarLightbox()">
+<div class="lightbox-caption" id="lightboxCaption"></div>
+<button class="lightbox-close" onclick="cerrarLightbox()" aria-label="Cerrar">✕</button>
+<div class="lightbox-spinner"></div>
+<div class="lightbox-content">
+<img src="" alt="" class="lightbox-image" id="lightboxImage" draggable="false">
+</div>
+<div class="lightbox-controls">
+<button onclick="zoomLightbox(-0.25)" aria-label="Alejar">−</button>
+<span class="zoom-level" id="zoomLevel">100%</span>
+<button onclick="zoomLightbox(0.25)" aria-label="Acercar">+</button>
+<button onclick="rotarLightbox()" aria-label="Rotar" style="font-size:.95rem">⟳</button>
+<button onclick="resetLightbox()" aria-label="Restablecer" style="font-size:.95rem">⟲</button>
+</div>
+</div>
+
+<script>
+/* ========== BASE DE DATOS DE ALIMENTOS (solo alimentos, sin medicamentos) ========== */
+const foodDatabase={
+toxic:{
+'chocolate':'Tóxico. Contiene teobromina y cafeína, que perros y gatos no metabolizan bien. Los síntomas aparecen en 6-12 horas: vómitos, diarrea, hiperactividad, temblores, arritmias cardíacas, convulsiones y en casos graves la muerte. El chocolate negro y el cacao puro son más peligrosos que el con leche.',
+'chocolate negro':'Más tóxico que el con leche por su mayor concentración de teobromina. Puede causar arritmias graves, convulsiones y muerte.',
+'chocolate blanco':'Menos tóxico que el negro, pero igualmente peligroso por su grasa y azúcar. Puede causar pancreatitis y problemas digestivos graves.',
+'cacao':'Muy tóxico. Altísima concentración de teobromina. Solo una cucharada puede ser letal para un perro pequeño.',
+'cafeína':'Tóxico. Causa hiperactividad, temblores, taquicardia, arritmias, convulsiones y muerte. La dosis letal es de 100-200 mg/kg.',
+'café':'Tóxico por su cafeína. Pequeñas cantidades pueden causar temblores, jadeo, arritmias y convulsiones.',
+'té':'Tóxico por su cafeína y taninos. Puede causar irritación digestiva, taquicardia y temblores.',
+'té verde':'Tóxico por su cafeína. Menos concentrado que el café pero igualmente peligroso.',
+'bebidas energéticas':'Muy tóxicas por la combinación de cafeína, taurina y azúcar. Pueden causar arritmias graves y convulsiones.',
+'alcohol':'Muy tóxico. Una pequeña cantidad puede causar desorientación, vómitos, dificultad respiratoria, coma y muerte. Los perros y gatos no metabolizan el alcohol como los humanos.',
+'cerveza':'Tóxica por el alcohol y el lúpulo. El lúpulo causa hipertermia maligna (temperatura corporal > 40°C), jadeo intenso, convulsiones y muerte.',
+'vino':'Tóxico por el alcohol y los sulfitos. Puede causar daño hepático, desorientación y coma.',
+'lúpulo':'Extremadamente tóxico para perros. Causa hipertermia maligna en minutos: temperatura corporal por encima de 40°C, jadeo severo, convulsiones y muerte si no se trata.',
+'xilitol':'Extremadamente tóxico para perros. Provoca liberación masiva de insulina en 15-30 minutos, causando hipoglucemia severa (convulsiones, coma) y daño hepático agudo. Incluso 0.1 g/kg puede ser letal.',
+'eritritol':'Tóxico para perros. Similar al xilitol, causa hipoglucemia y daño hepático.',
+'sorbitol':'Puede causar diarrea osmótica severa y deshidratación en perros y gatos.',
+'uvas':'Tóxicas principalmente para perros. Contienen ácido tartárico y otros compuestos nefrotóxicos. Pueden causar falla renal aguda, incluso en pequeñas cantidades. Los síntomas aparecen en 24-72 horas: vómitos, letargo, disminución de orina.',
+'uva':'Tóxica principalmente para perros. Ver "uvas".',
+'pasas':'Muy tóxicas para perros. Igual que las uvas, pueden causar falla renal aguda irreversible. Solo 3-4 pasas pueden matar a un perro pequeño.',
+'uvas pasas':'Tóxicas. Pueden causar falla renal aguda.',
+'aguacate':'Tóxico por la persina. La pulpa causa vómitos y diarrea. La semilla es un cuerpo extraño obstructivo. Las hojas y corteza contienen persina en mayor concentración.',
+'semilla de aguacate':'Cuerpo extraño. Puede causar obstrucción intestinal, requiriendo cirugía de emergencia.',
+'carambola':'Muy tóxica para perros con enfermedad renal. Contiene oxalatos que pueden causar falla renal aguda e incluso muerte.',
+'cebolla':'Tóxica. Daña los glóbulos rojos causando anemia hemolítica. Los síntomas aparecen en 1-5 días: debilidad, mucosas pálidas, orina oscura. La cebolla en polvo es más concentrada.',
+'ajo':'Tóxico, más potente que la cebolla. Daña los glóbulos rojos causando anemia hemolítica. El ajo en polvo es especialmente peligroso.',
+'puerro':'Tóxico. Causa anemia hemolítica por daño a los glóbulos rojos.',
+'cebollín':'Tóxico. Causa anemia hemolítica.',
+'cebollino':'Tóxico. Causa anemia hemolítica.',
+'chalote':'Tóxico. Similar a la cebolla, causa anemia hemolítica.',
+'tomate verde':'Tóxico por la solanina (presente en tomates inmaduros, hojas y tallos). Causa vómitos, diarrea, debilidad, arritmias y convulsiones.',
+'hojas de tomate':'Tóxicas por la solanina. No dar nunca.',
+'tallo de tomate':'Tóxico por la solanina.',
+'papa verde':'Tóxica por la solanina. Causa vómitos, diarrea, debilidad, arritmias y convulsiones. Nunca dar papas verdes o con brotes.',
+'papa cruda':'Tóxica por la solanina y los alcaloides. Causa problemas digestivos y neurológicos.',
+'patata verde':'Tóxica por la solanina.',
+'patata cruda':'Tóxica por la solanina.',
+'macadamia':'Muy tóxica para perros. Causa debilidad, temblores, ataxia, hipertermia y vómitos en 3-12 horas. Afortunadamente rara vez es letal, pero requiere atención veterinaria.',
+'nuez moscada':'Tóxica en grandes cantidades. Puede causar alucinaciones, convulsiones, temblores y arritmias.',
+'nuez de brasil':'Puede causar intoxicación por selenio si se consume en exceso. Causa vómitos, diarrea y problemas neurológicos.',
+'masa cruda':'La masa de pan cruda fermenta en el estómago y produce alcohol y gas. Puede causar síndrome de fermentación con distensión abdominal severa, alcoholismo agudo y muerte.',
+'masa de pan':'La masa cruda fermenta en el estómago, produciendo alcohol etílico y dióxido de carbono. Causa distensión abdominal, ataxia, vómitos y puede ser letal.',
+'levadura':'La levadura cruda fermenta en el estómago produciendo alcohol y gas. Puede causar síndrome de fermentación, alcoholismo agudo y muerte.',
+'marihuana':'Tóxica. Causa depresión del SNC, ataxia, hipotermia, incontinencia urinaria, convulsiones y coma. La dosis tóxica es variable.',
+'cannabis':'Tóxico. Mismos efectos que la marihuana.',
+'anticongelante':'Extremadamente tóxico por el etilenglicol. Solo 1-2 cucharaditas pueden matar a un perro de 10 kg. Causa falla renal aguda en 12-24 horas.',
+'veneno para ratas':'Muy tóxico. Los anticoagulantes causan hemorragias internas. Requiere atención veterinaria inmediata.',
+'insecticida':'Tóxico. Los organofosforados y carbamatos causan salivación excesiva, vómitos, diarrea, temblores, convulsiones y muerte.',
+'permetrina':'Extremadamente tóxica para gatos (incluso en collares y pipetas antiparasitarias para perros). Causa temblores, salivación, convulsiones y muerte.',
+'jabón':'Puede causar vómitos, diarrea y daño gastrointestinal.',
+'detergente':'Cáustico. Causa quemaduras en boca, esófago y estómago. Puede ser letal.',
+'cloro':'Cáustico. Causa quemaduras severas en el tracto digestivo.',
+'pasta de dientes':'Contiene xilitol en muchas marcas. Muy tóxica para perros.'
+},
+dangerous:{
+'huesos cocidos':'PELIGRO FÍSICO. Los huesos cocidos se astillan en fragmentos afilados que pueden perforar el esófago, el estómago o los intestinos. Causan obstrucción, peritonitis y muerte. NUNCA dar huesos cocidos.',
+'huesos':'PELIGRO FÍSICO. Los huesos cocidos se astillan. Los huesos crudos pueden causar obstrucción o fracturas dentales.',
+'hueso':'PELIGRO FÍSICO. Los huesos cocidos se astillan. Ver "huesos".',
+'espinas de pescado':'PELIGRO FÍSICO. Pueden perforar el esófago o el intestino. No dar pescado con espinas.',
+'palillos':'PELIGRO FÍSICO. Pueden perforar el intestino. Nunca dar alimentos con palillos.',
+'bolsas de plástico':'PELIGRO FÍSICO. Riesgo de asfixia y obstrucción.',
+'pilas':'PELIGRO FÍSICO Y QUÍMICO. Las pilas de botón contienen metales pesados y ácidos que causan quemaduras severas y toxicidad. Emergencia veterinaria inmediata.',
+'habas':'NO DAR. Contienen fitohemaglutinina (PHA), una toxina que causa vómitos, diarrea y daño hepático. Las habas crudas son más tóxicas. Las cocidas en pequeñas cantidades pueden ser toleradas, pero mejor evitarlas.',
+'habas crudas':'Muy peligrosas. Contienen fitohemaglutinina (PHA). Causan vómitos, diarrea con sangre, daño hepático y muerte.',
+'habas tiernas':'Peligrosas. Contienen fitohemaglutinina (PHA).',
+'yuca cruda':'Peligrosa. La yuca cruda contiene saponinas y glucósidos cianogénicos que causan vómitos, diarrea, daño hepático y muerte. Solo la raíz bien cocida es segura.',
+'maracuyá hojas':'Las hojas y tallos contienen compuestos tóxicos (glucósidos cianogénicos). La fruta madura sin cáscara ni semillas es segura en pequeñas cantidades.',
+'guanábana semillas':'Las semillas son tóxicas (annonacin, neurotoxina). La pulpa sin semillas es segura en pequeñas cantidades. Las semillas pueden causar síntomas neurológicos graves.',
+'ajonjolí':'PELIGRO FÍSICO. Semillas muy pequeñas que pueden causar atragantamiento y obstrucción, especialmente en animales pequeños.',
+'sésamo':'PELIGRO FÍSICO. Semillas muy pequeñas.',
+'pan':'NO APTO. Contiene sal, levadura y a veces xilitol. La levadura puede causar fermentación y distensión. Si contiene xilitol (algunos panes industriales), es potencialmente mortal. El pan integral puede causar problemas digestivos.',
+'pan blanco':'NO APTO. Contiene sal, levadura y puede contener xilitol. La levadura fermenta en el estómago causando gases y distensión. Si contiene xilitol, es mortal.',
+'pan integral':'NO APTO. La fibra en exceso causa diarrea. Contiene sal y levadura.',
+'pan de molde':'NO APTO. Contiene sal, conservantes y frecuentemente xilitol.',
+'pan dulce':'NO APTO. Alto en azúcar, grasa y sal. Puede causar pancreatitis y obesidad.',
+'galletas':'NO APTO. Altas en azúcar, sal y grasas. Pueden causar obesidad, diabetes y pancreatitis. Algunas contienen xilitol (mortal).',
+'galleta':'NO APTO. Ver "galletas".',
+'galletas dulces':'NO APTO. Altas en azúcar. Causan obesidad y diabetes.',
+'galletas saladas':'NO APTO. Muy altas en sal. Pueden causar deshidratación e intoxicación por sodio.',
+'galletas de soda':'NO APTO. Altas en sal y carbohidratos.',
+'pasteles':'NO APTO. Ricos en azúcar, grasa y a veces chocolate o xilitol. Pueden causar pancreatitis y toxicidad.',
+'pastel':'NO APTO. Ver "pasteles".',
+'tortas':'NO APTO. Ricas en azúcar y grasas.',
+'torta':'NO APTO. Ver "tortas".',
+'bizcocho':'NO APTO. Contiene azúcar y grasas. Si tiene chocolate o xilitol, es tóxico.',
+'queque':'NO APTO. Contiene azúcar y grasas.',
+'harina':'NO APTO. La harina cruda puede contener E. coli y Salmonella. Además, la masa cruda fermenta en el estómago.',
+'harina de trigo':'NO APTO. La harina cruda puede contener bacterias.',
+'masa de pizza':'La masa cruda fermenta en el estómago produciendo alcohol y gas. Puede causar síndrome de fermentación y muerte.',
+'pastas':'NO APTO. Altas en carbohidratos, bajas en nutrientes. No son tóxicas pero no aportan valor nutricional.',
+'pasta':'NO APTO. Alta en carbohidratos.',
+'espagueti':'NO APTO. Alto en carbohidratos.',
+'macarrones':'NO APTO. Alto en carbohidratos.',
+'queso':'NO APTO. Alto en grasa, sal y lactosa. Puede causar diarrea, vómitos, gases, pancreatitis y a largo plazo obesidad. Los quesos muy curados son los peores.',
+'queso fresco':'NO APTO. Contiene lactosa y sal. Puede causar diarrea en animales intolerantes.',
+'queso amarillo':'NO APTO. Alto en grasa y sal. Riesgo de pancreatitis.',
+'queso crema':'NO APTO. Altísimo en grasa.',
+'mantequilla':'NO APTO. Altísimo contenido en grasa. Puede causar pancreatitis aguda (vómitos, dolor abdominal, letargo) que puede ser mortal.',
+'crema':'NO APTO. Rica en grasa y lactosa.',
+'crema de leche':'NO APTO. Rica en grasa y lactosa. Riesgo de pancreatitis.',
+'nata':'NO APTO. Rica en grasa y lactosa.',
+'requesón':'NO APTO. Contiene lactosa y sal.',
+'cuajada':'NO APTO. Contiene lactosa y sal.',
+'suero':'NO APTO. Alto en lactosa. Causa diarrea.',
+'suero de leche':'NO APTO. Alto en lactosa.',
+'natilla':'NO APTO. Contiene azúcar y lactosa.',
+'flan':'NO APTO. Contiene azúcar, lactosa y huevo crudo (riesgo de Salmonella).',
+'helado':'NO APTO. Contiene azúcar, lácteos y a veces xilitol, chocolate o pasas. Puede causar diarrea, vómitos, pancreatitis, y si contiene xilitol, la muerte.',
+'helado de chocolate':'TÓXICO. Contiene chocolate (teobromina) y lácteos.',
+'embutidos':'NO APTO. Altos en grasa, sal, nitritos y conservantes. Pueden causar pancreatitis, hipertensión y cáncer a largo plazo. Algunos contienen ajo o cebolla en polvo (tóxicos).',
+'carnes aliñadas':'NO APTO. Las carnes condimentadas pueden contener ajo, cebolla, sal y especias, todas tóxicas o irritantes.',
+'jamón':'NO APTO. Alto en sal y grasa. Puede contener nitritos y ajo.',
+'salchicha':'NO APTO. Alta en sal, grasa y conservantes. Puede contener cebolla o ajo.',
+'salchichón':'NO APTO. Alto en sal y grasa.',
+'chorizo':'NO APTO. Alto en sal, grasa y especias (pimentón, ajo).',
+'tocino':'NO APTO. Altísimo en grasa y sal. Riesgo de pancreatitis.',
+'cerdo crudo':'NO APTO. Riesgo del virus de Aujeszky (enfermedad de Aujeszky), que es mortal para perros y gatos. Siempre cocinar bien el cerdo.',
+'almendras':'NO APTO. Pueden causar obstrucción gastrointestinal, especialmente en animales pequeños. Además, son altas en grasa.',
+'almendra':'NO APTO. Ver "almendras".',
+'nueces':'NO APTO. Altas en grasa y pueden causar obstrucción. Las nueces de macadamia son tóxicas.',
+'nuez':'NO APTO. Ver "nueces".',
+'nueces comunes':'NO APTO. Riesgo de obstrucción y pancreatitis por alto contenido en grasa.',
+'avellanas':'NO APTO. Riesgo de obstrucción y alto en grasa.',
+'avellana':'NO APTO. Ver "avellanas".',
+'pistachos':'NO APTO. Riesgo de obstrucción. A menudo salados.',
+'pistacho':'NO APTO. Ver "pistachos".',
+'mariscos':'NO APTO. Alto contenido en quitina y ácido úrico. Pueden causar alergias y problemas digestivos.',
+'marisco':'NO APTO. Ver "mariscos".',
+'camarones':'NO APTO. Riesgo de alergias y problemas digestivos. Alto en colesterol.',
+'cangrejo':'NO APTO. Alto en yodo y puede causar problemas tiroideos.',
+'granada':'NO APTO. Semillas muy duras. Riesgo de obstrucción.',
+'caimito':'NO APTO. Las semillas y la piel son tóxicas.',
+'níspero':'NO APTO. Las semillas contienen glucósidos cianogénicos (cianuro).',
+'caguama':'TÓXICA Y PROHIBIDA. La carne de tortuga marina (caguama, carey, tortuga verde) puede causar CHELONITOXISMO, una intoxicación grave y potencialmente mortal para perros, gatos y humanos. Además, todas las tortugas marinas están protegidas y en peligro de extinción. NUNCA dar. Síntomas: vómitos, diarrea, letargo, convulsiones, coma y muerte.',
+'tortuga marina':'TÓXICA Y PROHIBIDA. Ver "caguama".',
+'carey':'TÓXICO Y PROHIBIDO. Ver "caguama".',
+'tortuga verde':'TÓXICA Y PROHIBIDA. Ver "caguama".',
+'pulpo':'NO APTO. Alto contenido en colesterol, sodio y purinas. Muy difícil de digerir para perros y gatos. Puede causar vómitos, diarrea y pancreatitis. No recomendado en ninguna presentación.',
+'calamar':'NO APTO. Similar al pulpo: alto en colesterol y sodio, difícil digestión. Puede causar problemas gastrointestinales y pancreatitis. No recomendado.',
+'langosta':'NO APTO. Alto en colesterol, sodio y yodo. Puede causar alergias, problemas digestivos y tiroideos. No recomendada.',
+'almejas':'NO APTO. Alto riesgo de contaminación por biotoxinas (marea roja), bacterias (Vibrio, Salmonella) y metales pesados. Pueden causar intoxicaciones graves. No recomendadas.',
+'ostiones':'NO APTO. Alto riesgo de contaminación bacteriana (Vibrio, Salmonella) y biotoxinas. Pueden causar intoxicación alimentaria grave. No recomendados.',
+'mejillones':'NO APTO. Alto riesgo de biotoxinas paralizantes (marea roja) y contaminación bacteriana. Pueden ser letales. No recomendados.',
+'erizo de mar':'NO APTO. Alto en yodo y purinas. Puede causar problemas digestivos, alergias y alteraciones tiroideas. No recomendado.',
+'pepino de mar':'NO APTO. Puede contener toxinas (holoturina) y causar irritación gastrointestinal. No recomendado.',
+'caracol de mar':'NO APTO. Riesgo de intoxicación por biotoxinas y parásitos. No recomendado.',
+'caracol':'NO APTO. Los caracoles crudos o poco cocidos pueden transmitir parásitos (Angiostrongylus cantonensis) potencialmente mortales. No recomendados.',
+'concha':'NO APTO. Ver "almejas".',
+'conejo de mar':'NO APTO. Molusco marino con riesgo de toxinas y contaminación bacteriana. No recomendado.',
+'palomitas de maíz':'NO APTO. Las palomitas con sal, mantequilla o caramelo son peligrosas (grasas, sal, azúcar). Las palomitas naturales sin nada pueden causar atragantamiento por su textura seca y las partes duras no digeridas.',
+'palomitas':'NO APTO. Ver "palomitas de maíz".',
+'palomitas naturales':'NO APTO. Aunque sin condimentos, su textura seca y crujiente puede causar atragantamiento y no aportan valor nutricional.',
+'caimito verde':'NO APTO. El caimito verde o inmaduro contiene látex irritante. Solo el caimito maduro es seguro (ver "caimito").',
+'trigo':'NO APTO. El trigo y sus derivados (harina, sémola, cuscús) son altos en gluten y carbohidratos. No tóxicos pero no recomendados. Pueden causar alergias e intolerancias.',
+'centeno':'NO APTO. Contiene gluten y puede causar problemas digestivos. No aporta valor nutricional relevante.',
+'sémola':'NO APTA. Derivado del trigo. Alta en gluten y carbohidratos. No recomendada.',
+'cuscús':'NO APTO. Derivado del trigo. Alto en gluten y carbohidratos.',
+'pan de centeno':'NO APTO. Contiene sal, levadura y gluten. Ver "pan".'
+},
+unsuitable:{
+'leche':'NO APTO. La mayoría de perros y gatos adultos son intolerantes a la lactosa. Causa diarrea, vómitos y gases. En cachorros, la leche de vaca no tiene la concentración adecuada de nutrientes.',
+'leche de vaca':'NO APTO. Intolerancia a la lactosa y desequilibrio nutricional.',
+'leche de cabra':'NO APTO para adultos. Alta en lactosa. Solo usar en fórmulas de emergencia para neonatos.',
+'leche condensada':'NO APTO. Altísima en azúcar y lactosa. Muy peligrosa.',
+'leche evaporada':'NO APTO. Alta en lactosa y grasa.',
+'crema agria':'NO APTO. Alta en grasa y lactosa.'
+},
+vegetables:{
+'col':'SEGURO en moderación (cocida, sin condimentos). Rico en vitamina C y fibra. Puede causar gases en grandes cantidades.',
+'repollo':'SEGURO en moderación (cocido). Puede causar gases en grandes cantidades.',
+'coliflor':'SEGURO en moderación (cocida). Puede causar gases.',
+'brócoli':'SEGURO en pequeñas cantidades (cocido). Rico en vitamina C y fibra. En exceso puede causar gases e irritación gastrointestinal.',
+'coles de bruselas':'SEGURO en pequeñas cantidades (cocidas). Pueden causar gases.',
+'col rizada':'SEGURO en moderación (cocida). Rica en vitaminas.',
+'kale':'SEGURO en moderación (cocido).',
+'col china':'SEGURO en moderación (cocida). Puede causar gases.',
+'bok choy':'SEGURO en moderación (cocido).',
+'tomate':'SEGURO solo el fruto maduro, sin hojas ni tallo. Rico en licopeno y vitamina C. NUNCA dar tomate verde, hojas o tallos (contienen solanina, tóxica).',
+'jitomate':'SEGURO solo el fruto maduro, sin hojas ni tallo. Ver "tomate".',
+'lechuga':'SEGURO. Baja en calorías, buena para hidratación. No aporta muchos nutrientes pero es segura.',
+'pepino':'SEGURO. Bajo en calorías, buena hidratación. Retirar la cáscara si es muy gruesa.',
+'apio':'SEGURO. Bajo en calorías. Cortar en trozos pequeños para evitar atragantamiento.',
+'calabacín':'SEGURO (cocido o crudo). Bajo en calorías.',
+'zucchini':'SEGURO. Ver "calabacín".',
+'berenjena':'SEGURO solo cocida. La berenjena cruda contiene solanina. Cocinar siempre sin condimentos.',
+'pimiento':'SEGURO sin semillas ni tallo. Rico en vitamina C. Retirar las semillas y el tallo (pueden causar irritación).',
+'pimiento rojo':'SEGURO sin semillas. Ver "pimiento".',
+'pimiento verde':'SEGURO sin semillas. Ver "pimiento".',
+'rábano':'SEGURO en moderación. Puede causar irritación digestiva en grandes cantidades.',
+'espárragos':'SEGURO cocidos. Cortar en trozos pequeños.',
+'espárrago':'SEGURO. Ver "espárragos".',
+'acelga':'SEGURO en moderación (cocida). Alta en oxalatos, evitar en animales con problemas renales.',
+'remolacha':'SEGURO cocida. Rica en fibra y vitaminas.',
+'betabel':'SEGURO. Ver "remolacha".',
+'nabo':'SEGURO cocido. Rico en vitamina C.',
+'chirivía':'SEGURO cocida. Similar a la zanahoria.',
+'alcachofa':'SEGURO en moderación (cocida).',
+'chayote':'SEGURO cocido. Bajo en calorías.',
+'jícama':'SEGURO cruda o cocida, en moderación. Retirar la cáscara.',
+'zanahoria':'SEGURO. Excelente para la salud dental. Cruda o cocida.',
+'calabaza':'SEGURO. Rica en fibra, buena para la digestión.',
+'camote':'SEGURO cocido. Rico en vitaminas B6 y C. No dar crudo.',
+'batata':'SEGURO cocida. Ver "camote".',
+'yuca':'SEGURO solo la raíz bien cocida (nunca cruda). La yuca cruda contiene saponinas y glucósidos cianogénicos tóxicos.',
+'ejotes':'SEGUROS. Bajos en calorías. Cortar en trozos pequeños.',
+'ejote':'SEGURO. Ver "ejotes".',
+'judías verdes':'SEGURO. Ver "ejotes".',
+'espinaca':'SEGURO en moderación. Alta en oxalatos, evitar en animales con problemas renales.',
+'germinados':'SEGURO en pequeñas cantidades. Riesgo de contaminación bacteriana si no están bien lavados.',
+'hierba de trigo':'SEGURO en pequeñas cantidades. Rica en clorofila.',
+'algas':'SEGURO en pequeñas cantidades. Ricas en yodo y minerales. No exceder.',
+'espirulina':'SEGURO en pequeñas cantidades. Rica en proteínas.',
+'boniato':'SEGURO cocido. Tubérculo nativo de Cuba y el Caribe, rico en betacaroteno (vitamina A), vitamina C, potasio y fibra. Excelente fuente de energía. Cocinar siempre sin condimentos. No dar crudo: su almidón resistente puede causar malestar digestivo. Retirar la cáscara.',
+'malanga':'SEGURA solo bien cocida. Tubérculo nativo del Caribe (Xanthosoma sagittifolium). Contiene cristales de oxalato de calcio que irritan la boca, lengua y tracto digestivo si se da cruda o poco cocida. Rica en almidón, potasio y vitamina B6. Cocinar hasta que esté bien blanda, sin sal ni condimentos.',
+'malanga isleña':'SEGURA bien cocida. Variedad de malanga (Colocasia esculenta). Rica en almidón y minerales. Cocinar completamente para destruir los cristales de oxalato de calcio. Sin condimentos.',
+'malanga blanca':'SEGURA bien cocida. Variedad de malanga de pulpa blanca. Rica en carbohidratos complejos y potasio. Cocinar bien sin condimentos.',
+'ñame':'SEGURO cocido. Tubérculo nativo (Dioscorea spp.). Rico en almidón, vitamina C, potasio y fibra. Cocinar siempre bien, nunca crudo (contiene alcaloides y oxalatos). Sin sal ni condimentos.',
+'quimbombó':'SEGURO cocido. Okra o quimbombó, vegetal muy común en la cocina cubana. Rico en fibra, vitamina C y ácido fólico. Cocinar sin condimentos. Puede causar heces blandas en grandes cantidades. Cortar en trozos pequeños.',
+'okra':'SEGURO cocida. Ver "quimbombó".',
+'berro':'SEGURO. Vegetal de hoja verde rico en vitaminas A, C y K, calcio y hierro. Lavar muy bien por riesgo de contaminación bacteriana. Dar crudo o cocido, sin condimentos.',
+'verdolaga':'SEGURA en moderación. Planta comestible rica en omega-3 (ALA), vitamina C y magnesio. Alta en oxalatos: evitar en animales con problemas renales o antecedentes de cálculos. Lavar bien y dar cocida sin condimentos.',
+'ají cachucha':'SEGURO sin semillas ni tallo. Ají dulce cubano, rico en vitamina C y antioxidantes. Retirar semillas y tallo. No es picante pero puede irritar el estómago en grandes cantidades.',
+'ají dulce':'SEGURO sin semillas ni tallo. Ver "ají cachucha".',
+'plátano vianda':'SEGURO cocido. Plátano macho o de freír (Musa paradisiaca), NO confundir con el plátano fruta (banana). Rico en almidón, potasio, vitamina A y fibra. Cocinar siempre (hervido, al horno o a la plancha) sin aceite ni condimentos. NUNCA crudo ni frito.',
+'plátano macho':'SEGURO cocido. Ver "plátano vianda".',
+'plátano burro':'SEGURO cocido. Variedad grande de plátano vianda muy común en Cuba. Ver "plátano vianda".',
+'plátano de freír':'SEGURO cocido, NUNCA frito. Ver "plátano vianda". Freírlo lo hace peligroso por las grasas oxidadas (riesgo de pancreatitis).',
+'topo':'SEGURO cocido. Variedad de plátano vianda en Cuba. Ver "plátano vianda".',
+'papa':'SEGURA solo cocida y pelada. La papa cruda, verde o con brotes contiene solanina (tóxica). Cocinar siempre bien, sin sal ni condimentos. Retirar la cáscara y todos los brotes.',
+'papa cocida':'SEGURA. Ver "papa".',
+'yautía':'SEGURA solo bien cocida. Tubérculo nativo del Caribe (Xanthosoma spp.), similar a la malanga. Contiene cristales de oxalato de calcio que irritan la boca si se da cruda. Cocinar bien hasta que esté blanda, sin sal ni condimentos.',
+'taro':'SEGURO solo bien cocido. Tubérculo (Colocasia esculenta) muy común en el Caribe y Asia. NUNCA dar crudo: contiene oxalato de calcio y puede causar irritación severa de boca, esófago y estómago. Cocinar completamente sin condimentos.',
+'lerenes':'SEGUROS solo bien cocidos. Tubérculo nativo de Cuba (Calathea allouia). Rico en almidón. Cocinar completamente sin sal ni condimentos.',
+'palmito':'SEGURO. Corazón de palma, bajo en calorías y rico en fibra. Dar en pequeñas cantidades, sin sal ni aliños.',
+'corazón de palma':'SEGURO. Ver "palmito".',
+'hinojo':'SEGURO cocido. Vegetal con propiedades digestivas suaves. Rico en fibra y vitamina C. Dar en moderación, sin condimentos.',
+'rúcula':'SEGURA en moderación. Hoja verde con sabor intenso. Lavar muy bien. Puede causar irritación digestiva en grandes cantidades.',
+'endibia':'SEGURA. Hoja verde amarga, rica en fibra y vitamina K. Lavar bien. Dar en pequeñas cantidades.',
+'escarola':'SEGURA. Similar a la endibia. Rica en fibra. Lavar bien.',
+'berza':'SEGURA cocida. Col rizada o berza gallega. Rica en vitaminas A, C y K. Cocinar sin condimentos. Puede causar gases.',
+'canónigo':'SEGURO en moderación. Hierba comestible. Lavar bien y dar en pequeñas cantidades.',
+'verdolaga verde':'SEGURA en moderación. Ver "verdolaga".',
+'calabaza de castilla':'SEGURA cocida. Variedad de calabaza grande y dulce. Ver "calabaza".',
+'calabaza moscada':'SEGURA cocida. Variedad de calabaza dulce y aromática. Ver "calabaza".',
+'auyama':'SEGURA solo bien cocida. Variedad de calabaza (Cucurbita moschata), muy común en Cuba y el Caribe. Rica en betacaroteno. Cocinar sin condimentos.',
+'chilacayote':'SEGURO cocido. Variedad de calabaza (Cucurbita ficifolia). Cocinar sin condimentos.',
+'chayotillo':'SEGURO cocido. Variedad pequeña de chayote. Ver "chayote".',
+'tindora':'SEGURA cocida. Variedad de calabaza (Coccinia grandis). Cocinar bien sin condimentos.',
+'quelite':'SEGURO en moderación. Hierba comestible silvestre. Lavar muy bien por riesgo de contaminación. Dar cocido sin condimentos.',
+'chipilín':'SEGURO en moderación. Hierba comestible rica en hierro. Cocinar sin condimentos.',
+'flor de calabaza':'SEGURA cocida. Rica en vitaminas y minerales. Retirar el tallo y los estambres. Cocinar sin condimentos.',
+'flor de izote':'SEGURA cocida. Flor comestible. Cocinar bien sin condimentos.'
+},
+fruits:{
+'manzana':'SEGURO sin semillas ni corazón. Las semillas contienen cianuro (pequeñas cantidades, pero mejor retirarlas). Rica en fibra y vitamina C.',
+'pera':'SEGURO sin semillas ni corazón. Similar a la manzana.',
+'plátano':'SEGURO en moderación. Alto en potasio y azúcar. No dar la cáscara.',
+'banana':'SEGURO. Ver "plátano".',
+'mango':'SEGURO sin el carozo (hueso). El carozo es un cuerpo extraño obstructivo. La pulpa es rica en vitaminas A y C.',
+'papaya':'SEGURO sin semillas. Las semillas tienen propiedades antiparasitarias pero pueden irritar el intestino. Rica en fibra.',
+'guayaba':'SEGURO sin semillas. Rica en vitamina C.',
+'piña':'SEGURO en pequeñas cantidades. Contiene bromelina que puede irritar la boca en exceso.',
+'melón':'SEGURO en moderación. Retirar la cáscara y las semillas.',
+'sandía':'SEGURO sin semillas ni cáscara. Muy hidratante. Retirar todas las semillas.',
+'fresa':'SEGURO en pequeñas cantidades. Rica en vitamina C. Retirar el tallo.',
+'fresón':'SEGURO. Ver "fresa".',
+'arándano':'SEGURO. Rico en antioxidantes. Excelente para la salud urinaria.',
+'arándanos':'SEGURO. Ver "arándano".',
+'blueberry':'SEGURO. Ver "arándano".',
+'mora':'SEGURO en moderación. Rica en antioxidantes.',
+'frambuesa':'SEGURO en moderación. Rica en fibra.',
+'cereza':'SEGURO solo la pulpa, sin carozo ni tallo. El carozo contiene cianuro y puede causar obstrucción.',
+'cerezas':'SEGURO. Ver "cereza".',
+'picota':'SEGURO sin carozo. Ver "cereza".',
+'ciruela':'SEGURO sin carozo. El carozo contiene cianuro.',
+'durazno':'SEGURO sin carozo. El carozo contiene cianuro y puede causar obstrucción.',
+'melocotón':'SEGURO sin carozo. Ver "durazno".',
+'nectarina':'SEGURO sin carozo.',
+'albaricoque':'SEGURO sin carozo. El carozo contiene cianuro.',
+'damasco':'SEGURO sin carozo. Ver "albaricoque".',
+'kiwi':'SEGURO sin piel ni semillas. Rico en vitamina C.',
+'naranja':'SEGURO en pequeñas cantidades, sin cáscara ni semillas. Los cítricos pueden causar irritación digestiva en grandes cantidades.',
+'mandarina':'SEGURO en pequeñas cantidades, sin cáscara ni semillas.',
+'clementina':'SEGURO. Ver "mandarina".',
+'toronja':'SEGURO en pequeñas cantidades, sin cáscara ni semillas.',
+'pomelo':'SEGURO en pequeñas cantidades.',
+'limón':'SEGURO en cantidades muy pequeñas. Muy ácido, puede irritar el estómago.',
+'lima':'SEGURO en cantidades muy pequeñas.',
+'coco':'SEGURO la pulpa fresca en pequeñas cantidades. Alta en grasa.',
+'agua de coco':'SEGURO en pequeñas cantidades. Rica en electrolitos pero alta en potasio.',
+'higo':'SEGURO en pequeñas cantidades, sin tallo. Alto en azúcar.',
+'granadilla':'SEGURO la pulpa sin semillas ni cáscara.',
+'maracuyá':'SEGURO solo la pulpa madura, sin cáscara ni semillas. Las hojas y tallos son tóxicos.',
+'pitahaya':'SEGURO. Rica en fibra y antioxidantes.',
+'fruta del dragón':'SEGURO. Ver "pitahaya".',
+'chirimoya':'SEGURO sin semillas. Las semillas son tóxicas.',
+'guanábana':'SEGURO solo la pulpa sin semillas. Las semillas son tóxicas (neurotoxinas).',
+'pomarrosa':'SEGURO. Retirar las semillas.',
+'tuna':'SEGURO la pulpa, sin semillas. Retirar la cáscara y las semillas.',
+'mamey':'SEGURO sin semillas ni cáscara. Fruta nativa del Caribe, rica en vitamina A, C y fibra. Retirar la semilla grande central (puede causar obstrucción). Dar en moderación por su alto contenido calórico.',
+'zapote':'SEGURO sin semillas ni cáscara. Fruta tropical dulce, rica en vitamina C y fibra. Retirar todas las semillas (son tóxicas en algunas variedades). Dar en moderación.',
+'mamey colorado':'SEGURO. Variedad de mamey. Ver "mamey".',
+'zapote colorado':'SEGURO. Variedad de zapote. Ver "zapote".',
+'anón':'SEGURO solo la pulpa, sin semillas. Fruta nativa del Caribe (Annona squamosa). Las semillas son tóxicas. Retirar todas las semillas y la cáscara. Dar en moderación.',
+'anona':'SEGURA solo la pulpa, sin semillas. Ver "anón".',
+'icaco':'SEGURO sin semilla. Fruta nativa del Caribe (Chrysobalanus icaco). Retirar la semilla grande. Dar en moderación.',
+'marañón':'SEGURO solo la pulpa (el "falso fruto" o pedúnculo carnoso). El marañón o anacardo tiene una fruta carnosa comestible. NUNCA dar la nuez cruda ni la cáscara: contienen urushiol (toxina irritante) y cardol. La nuez tostada y procesada comercialmente es segura en pequeñas cantidades, pero nunca dar la nuez cruda.',
+'fruta de marañón':'SEGURA solo la pulpa carnosa. Ver "marañón".',
+'cajú':'SEGURO solo la pulpa. Ver "marañón".',
+'tamarindo':'SEGURO sin semillas ni cáscara. Fruta tropical ácida. Retirar todas las semillas y las fibras. Dar en pequeñas cantidades por su acidez.',
+'noni':'SEGURO en pequeñas cantidades. Fruta tropical con olor fuerte. Puede causar irritación digestiva en algunos animales. Dar con moderación.',
+'fruta bomba':'SEGURA sin semillas. Nombre cubano de la papaya. Ver "papaya".',
+'torombolo':'SEGURO sin semillas. Fruta tropical (Passiflora ligularis), similar a la granadilla. Ver "granadilla".',
+'curuba':'SEGURA sin semillas ni cáscara. Variedad de maracuyá. Ver "maracuyá".',
+'badea':'SEGURA sin cáscara ni semillas. Fruta tropical grande (Passiflora quadrangularis). La pulpa es segura; la cáscara y semillas no.',
+'granadilla de monte':'SEGURA la pulpa. Ver "granadilla".',
+'zapote blanco':'SEGURO sin semillas. Variedad de zapote. Ver "zapote".',
+'nispero':'SEGURO sin semillas. Ver "níspero".',
+'manzana de agua':'SEGURA sin semillas. Fruta tropical (Syzygium malaccense), también llamada pomarrosa. Ver "pomarrosa".',
+'poma rosa':'SEGURA sin semillas. Ver "pomarrosa".',
+'jobo':'SEGURO sin semilla. Fruta tropical (Spondias mombin). Retirar la semilla grande. Dar en moderación.',
+'ciruela criolla':'SEGURA sin semilla. Fruta tropical (Spondias purpurea). Retirar la semilla. Dar en moderación.',
+'acerola':'SEGURA en moderación. Fruta tropical muy rica en vitamina C. Retirar las semillas. Dar en pequeñas cantidades.',
+'guayaba del monte':'SEGURA sin semillas. Ver "guayaba".',
+'guayaba piña':'SEGURA sin semillas. Variedad de guayaba. Ver "guayaba".',
+'coco de agua':'SEGURO el agua y la pulpa tierna. Ver "agua de coco" y "coco".',
+'piña criolla':'SEGURA sin cáscara ni corazón. Ver "piña".',
+'melón de agua':'SEGURO sin semillas. Nombre cubano de la sandía. Ver "sandía".',
+'patilla':'SEGURA sin semillas. Nombre cubano de la sandía. Ver "sandía".'
+},
+meats:{
+'pollo':'SEGURO cocido sin hueso ni piel. Cocinar sin condimentos. La pechuga es la parte más magra.',
+'res':'SEGURO cocida, carne magra sin huesos. Retirar toda la grasa visible.',
+'cerdo':'SEGURO bien cocido, carne magra sin huesos ni grasa. NUNCA dar cerdo crudo (riesgo del virus de Aujeszky, mortal).',
+'pavo':'SEGURO cocido, pechuga sin piel ni huesos. Cocinar sin condimentos.',
+'cordero':'SEGURO cocido, carne magra. Proteína hipoalergénica.',
+'conejo':'SEGURO cocido sin huesos. Carne magra y digestible.',
+'pato':'SEGURO cocido, sin piel ni huesos. Alta en grasa, dar en moderación.',
+'codorniz':'SEGURO cocida, sin huesos.',
+'jabalí':'SEGURO bien cocido. Riesgo de parásitos si está crudo.',
+'pescado blanco':'SEGURO cocido sin espinas. Tilapia, bacalao, merluza.',
+'tilapia':'SEGURO cocida sin espinas.',
+'bacalao':'SEGURO cocido sin espinas.',
+'merluza':'SEGURO cocida sin espinas.',
+'salmón':'SEGURO cocido sin espinas. Rico en omega-3. NUNCA crudo (riesgo de parásitos).',
+'trucha':'SEGURO cocida sin espinas.',
+'sardinas':'SEGURAS en moderación. Ricas en omega-3. Mejor en agua, sin sal ni aceite.',
+'sardina':'SEGURA. Ver "sardinas".',
+'atún':'SEGURO en pequeñas cantidades, en agua sin sal. El atún en aceite es muy graso. El atún fresco puede contener mercurio.',
+'huevo cocido':'SEGURO bien cocido. El huevo crudo puede contener Salmonella y la clara cruda contiene avidina que bloquea la biotina.',
+'huevo':'SEGURO solo bien cocido. NUNCA dar huevo crudo (riesgo de Salmonella y avidina que bloquea la biotina).',
+'huevos':'SEGURO solo bien cocidos. Ver "huevo".',
+'clara de huevo':'SEGURO solo cocida. La clara cruda contiene avidina que puede causar deficiencia de biotina.',
+'claras de huevo':'SEGURO solo cocidas. Ver "clara de huevo".',
+'yema de huevo':'SEGURO cocida. Rica en vitaminas y minerales.',
+'yemas de huevo':'SEGURO cocidas. Ver "yema de huevo".',
+'hígado':'SEGURO cocido en pequeñas cantidades (5% de la dieta). Rico en vitamina A. El exceso causa toxicidad por vitamina A.',
+'corazón':'SEGURO cocido. Excelente fuente de taurina.',
+'riñón':'SEGURO cocido en pequeñas cantidades.',
+'mollejas':'SEGURO cocidas. Ricas en proteínas.',
+'bazo':'SEGURO cocido en pequeñas cantidades.',
+'pulmón':'SEGURO cocido en pequeñas cantidades.',
+'lengua':'SEGURO cocida. Alta en grasa.',
+'carne de res':'SEGURO cocida. Ver "res".'
+},
+legumes:{
+'frijoles':'SEGUROS bien cocidos. Las lectinas de los frijoles crudos son tóxicas. Nunca dar frijoles crudos o poco cocidos.',
+'frijol':'SEGURO bien cocido. Ver "frijoles".',
+'frijoles negros':'SEGUROS bien cocidos.',
+'frijoles colorados':'SEGUROS bien cocidos.',
+'frijol carita':'SEGURO bien cocido.',
+'frijoles rojos':'SEGUROS bien cocidos.',
+'chícharos':'SEGUROS. Se pueden dar frescos o cocidos, sin sal.',
+'chícharo':'SEGURO. Ver "chícharos".',
+'guisantes':'SEGUROS. Se pueden dar frescos o cocidos.',
+'guisante':'SEGURO. Ver "guisantes".',
+'arvejas':'SEGURO. Ver "guisantes".',
+'arveja':'SEGURO. Ver "guisantes".',
+'lentejas':'SEGURAS bien cocidas. Buena fuente de fibra.',
+'lenteja':'SEGURA bien cocida. Ver "lentejas".',
+'garbanzos':'SEGUROS bien cocidos.',
+'garbanzo':'SEGURO bien cocido. Ver "garbanzos".',
+'soya':'SEGURA bien cocida. La soya cruda contiene inhibidores de proteasas.'
+},
+yogurt:{
+'yogur':'SEGURO con condiciones. El yogur natural blanco, sin azúcar, sin edulcorantes, sin sabores artificiales y sin frutas añadidas, SÍ se puede ofrecer a perros y gatos como un probiótico natural. NUNCA dar yogures con sabor, azúcar, xilitol o trozos de fruta.',
+'yogurt':'SEGURO con condiciones. Ver "yogur".',
+'yogur griego':'SEGURO con condiciones, sin azúcar ni aditivos. Alto en proteína.',
+'kéfir':'SEGURO en pequeñas cantidades, sin azúcar. Rico en probióticos.'
+},
+cereals:{
+'arroz':'SEGURO cocido y sin sal. El arroz blanco cocido es un carbohidrato de fácil digestión, ideal para dietas blandas o convalecencia. El arroz integral aporta más fibra pero puede causar gases. Nunca dar arroz crudo (causa hinchazón y malestar). No condimentar.',
+'arroz blanco':'SEGURO cocido sin sal. Ver "arroz".',
+'arroz integral':'SEGURO cocido sin sal. Aporta más fibra que el blanco. Puede causar gases en animales sensibles. Introducir gradualmente.',
+'maíz':'SEGURO cocido y en moderación. El maíz dulce (elote) cocido y desgranado es seguro. NUNCA dar la mazorca ni la tuza (cáscara): son cuerpos extraños que causan obstrucción intestinal. El maíz crudo no se digiere bien. La harina de maíz (polenta) cocida es segura en pequeñas cantidades.',
+'maíz dulce':'SEGURO cocido y desgranado. Ver "maíz".',
+'elote':'SEGURO cocido y desgranado. Ver "maíz".',
+'choclo':'SEGURO cocido y desgranado. Ver "maíz".',
+'polenta':'SEGURA cocida sin sal ni condimentos. Harina de maíz cocida. Aporta carbohidratos de fácil digestión.',
+'palomitas de maíz':'NO APTO. Las palomitas con sal, mantequilla o caramelo son peligrosas (grasas, sal, azúcar). Las palomitas naturales sin nada pueden causar atragantamiento por su textura seca y las partes duras no digeridas.',
+'palomitas':'NO APTO. Ver "palomitas de maíz".',
+'palomitas naturales':'NO APTO. Aunque sin condimentos, su textura seca y crujiente puede causar atragantamiento y no aportan valor nutricional.',
+'harina de maíz':'SEGURA cocida en pequeñas cantidades. La harina de maíz cruda puede contener aflatoxinas (toxinas por hongos). Cocinar siempre bien sin condimentos.',
+'avena':'SEGURO cocida. La avena integral cocida (sin azúcar, sin leche, sin canela) es una excelente fuente de fibra soluble, ideal para perros con problemas digestivos. No dar avena cruda ni instantánea con sabores. En gatos, dar en pequeñas cantidades.',
+'copos de avena':'SEGUROS cocidos. Ver "avena".',
+'quinoa':'SEGURA cocida sin sal. Alta en proteína vegetal y fibra. Lavar bien antes de cocinar para retirar saponinas (pueden irritar el intestino). Dar en moderación.',
+'cebada':'SEGURA cocida. Rica en fibra. Cocinar bien sin sal ni condimentos. En moderación: puede causar gases.',
+'centeno':'NO APTO. Contiene gluten y puede causar problemas digestivos. No aporta valor nutricional relevante.',
+'trigo':'NO APTO. El trigo y sus derivados (harina, sémola, cuscús) son altos en gluten y carbohidratos. No tóxicos pero no recomendados. Pueden causar alergias e intolerancias.',
+'trigo sarraceno':'SEGURO cocido sin sal. A pesar del nombre, no contiene gluten. Rico en fibra y minerales. Dar en moderación.',
+'amaranto':'SEGURO cocido sin sal. Alto en proteína y minerales. Dar en pequeñas cantidades.',
+'mijo':'SEGURO cocido sin sal. Cereal sin gluten, rico en magnesio. Dar en moderación.',
+'sémola':'NO APTA. Derivado del trigo. Alta en gluten y carbohidratos. No recomendada.',
+'cuscús':'NO APTO. Derivado del trigo. Alto en gluten y carbohidratos.',
+'pan de centeno':'NO APTO. Contiene sal, levadura y gluten. Ver "pan".'
+}
+};
+
+/* ========== EMOJIS POR ALIMENTO ========== */
+const foodEmojis={
+'chocolate':'🍫','chocolate negro':'🍫','chocolate blanco':'🍫','cacao':'🍫',
+'cafeína':'☕','café':'☕','té':'🍵','té verde':'🍵','bebidas energéticas':'🥤',
+'alcohol':'🍷','cerveza':'🍺','vino':'🍷','lúpulo':'🌾',
+'xilitol':'🍬','eritritol':'🍬','sorbitol':'🍬',
+'uvas':'🍇','uva':'🍇','pasas':'🍇','uvas pasas':'🍇',
+'aguacate':'🥑','semilla de aguacate':'🥑',
+'carambola':'⭐','cebolla':'🧅','ajo':'🧄','puerro':'🧅','cebollín':'🧅','cebollino':'🧅','chalote':'🧅',
+'tomate verde':'🍅','hojas de tomate':'🍅','tallo de tomate':'🍅',
+'papa verde':'🥔','papa cruda':'🥔','patata verde':'🥔','patata cruda':'🥔',
+'macadamia':'🥜','nuez moscada':'🌰','nuez de brasil':'🌰',
+'masa cruda':'🍞','masa de pan':'🍞','levadura':'🍞',
+'marihuana':'🌿','cannabis':'🌿',
+'anticongelante':'🧪','veneno para ratas':'🧪','insecticida':'🧪','permetrina':'🧪',
+'jabón':'🧼','detergente':'🧴','cloro':'🧴','pasta de dientes':'🪥',
+'huesos cocidos':'🦴','huesos':'🦴','hueso':'🦴',
+'espinas de pescado':'🐟','palillos':'🪵','bolsas de plástico':'🛍️','pilas':'🔋',
+'habas':'🫘','habas crudas':'🫘','habas tiernas':'🫘',
+'yuca cruda':'🥔','maracuyá hojas':'🌿','guanábana semillas':'🌰',
+'ajonjolí':'🌾','sésamo':'🌾',
+'pan':'🍞','pan blanco':'🍞','pan integral':'🍞','pan de molde':'🍞','pan dulce':'🥐',
+'galletas':'🍪','galleta':'🍪','galletas dulces':'🍪','galletas saladas':'🍪','galletas de soda':'🍪',
+'pasteles':'🎂','pastel':'🎂','tortas':'🎂','torta':'🎂','bizcocho':'🎂','queque':'🎂',
+'harina':'🌾','harina de trigo':'🌾','masa de pizza':'🍕',
+'pastas':'🍝','pasta':'🍝','espagueti':'🍝','macarrones':'🍝',
+'queso':'🧀','queso fresco':'🧀','queso amarillo':'🧀','queso crema':'🧀',
+'mantequilla':'🧈','crema':'🥛','crema de leche':'🥛','nata':'🥛',
+'requesón':'🧀','cuajada':'🧀','suero':'🥛','suero de leche':'🥛',
+'natilla':'🍮','flan':'🍮','helado':'🍦','helado de chocolate':'🍦',
+'embutidos':'🌭','carnes aliñadas':'🍖','jamón':'🥓','salchicha':'🌭','salchichón':'🥓','chorizo':'🌭','tocino':'🥓','cerdo crudo':'🐷',
+'almendras':'🥜','almendra':'🥜','nueces':'🥜','nuez':'🥜','nueces comunes':'🥜','avellanas':'🌰','avellana':'🌰','pistachos':'🥜','pistacho':'🥜',
+'mariscos':'🦐','marisco':'🦐','camarones':'🦐','cangrejo':'🦀',
+'granada':'🍎','caimito':'🥝','níspero':'🍑',
+'leche':'🥛','leche de vaca':'🥛','leche de cabra':'🥛','leche condensada':'🥛','leche evaporada':'🥛','crema agria':'🥛',
+'col':'🥬','repollo':'🥬','coliflor':'🥦','brócoli':'🥦','coles de bruselas':'🥬','col rizada':'🥬','kale':'🥬','col china':'🥬','bok choy':'🥬',
+'tomate':'🍅','jitomate':'🍅','lechuga':'🥬','pepino':'🥒','apio':'🥬','calabacín':'🥒','zucchini':'🥒','berenjena':'🍆',
+'pimiento':'🫑','pimiento rojo':'🫑','pimiento verde':'🫑','rábano':'🌶️','espárragos':'🌿','espárrago':'🌿','acelga':'🥬','remolacha':'🫒','betabel':'🫒',
+'nabo':'🥔','chirivía':'🥕','alcachofa':'🌿','chayote':'🥒','jícama':'🥔',
+'zanahoria':'🥕','calabaza':'🎃','camote':'🍠','batata':'🍠','yuca':'🥔',
+'ejotes':'🫛','ejote':'🫛','judías verdes':'🫛','espinaca':'🥬','germinados':'🌱','hierba de trigo':'🌱','algas':'🌿','espirulina':'🌿',
+'manzana':'🍎','pera':'🍐','plátano':'🍌','banana':'🍌','mango':'🥭','papaya':'🥭','guayaba':'🍈',
+'piña':'🍍','melón':'🍈','sandía':'🍉','fresa':'🍓','fresón':'🍓','arándano':'🫐','arándanos':'🫐','blueberry':'🫐','mora':'🫐','frambuesa':'🫐',
+'cereza':'🍒','cerezas':'🍒','picota':'🍒','ciruela':'🍑','durazno':'🍑','melocotón':'🍑','nectarina':'🍑','albaricoque':'🍑','damasco':'🍑',
+'kiwi':'🥝','naranja':'🍊','mandarina':'🍊','clementina':'🍊','toronja':'🍊','pomelo':'🍊','limón':'🍋','lima':'🍋',
+'coco':'🥥','agua de coco':'🥥','higo':'🍑','granadilla':'🥝','maracuyá':'🥝','pitahaya':'🥝','fruta del dragón':'🥝',
+'chirimoya':'🍈','guanábana':'🍈','pomarrosa':'🍎','tuna':'🍎',
+'pollo':'🐔','res':'🥩','cerdo':'🐷','pavo':'🦃','cordero':'🐑','conejo':'🐰','pato':'🦆','codorniz':'🐦','jabalí':'🐗',
+'pescado blanco':'🐟','tilapia':'🐟','bacalao':'🐟','merluza':'🐟','salmón':'🐟','trucha':'🐟','sardinas':'🐟','sardina':'🐟','atún':'🐟',
+'huevo cocido':'🥚','huevo':'🥚','huevos':'🥚','clara de huevo':'🥚','claras de huevo':'🥚','yema de huevo':'🥚','yemas de huevo':'🥚',
+'hígado':'🫀','corazón':'🫀','riñón':'🫘','mollejas':'🍖','bazo':'🫀','pulmón':'🫁','lengua':'🍖','carne de res':'🥩',
+'frijoles':'🫘','frijol':'🫘','frijoles negros':'🫘','frijoles colorados':'🫘','frijol carita':'🫘','frijoles rojos':'🫘',
+'chícharos':'🫛','chícharo':'🫛','guisantes':'🫛','guisante':'🫛','arvejas':'🫛','arveja':'🫛',
+'lentejas':'🫘','lenteja':'🫘','garbanzos':'🫘','garbanzo':'🫘','soya':'🫘',
+'yogur':'🥣','yogurt':'🥣','yogur griego':'🥣','kéfir':'🥣',
+'boniato':'🍠','malanga':'🥔','malanga isleña':'🥔','malanga blanca':'🥔','ñame':'🍠',
+'quimbombó':'🥬','okra':'🥬','berro':'🥬','verdolaga':'🌿','ají cachucha':'🫑','ají dulce':'🫑',
+'plátano vianda':'🍌','plátano macho':'🍌','plátano burro':'🍌','plátano de freír':'🍌','topo':'🍌',
+'papa':'🥔','papa cocida':'🥔',
+'caguama':'🐢','tortuga marina':'🐢','carey':'🐢','tortuga verde':'🐢',
+'pulpo':'🐙','calamar':'🦑','langosta':'🦞','almejas':'🦪','ostiones':'🦪','mejillones':'🦪',
+'erizo de mar':'🦔','pepino de mar':'🥒','caracol de mar':'🐚','caracol':'🐌','concha':'🦪','conejo de mar':'🐚',
+/* ===== Emojis de cereales ===== */
+'arroz':'🍚','arroz blanco':'🍚','arroz integral':'🍚','maíz':'🌽','maíz dulce':'🌽','elote':'🌽','choclo':'🌽',
+'polenta':'🌽','palomitas de maíz':'🍿','palomitas':'🍿','palomitas naturales':'🍿','harina de maíz':'🌽',
+'avena':'🥣','copos de avena':'🥣','quinoa':'🌾','cebada':'🌾','centeno':'🌾','trigo':'🌾','trigo sarraceno':'🌾',
+'amaranto':'🌾','mijo':'🌾','sémola':'🌾','cuscús':'🌾','pan de centeno':'🍞',
+/* ===== Emojis de tubérculos y vegetales adicionales ===== */
+'yautía':'🥔','taro':'🥔','lerenes':'🥔','palmito':'🌴','corazón de palma':'🌴','hinojo':'🌿','rúcula':'🥬',
+'endibia':'🥬','escarola':'🥬','berza':'🥬','canónigo':'🌿','verdolaga verde':'🌿','calabaza de castilla':'🎃',
+'calabaza moscada':'🎃','auyama':'🎃','chilacayote':'🎃','chayotillo':'🥒','tindora':'🥒','quelite':'🌿',
+'chipilín':'🌿','flor de calabaza':'🌼','flor de izote':'🌼',
+/* ===== Emojis de frutas nativas ===== */
+'mamey':'🥭','zapote':'🥭','mamey colorado':'🥭','zapote colorado':'🥭','anón':'🍈','anona':'🍈','icaco':'🍑',
+'marañón':'🍎','fruta de marañón':'🍎','cajú':'🍎','tamarindo':'🌰','noni':'🥝','fruta bomba':'🥭',
+'torombolo':'🥝','curuba':'🥝','badea':'🥝','granadilla de monte':'🥝','zapote blanco':'🥭',
+'caimito verde':'🚫','nispero':'🍑','manzana de agua':'🍎','poma rosa':'🍎','jobo':'🍑','ciruela criolla':'🍑',
+'acerola':'🍒','guayaba del monte':'🍈','guayaba piña':'🍈','coco de agua':'🥥','piña criolla':'🍍',
+'melón de agua':'🍉','patilla':'🍉'
+};
+
+const categoryEmojis={
+toxic:'🚫',dangerous:'⚠️',unsuitable:'🚫',
+vegetables:'🥦',fruits:'🍎',meats:'🍖',legumes:'🫘',yogurt:'🥣',cereals:'🌾',safe:'✅'
+};
+
+function generarVariantes(texto){
+const v=new Set([texto]);
+if(texto.endsWith('ces')&&texto.length>4){v.add(texto.slice(0,-3)+'z')}
+if(texto.endsWith('es')&&texto.length>3){v.add(texto.slice(0,-2));v.add(texto.slice(0,-1))}
+if(texto.endsWith('s')&&texto.length>2){v.add(texto.slice(0,-1))}
+if(texto.endsWith('z')){v.add(texto.slice(0,-1)+'ces')}
+else if(/[aeiouáéíóúü]$/.test(texto)){v.add(texto+'s')}
+else{v.add(texto+'es')}
+return [...v];
+}
+
+function getEmojiParaAlimento(nombre,categoria){
+if(foodEmojis[nombre])return foodEmojis[nombre];
+const norm=normalizar(nombre);
+for(const key in foodEmojis){
+if(normalizar(key)===norm)return foodEmojis[key];
+}
+return categoryEmojis[categoria]||'🍽️';
+}
+
+function buscarAlimento(query){
+const categorias=['vegetables','fruits','meats','legumes','yogurt','cereals','toxic','dangerous','unsuitable','safe'];
+const variantes=generarVariantes(query);
+for(const variante of variantes){
+for(const cat of categorias){
+for(const key in foodDatabase[cat]){
+if(normalizar(key)===variante){return{key,categoria:cat}}
+}
+}
+}
+if(query.length>=4){
+for(const cat of categorias){
+for(const key in foodDatabase[cat]){
+const keyNorm=normalizar(key);
+if(keyNorm.includes(query)||query.includes(keyNorm)){return{key,categoria:cat}}
+}
+}
+}
+for(const variante of variantes){
+if(variante.length>=4){
+for(const cat of categorias){
+for(const key in foodDatabase[cat]){
+const keyNorm=normalizar(key);
+if(keyNorm.includes(variante)||variante.includes(keyNorm)){return{key,categoria:cat}}
+}
+}
+}
+}
+return null;
+}
+
+const dogBreeds={chihuahua:{nombre:'Chihuahua',min:1.5,max:2.7},yorkshire:{nombre:'Yorkshire Terrier',min:2,max:3.2},pomerania:{nombre:'Pomerania',min:1.8,max:3.5},maltes:{nombre:'Maltés',min:2,max:4},papillon:{nombre:'Papillón',min:2,max:4.5},pekinges:{nombre:'Pekingés',min:3,max:6},shihtzu:{nombre:'Shih Tzu',min:4,max:8},pug:{nombre:'Pug (Carlino)',min:6,max:8.5},dachshund_mini:{nombre:'Dachshund Miniatura',min:4,max:5.5},caniche_mini:{nombre:'Caniche Miniatura',min:5,max:7.5},bichon:{nombre:'Bichón Frisé',min:5,max:8},schnauzer_mini:{nombre:'Schnauzer Miniatura',min:5,max:8},cavalier:{nombre:'Cavalier King Charles',min:5.5,max:8},westie:{nombre:'West Highland White Terrier',min:6,max:10},scottish:{nombre:'Scottish Terrier',min:8,max:10.5},beagle:{nombre:'Beagle',min:9,max:14},cocker_ing:{nombre:'Cocker Spaniel Inglés',min:11.8,max:15.5},cocker_ame:{nombre:'Cocker Spaniel Americano',min:10,max:14.5},bulldog_frances:{nombre:'Bulldog Francés',min:8,max:14},dachshund_est:{nombre:'Dachshund Estándar',min:7,max:15},border_collie:{nombre:'Border Collie',min:14,max:20},pitbull:{nombre:'Pit Bull Terrier',min:14,max:27},australian_shepherd:{nombre:'Australian Shepherd',min:16,max:32},husky:{nombre:'Siberian Husky',min:16,max:27},samoyedo:{nombre:'Samoyedo',min:17,max:30},dalmata:{nombre:'Dálmata',min:19,max:32},bull_terrier:{nombre:'Bull Terrier',min:20,max:35},sharpei:{nombre:'Shar Pei',min:18,max:30},chowchow:{nombre:'Chow Chow',min:20,max:32},bulldog_ingles:{nombre:'Bulldog Inglés',min:18,max:25},basset:{nombre:'Basset Hound',min:20,max:29},boxer:{nombre:'Boxer',min:25,max:32},pastor_aleman:{nombre:'Pastor Alemán',min:22,max:40},pastor_belga:{nombre:'Pastor Belga',min:20,max:35},golden:{nombre:'Golden Retriever',min:25,max:34},labrador:{nombre:'Labrador Retriever',min:25,max:36},am_staff:{nombre:'American Staffordshire',min:25,max:32},akita:{nombre:'Akita Inu',min:32,max:50},doberman:{nombre:'Doberman',min:32,max:45},rottweiler:{nombre:'Rottweiler',min:35,max:60},boyero_berna:{nombre:'Boyero de Berna',min:35,max:55},terranova:{nombre:'Terranova',min:45,max:70},san_bernardo:{nombre:'San Bernardo',min:50,max:90},gran_danes:{nombre:'Gran Danés',min:45,max:90},mastin_napolitano:{nombre:'Mastín Napolitano',min:50,max:70},mastin_ingles:{nombre:'Mastín Inglés',min:80,max:100},leonberger:{nombre:'Leonberger',min:45,max:77},mastin_tibetano:{nombre:'Mastín Tibetano',min:45,max:73}};
+
+const catBreeds={comun:{nombre:'Común Europeo',min:3.5,max:5.5},siames:{nombre:'Siamés',min:2.5,max:5},persa:{nombre:'Persa',min:3,max:6},bengali:{nombre:'Bengalí',min:3.5,max:7},maine_coon:{nombre:'Maine Coon',min:4.5,max:11},ragdoll:{nombre:'Ragdoll',min:4.5,max:9},british_shorthair:{nombre:'British Shorthair',min:4,max:8},american_shorthair:{nombre:'American Shorthair',min:3,max:6},sphynx:{nombre:'Esfinge (Sphynx)',min:3,max:5.5},angora:{nombre:'Angora Turco',min:2.5,max:5},bosque_noruego:{nombre:'Bosque de Noruega',min:4,max:9},azul_ruso:{nombre:'Azul Ruso',min:3,max:5.5},abisinio:{nombre:'Abisinio',min:3,max:5},birmano:{nombre:'Birmano',min:4,max:6},himalayo:{nombre:'Himalayo',min:3.5,max:5.5},exotico:{nombre:'Exótico de Pelo Corto',min:3,max:5.5},sagrado_birmania:{nombre:'Sagrado de Birmania',min:3.5,max:6},devon_rex:{nombre:'Devon Rex',min:2.5,max:4.5},cornish_rex:{nombre:'Cornish Rex',min:2.5,max:4.5},oriental:{nombre:'Oriental de Pelo Corto',min:2.5,max:5}};
+
+const dogBreedGroups={'🐕 Razas Pequeñas (1-10 kg)':['chihuahua','yorkshire','pomerania','maltes','papillon','pekinges','shihtzu','pug','dachshund_mini','caniche_mini','bichon','schnauzer_mini','cavalier','westie','scottish'],'🐕 Razas Medianas (10-25 kg)':['beagle','cocker_ing','cocker_ame','bulldog_frances','dachshund_est','border_collie','pitbull','australian_shepherd','husky','samoyedo','dalmata','bull_terrier','sharpei','chowchow','bulldog_ingles','basset'],'🐕 Razas Grandes (25-45 kg)':['boxer','pastor_aleman','pastor_belga','golden','labrador','am_staff','akita','doberman'],'🐕 Razas Gigantes (+45 kg)':['rottweiler','boyero_berna','terranova','san_bernardo','gran_danes','mastin_napolitano','mastin_ingles','leonberger','mastin_tibetano']};
+
+const mestizoRanges={pequeno:{min:5,max:10,label:'Pequeño',cat:'pequeno'},mediano:{min:10,max:25,label:'Mediano',cat:'mediano'},grande:{min:25,max:45,label:'Grande',cat:'grande'},gigante:{min:45,max:70,label:'Gigante',cat:'gigante'}};
+
+function getBreedSizeCategory(species,breedKey,mestizoSize){
+if(species==='cat')return'cat_uniform';
+if(breedKey==='mestizo'){if(mestizoSize&&mestizoRanges[mestizoSize])return mestizoRanges[mestizoSize].cat;return null;}
+if(!breedKey)return null;
+const breed=dogBreeds[breedKey];if(!breed)return null;
+const maxW=breed.max;
+if(maxW<10)return'mini';if(maxW<20)return'pequeno';if(maxW<30)return'mediano';if(maxW<50)return'grande';return'gigante';
+}
+
+function getSeniorAge(species,breedKey,mestizoSize){
+if(species==='cat')return 11;
+const cat=getBreedSizeCategory(species,breedKey,mestizoSize);if(!cat)return null;
+switch(cat){case 'mini':case 'pequeno':return 10;case 'mediano':return 8;case 'grande':return 7;case 'gigante':return 6;default:return 8;}
+}
+
+function getAgeStages(species,breedKey,mestizoSize){
+if(species==='cat'){return[{value:'a1',label:'Gatito (1 - 2 meses)',factor:.25,grupo:'cria'},{value:'a2',label:'Gatito (3 - 4 meses)',factor:.5,grupo:'cria'},{value:'a3',label:'Gatito (5 - 6 meses)',factor:.75,grupo:'cria'},{value:'a4',label:'Joven (7 - 9 meses)',factor:.9,grupo:'cria'},{value:'a5',label:'Joven (10 - 12 meses)',factor:1,grupo:'cria'},{value:'adulto',label:'Adulto (1 - 10 años)',factor:1,grupo:'adulto'},{value:'senior',label:'Senior (+11 años)',factor:1,grupo:'senior'}];}
+const seniorAge=getSeniorAge(species,breedKey,mestizoSize);const sa=seniorAge||8;
+const adultoLabel=sa===10?'Adulto (1 - 10 años)':'Adulto (1 - '+(sa-1)+' años)';
+return[{value:'a1',label:'Cachorro (1 - 2 meses)',factor:.15,grupo:'cria'},{value:'a2',label:'Cachorro (3 - 4 meses)',factor:.32,grupo:'cria'},{value:'a3',label:'Cachorro (5 - 6 meses)',factor:.55,grupo:'cria'},{value:'a4',label:'Joven (7 - 9 meses)',factor:.78,grupo:'cria'},{value:'a5',label:'Joven (10 - 12 meses)',factor:.92,grupo:'cria'},{value:'adulto',label:adultoLabel,factor:1,grupo:'adulto'},{value:'senior',label:'Senior (+'+sa+' años)',factor:1,grupo:'senior'}];
+}
+
+function getAgeInfo(species,breedKey,mestizoSize,ageKey){const stages=getAgeStages(species,breedKey,mestizoSize);return stages.find(s=>s.value===ageKey)||null;}
+
+function getPortionStages(species){
+if(species==='cat'){return[{value:'destete',label:'🐱 Destete (1 - 2 meses)'},{value:'gatito',label:'🐱 Gatito (2 - 6 meses)'},{value:'joven',label:'🐈 Joven (6 - 12 meses)'},{value:'adulto',label:'🦴 Adulto (1 - 10 años)'},{value:'senior',label:'👴 Senior (+11 años)'}];}
+return[{value:'destete',label:'🐶 Destete (1 - 2 meses)'},{value:'cachorro',label:'🐶 Cachorro (2 - 4 meses)'},{value:'joven',label:'🐕 Joven (4 - 12 meses)'},{value:'adulto',label:'🦴 Adulto (1 - 7 años)'},{value:'senior',label:'👴 Senior (+7 años)'}];
+}
+
+const portionFactors={dog:{destete:{factor:3,tomas:'3-4',label:'Destete (1-2 meses)'},cachorro:{factor:3,tomas:'3-4',label:'Cachorro (2-4 meses)'},joven:{factor:2,tomas:'2-3',label:'Joven (4-12 meses)'},adulto:{factor:1.6,tomas:'2-3',label:'Adulto (1-7 años)'},senior:{factor:1.4,tomas:'2',label:'Senior (+7 años)'}},cat:{destete:{factor:2.5,tomas:'4-5',label:'Destete (1-2 meses)'},gatito:{factor:2.5,tomas:'3-4',label:'Gatito (2-6 meses)'},joven:{factor:2,tomas:'3',label:'Joven (6-12 meses)'},adulto:{factor:1.2,tomas:'2-3',label:'Adulto (1-10 años)'},senior:{factor:1.1,tomas:'2-3',label:'Senior (+10 años)'}}};
+
+const neonateWeightRanges={mini:{w1:[100,250],w2:[200,350],w3:[300,500],w4:[400,700]},pequeno:{w1:[150,350],w2:[250,500],w3:[400,700],w4:[600,1000]},mediano:{w1:[250,450],w2:[400,700],w3:[600,1000],w4:[900,1400]},grande:{w1:[350,600],w2:[550,900],w3:[800,1300],w4:[1200,1800]},gigante:{w1:[500,800],w2:[800,1200],w3:[1100,1700],w4:[1500,2300]},cat_uniform:{w1:[100,180],w2:[180,280],w3:[280,400],w4:[400,550]}};
+
+const formulaSchedule={w1:{mlPorKgDia:130,tomas:12,descripcion:'Semana 1 (0-7 días)',frecuenciaHoras:2,nota:'Alimentación cada 2 horas, incluso de noche.'},w2:{mlPorKgDia:150,tomas:8,descripcion:'Semana 2 (7-14 días)',frecuenciaHoras:3,nota:'Alimentación cada 3 horas. Empiezan a abrir los ojos.'},w3:{mlPorKgDia:175,tomas:6,descripcion:'Semana 3 (14-21 días)',frecuenciaHoras:4,nota:'Alimentación cada 4 horas. Ya sostienen la cabeza.'},w4:{mlPorKgDia:200,tomas:5,descripcion:'Semana 4 (21-28 días)',frecuenciaHoras:5,nota:'Alimentación cada 5 horas. Comienzan a explorar.'}};
+
+const foodTypeKcal={seco_estandar:{kcal:350,label:'Croquetas secas estándar'},seco_premium:{kcal:390,label:'Croquetas secas premium / alta proteína'},seco_cachorro:{kcal:400,label:'Croquetas para cachorro / gatito'},humedo:{kcal:90,label:'Comida húmeda (lata o sobre)'},casero:{kcal:140,label:'Comida casera cocida'},barf:{kcal:170,label:'Dieta BARF / cruda'}};
+
+const foodTypeDensity={seco_estandar:120,seco_premium:115,seco_cachorro:118,humedo:240,casero:200,barf:200};
+
+const plantData=[
+{nombre:'Malanga de corazón',cientifico:'Alocasia cucullata',riesgo:'Muy tóxica',desc:'Cristales de oxalato de calcio. Irritación oral intensa, inflamación de boca y lengua.',img:'https://i.postimg.cc/437KRM6S/Alocasia-cucullata-%28Philippines%29-01.jpg'},
+{nombre:'Cabalonga',cientifico:'Thevetia peruviana',riesgo:'Muy tóxica',desc:'Glucósidos cardíacos. Vómitos, diarrea, arritmias, muerte. Más tóxica para gatos.',img:'https://i.postimg.cc/Znyj9Vz7/Cabalonga.jpg'},
+{nombre:'Lantana',cientifico:'Lantana camara',riesgo:'Tóxica',desc:'Triterpenos pentacíclicos. Vómitos, diarrea, dificultad respiratoria.',img:'https://i.postimg.cc/258sqRcV/Lantana-Flower-Leaves.jpg'},
+{nombre:'Adelfa',cientifico:'Nerium oleander',riesgo:'Muy tóxica',desc:'Glucósidos cardíacos. Todas las partes son tóxicas, incluso el agua del florero.',img:'https://i.postimg.cc/Mpt4J361/390px-Flor-de-adelfa.jpg'},
+{nombre:'Flor de Pascua',cientifico:'Euphorbia pulcherrima',riesgo:'Tóxica',desc:'Látex irritante. Irritación oral, vómitos, dermatitis.',img:'https://i.postimg.cc/LsnyKH02/flornavidad-4.jpg'},
+{nombre:'Filodendro',cientifico:'Philodendron spp.',riesgo:'Tóxica',desc:'Cristales de oxalato de calcio. Muy común como planta de interior.',img:'https://i.postimg.cc/Wz2gV8bD/filodendro.jpg'},
+{nombre:'Nuez Vómica Cubana',cientifico:'Jatropha multifida',riesgo:'Muy tóxica',desc:'Frutos altamente tóxicos. Vómitos severos, diarrea, deshidratación.',img:'https://i.postimg.cc/jjbjB5jD/Nuez-Vomica-Cubana.jpg'},
+{nombre:'Hiedra',cientifico:'Hedera helix',riesgo:'Tóxica',desc:'Toxicidad gastrointestinal y neurológica.',img:'https://i.postimg.cc/sDWsyrqV/hiedra.jpg'},
+{nombre:'Sábila (Aloe vera)',cientifico:'Aloe vera',riesgo:'Tóxica',desc:'Aunque es medicinal para humanos, es tóxica para mascotas.',img:'https://i.postimg.cc/bvmjLNDn/sabila.jpg'},
+{nombre:'Galán de día',cientifico:'Cestrum diurnum',riesgo:'Tóxica',desc:'Tóxica para animales. Causa intoxicaciones reportadas.',img:'https://i.postimg.cc/dQkL7gpW/Galan-de-dia.jpg'},
+{nombre:'Wild Allamanda',cientifico:'Urechites lutea',riesgo:'Muy tóxica',desc:'Glucósidos cardíacos. Trepadora común en jardines.',img:'https://i.postimg.cc/T39wMx50/Wild-Allamanda.jpg'},
+{nombre:'Malpica (Rabo de gato)',cientifico:'Achyranthes aspera',riesgo:'Tóxica',desc:'Toda la planta es tóxica. Irritación gastrointestinal.',img:'https://i.postimg.cc/vZ3Q2vC3/Malpica-%28Rabo-de-gato%29.jpg'}
+];
+
+function normalizar(t){return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim()}
+function getDensidad(t){return foodTypeDensity[t]||120}
+
+function equivalenciaPractica(gramos,tipoAlimento){
+const gPorTaza=getDensidad(tipoAlimento);const gPorCda=gPorTaza/16;const gPorCta=gPorTaza/48;const tazas=gramos/gPorTaza;
+if(tazas<.2){const cdas=gramos/gPorCda;if(cdas<1){const ctas=gramos/gPorCta;return'≈ '+ctas.toFixed(1).replace('.',',')+' cucharaditas'}return'≈ '+cdas.toFixed(1).replace('.',',')+' cucharadas soperas';}
+const cuartos=Math.round(tazas*4);let texto;
+if(cuartos===1)texto='¼ taza';else if(cuartos===2)texto='½ taza';else if(cuartos===3)texto='¾ taza';else if(cuartos<4)texto=(cuartos/4).toFixed(2).replace('.',',')+' tazas';
+else if(cuartos%4===0){const e=cuartos/4;texto=e+' taza'+(e!==1?'s':'')}
+else{const e=Math.floor(cuartos/4),r=cuartos%4;texto=e+' taza'+(e!==1?'s':'');if(r===1)texto+=' + ¼';else if(r===2)texto+=' + ½';else if(r===3)texto+=' + ¾';}
+return'≈ '+texto+' (taza de 240 ml)';
+}
+
+function equivalenciaVolumen(ml){
+if(ml<15)return'≈ '+(ml/5).toFixed(1).replace('.',',')+' cucharaditas (~'+ml.toFixed(0)+' ml)';
+if(ml<60)return'≈ '+(ml/15).toFixed(1).replace('.',',')+' cucharadas soperas (~'+ml.toFixed(0)+' ml)';
+const tazas=ml/240;return'≈ '+tazas.toFixed(2).replace('.',',')+' taza(s) (~'+ml.toFixed(0)+' ml)';
+}
+
+function switchTab(tabName){
+document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+const content=document.getElementById('tab-'+tabName);if(content)content.classList.add('active');
+const btn=document.querySelector('.tab-btn[data-tab="'+tabName+'"]');if(btn)btn.classList.add('active');
+const container=document.querySelector('.container');
+if(container){const y=container.getBoundingClientRect().top+window.pageYOffset-15;window.scrollTo({top:y,behavior:'smooth'});}
+}
+
+function consultarAlimento(){
+const input=document.getElementById('foodSearch').value;
+const resultBox=document.getElementById('searchResult');
+const resultTitle=document.getElementById('resultTitle');
+const resultMessage=document.getElementById('resultMessage');
+const errorMsg=document.getElementById('searchError');
+errorMsg.style.display='none';
+resultBox.style.display='none';
+resultBox.className='search-result';
+if(!input.trim()){
+errorMsg.textContent='Por favor, escribe un alimento para consultar.';
+errorMsg.style.display='block';
+return;
+}
+const query=normalizar(input);
+const resultado=buscarAlimento(query);
+if(!resultado){
+resultBox.classList.add('unknown');
+resultTitle.innerHTML='<span class="result-icon">❓</span> Sin información específica';
+resultMessage.innerHTML='No tengo información registrada sobre "<strong>'+input+'</strong>".<br><br><strong>Consejo:</strong> Si no sabes con certeza que un alimento es seguro, mejor no dárselo. Consulta con tu médico veterinario.<br><br><em>Para plantas tóxicas, revisa la pestaña "🌿 Plantas Tóxicas". Para medicamentos, revisa "💊 Medicamentos Tóxicos".</em>';
+resultBox.style.display='block';
+return;
+}
+const{key,categoria}=resultado;
+const emoji=getEmojiParaAlimento(key,categoria);
+const map={
+toxic:{clase:'toxic',titulo:'TÓXICO — No administrar'},
+dangerous:{clase:'danger',titulo:'PELIGROSO — No dar'},
+unsuitable:{clase:'unsuitable',titulo:'NO APTO — No recomendado'},
+yogurt:{clase:'safe',titulo:'YOGUR NATURAL — Probiótico permitido'},
+safe:{clase:'safe',titulo:'SEGURO (con moderación)'},
+legumes:{clase:'legume',titulo:'LEGUMBRE — Segura con preparación'},
+cereals:{clase:'vegetable',titulo:'CEREAL — Seguro cocido (sin condimentos)'},
+vegetables:{clase:'vegetable',titulo:'VERDURA — Segura (con preparación)'},
+fruits:{clase:'fruit',titulo:'FRUTA — Segura (con moderación)'},
+meats:{clase:'meat',titulo:'PROTEÍNA — Segura (cocida)'}
+};
+const info=map[categoria];
+resultBox.classList.add(info.clase);
+resultTitle.innerHTML='<span class="result-icon">'+emoji+'</span> '+info.titulo;
+resultMessage.textContent=foodDatabase[categoria][key];
+resultBox.style.display='block';
+}
+
+function llenarSelectorRazas(selectEl,species){
+selectEl.innerHTML='<option value="">-- Selecciona una raza --</option>';
+const mestizo=document.createElement('option');
+mestizo.value='mestizo';
+mestizo.textContent=species==='dog'?'🐾 Mestizo / Sin raza específica':'🐾 Común Europeo (referencia general)';
+selectEl.appendChild(mestizo);
+const breeds=species==='dog'?dogBreeds:catBreeds;
+if(species==='dog'){
+for(const grupo in dogBreedGroups){
+const og=document.createElement('optgroup');og.label=grupo;
+dogBreedGroups[grupo].forEach(key=>{const opt=document.createElement('option');opt.value=key;opt.textContent=breeds[key].nombre;og.appendChild(opt);});
+selectEl.appendChild(og);
+}
+}else{
+for(const key in breeds){const opt=document.createElement('option');opt.value=key;opt.textContent=breeds[key].nombre;selectEl.appendChild(opt);}
+}
+}
+
+function actualizarEdadesCalculadora(){
+const species=document.getElementById('calcSpecies').value;
+const breedKey=document.getElementById('calcBreed').value;
+const mestizoSize=document.getElementById('calcMestizoSize').value;
+const ageSelect=document.getElementById('calcAge');
+const mestizoGroup=document.getElementById('mestizoSizeGroup');
+if(breedKey==='mestizo'){mestizoGroup.style.display='block';}else{mestizoGroup.style.display='none';}
+const stages=getAgeStages(species,breedKey,mestizoSize);
+ageSelect.innerHTML='<option value="">-- Selecciona la edad --</option>';
+stages.forEach(s=>{const opt=document.createElement('option');opt.value=s.value;opt.textContent=s.label;ageSelect.appendChild(opt);});
+ocultarResultadoCalculadora();
+}
+
+function ocultarResultadoCalculadora(){const r=document.getElementById('calcResult');r.style.display='none';r.innerHTML='';r.className='calc-result';}
+
+function resetCalculadora(){
+document.getElementById('calcSpecies').value='dog';
+llenarSelectorRazas(document.getElementById('calcBreed'),'dog');
+document.getElementById('calcMestizoSize').value='';
+document.getElementById('mestizoSizeGroup').style.display='none';
+document.getElementById('calcWeight').value='';
+actualizarEdadesCalculadora();
+ocultarResultadoCalculadora();
+}
+
+function estimarBCS(species,peso,breedKey,ageInfo,range){
+if(!range)return null;
+let bcs,categoria,descripcion,color,bgColor;
+if(ageInfo.grupo==='cria'){
+const factor=ageInfo.factor;const expectedMin=range.min*factor;const expectedMax=range.max*factor;
+if(peso<expectedMin*0.8){bcs=2;categoria='Bajo peso';descripcion='Muy por debajo del peso esperado para su edad. Puede indicar desnutrición o problemas de salud. Consulta al veterinario.';color='#c62828';bgColor='#ffebee'}
+else if(peso<expectedMin*0.9){bcs=3;categoria='Bajo peso';descripcion='Por debajo del peso esperado. Vigila su alimentación y consulta al veterinario.';color='#e65100';bgColor='#fff3e0'}
+else if(peso<expectedMin){bcs=4;categoria='Delgado (ideal)';descripcion='En el límite inferior del peso esperado. Peso saludable para su edad.';color='#2e7d32';bgColor='#e8f5e9'}
+else if(peso<=expectedMax){bcs=5;categoria='Ideal';descripcion='Dentro del rango de peso esperado. Crecimiento saludable. ¡Excelente!';color='#2e7d32';bgColor='#e8f5e9'}
+else if(peso<=expectedMax*1.1){bcs=6;categoria='Ligeramente sobrepeso';descripcion='Ligeramente por encima del peso esperado. Vigila la ración y el ejercicio.';color='#856404';bgColor='#fff3cd'}
+else if(peso<=expectedMax*1.2){bcs=7;categoria='Sobrepeso';descripcion='Por encima del peso esperado. En crecimiento, el sobrepeso puede afectar el desarrollo óseo y articular. Consulta al veterinario.';color='#e65100';bgColor='#fff3e0'}
+else{bcs=8;categoria='Obeso';descripcion='Muy por encima del peso esperado. Consulta urgentemente al veterinario para un plan de alimentación adecuado.';color='#c62828';bgColor='#ffebee'}
+}else{
+if(peso<range.min*0.8){bcs=2;categoria='Bajo peso';descripcion='Costillas, columna y huesos de la cadera muy visibles. Pérdida de masa muscular evidente. Consulta al veterinario.';color='#c62828';bgColor='#ffebee'}
+else if(peso<range.min*0.9){bcs=3;categoria='Bajo peso';descripcion='Costillas y huesos visibles. Poca grasa corporal. Puede necesitar un ajuste en la alimentación.';color='#e65100';bgColor='#fff3e0'}
+else if(peso<range.min){bcs=4;categoria='Delgado (ideal)';descripcion='Costillas fácilmente palpables, cintura visible. Peso saludable, especialmente para razas activas.';color='#2e7d32';bgColor='#e8f5e9'}
+else if(peso<=range.max){bcs=5;categoria='Ideal';descripcion='Costillas palpables sin exceso de grasa, cintura visible. Peso ideal. ¡Felicidades!';color='#2e7d32';bgColor='#e8f5e9'}
+else if(peso<=range.max*1.1){bcs=6;categoria='Ligeramente sobrepeso';descripcion='Costillas palpables con ligera capa de grasa, cintura poco visible. Reduce ligeramente la ración y aumenta el ejercicio.';color='#856404';bgColor='#fff3cd'}
+else if(peso<=range.max*1.2){bcs=7;categoria='Sobrepeso';descripcion='Costillas difíciles de palpar, cintura ausente, abdomen redondeado. Consulta al veterinario para un plan de pérdida de peso.';color='#e65100';bgColor='#fff3e0'}
+else if(peso<=range.max*1.35){bcs=8;categoria='Obeso';descripcion='Costillas no palpables, abdomen prominente, depósitos de grasa visibles. Riesgo elevado de enfermedades metabólicas. Consulta urgente.';color='#c62828';bgColor='#ffebee'}
+else{bcs=9;categoria='Obesidad severa';descripcion='Depósitos masivos de grasa, abdomen muy distendido. Riesgo grave para la salud. Requiere atención veterinaria inmediata.';color='#c62828';bgColor='#ffebee'}
+}
+return{bcs,categoria,descripcion,color,bgColor};
+}
+
+function calcularGananciaPeso(species,range,ageKey){
+if(!range)return null;
+if(species==='cat'){return{texto:'50 - 100 g por semana',detalle:'Los gatitos en crecimiento suelen ganar entre 50 y 100 g por semana (aprox. 450 g al mes).',consejo:'Pesa a tu mascota cada 2 semanas y registra su evolución. Si no gana peso o pierde, consulta al veterinario.'};}
+const adultMid=(range.min+range.max)/2;const dailyMin=Math.round(2*adultMid);const dailyMax=Math.round(4*adultMid);
+const weeklyMin=dailyMin*7;const weeklyMax=dailyMax*7;
+return{texto:weeklyMin+' - '+weeklyMax+' g por semana',detalle:'Ganancia diaria esperada: '+dailyMin+' - '+dailyMax+' g/día. Basado en el peso adulto promedio estimado (~'+adultMid.toFixed(1)+' kg).',consejo:'Pesa a tu mascota cada 2 semanas y registra su evolución. Si no gana peso o pierde, consulta al veterinario.'};
+}
+
+function generarEscalaBCS(bcs){
+const segmentos=[];
+for(let i=1;i<=9;i++){
+let color;
+if(i<=3)color='#ef9a9a';else if(i<=5)color='#a5d6a7';else if(i<=7)color='#ffe082';else color='#ef9a9a';
+const active=i===bcs?'active':'';
+segmentos.push('<div class="bcs-scale-segment '+active+'" style="background:'+color+'"></div>');
+}
+return '<div class="bcs-scale-bar">'+segmentos.join('')+'</div>'+
+'<div style="display:flex;justify-content:space-between;font-size:.6rem;color:#888;padding:0 2px"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>'+
+'<div class="bcs-marker">▲ Tu mascota: '+bcs+'/9</div>';
+}
+
+function calcularPesoIdeal(){
+const species=document.getElementById('calcSpecies').value;
+const breedKey=document.getElementById('calcBreed').value;
+const mestizoSize=document.getElementById('calcMestizoSize').value;
+const ageKey=document.getElementById('calcAge').value;
+const peso=parseFloat(document.getElementById('calcWeight').value);
+const resultBox=document.getElementById('calcResult');
+const emoji=species==='dog'?'🐕':'🐱';
+if(!breedKey){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona una raza.';resultBox.style.display='block';return}
+if(breedKey==='mestizo'&&!mestizoSize){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona el tamaño estimado del mestizo.';resultBox.style.display='block';return}
+if(!ageKey){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona la edad.';resultBox.style.display='block';return}
+if(isNaN(peso)||peso<=0){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, ingresa un peso válido mayor a 0.';resultBox.style.display='block';return}
+const ageInfo=getAgeInfo(species,breedKey,mestizoSize,ageKey);
+if(!ageInfo){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ La edad seleccionada ya no es válida. Vuelve a seleccionarla.';resultBox.style.display='block';return}
+const esCria=ageInfo.grupo==='cria';
+if(breedKey==='mestizo'){
+const range=mestizoRanges[mestizoSize];
+const bcsInfo=estimarBCS(species,peso,breedKey,ageInfo,range);
+const gananciaInfo=(esCria&&(ageKey==='a1'||ageKey==='a2'||ageKey==='a3'))?calcularGananciaPeso(species,range,ageKey):null;
+const sizeLabel=range.label;
+if(esCria){
+const factor=ageInfo.factor;const expectedMin=range.min*factor;const expectedMax=range.max*factor;const adultoFuturo=((range.min+range.max)/2).toFixed(1);
+let estadoHtml='';let resultClass='calc-result ideal';
+if(peso<expectedMin*.85){resultClass='calc-result underweight';estadoHtml='<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(230,81,0,.2);font-size:.82rem"><strong>⚠️ Está por debajo del rango esperado para su edad.</strong> Consulta a tu veterinario.</div>';}
+else if(peso>expectedMax*1.15){resultClass='calc-result overweight';estadoHtml='<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(211,47,47,.2);font-size:.82rem"><strong>⚠️ Está por encima del rango esperado para su edad.</strong> Consulta con tu veterinario.</div>';}
+else{estadoHtml='<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(46,125,50,.2);font-size:.82rem"><strong>✅ Peso dentro del rango esperado para su edad.</strong></div>';}
+let gananciaHtml='';
+if(gananciaInfo){gananciaHtml='<div style="margin-top:12px;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0"><div style="font-size:.85rem;font-weight:700;color:var(--primary-blue);margin-bottom:6px;font-family:\'Poppins\',sans-serif">📈 Ganancia de peso esperada</div><div style="font-size:1rem;font-weight:800;color:var(--primary-blue);font-family:\'Poppins\',sans-serif">'+gananciaInfo.texto+'</div><div style="font-size:.78rem;color:#555;margin-top:4px;line-height:1.5">'+gananciaInfo.detalle+'</div><div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:.75rem;color:#555;line-height:1.5">💡 <strong>Consejo:</strong> '+gananciaInfo.consejo+'</div></div>';}
+let bcsHtml='';
+if(bcsInfo){bcsHtml='<div style="margin-top:12px;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0"><div style="font-size:.85rem;font-weight:700;color:var(--primary-blue);margin-bottom:6px;font-family:\'Poppins\',sans-serif">📊 Condición Corporal Estimada (BCS)</div><div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap"><span style="font-size:2rem;font-weight:800;color:'+bcsInfo.color+';font-family:\'Poppins\',sans-serif">'+bcsInfo.bcs+'/9</span><span style="font-size:.85rem;font-weight:700;padding:4px 10px;border-radius:20px;background:'+bcsInfo.bgColor+';color:'+bcsInfo.color+'">'+bcsInfo.categoria+'</span></div>'+generarEscalaBCS(bcsInfo.bcs)+'<div style="font-size:.82rem;color:var(--text-dark);line-height:1.5;margin-top:8px">'+bcsInfo.descripcion+'</div></div>';}
+resultBox.className=resultClass;
+resultBox.innerHTML='<strong>'+emoji+' Mestizo ('+sizeLabel+') — '+ageInfo.label+'</strong><span class="big-number">'+peso.toFixed(1)+' kg</span><div class="result-row"><span>Rango esperado para su edad</span><strong>'+expectedMin.toFixed(1)+' - '+expectedMax.toFixed(1)+' kg</strong></div><div class="result-row"><span>Peso actual</span><strong>'+peso.toFixed(1)+' kg</strong></div><div class="result-row"><span>Peso adulto esperado</span><strong>'+range.min+' - '+range.max+' kg</strong></div><div class="result-row"><span>Peso adulto medio referencia</span><strong>~'+adultoFuturo+' kg</strong></div>'+estadoHtml+gananciaHtml+bcsHtml+'<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(15,42,86,.12);font-size:.72rem;color:#555;font-style:italic">ℹ️ Estimación basada en el tamaño orientativo del mestizo. El peso real depende del cruce genético de los padres. Consulta con tu veterinario.</div>';
+resultBox.style.display='block';return;
+}
+let estadoHtml='';let resultClass='calc-result ideal';
+if(peso<range.min){const diff=((range.min-peso)/range.min*100).toFixed(1);resultClass='calc-result underweight';estadoHtml='<strong>'+emoji+' Bajo peso</strong><br>Tu mestizo ('+sizeLabel.toLowerCase()+') está aproximadamente un <strong>'+diff+'%</strong> por debajo del rango de referencia.<br><br><strong>Rango orientativo:</strong> '+range.min+' - '+range.max+' kg<br><br><strong>Recomendación:</strong> Consulta a tu veterinario.';}
+else if(peso>range.max){const diff=((peso-range.max)/range.max*100).toFixed(1);resultClass='calc-result overweight';estadoHtml='<strong>⚠️ Sobrepeso</strong><br>Tu mestizo ('+sizeLabel.toLowerCase()+') está aproximadamente un <strong>'+diff+'%</strong> por encima del rango de referencia.<br><br><strong>Rango orientativo:</strong> '+range.min+' - '+range.max+' kg<br><br><strong>Recomendación:</strong> Reduce las porciones gradualmente y aumenta el ejercicio. Consulta a tu veterinario.';}
+else{resultClass='calc-result ideal';estadoHtml='<strong>✅ Peso dentro del rango orientativo</strong><br>Tu mestizo ('+sizeLabel.toLowerCase()+') está dentro del rango de referencia.<br><br><strong>Rango orientativo:</strong> '+range.min+' - '+range.max+' kg<br><br>¡Felicidades! Sigue manteniendo una buena alimentación y ejercicio.';}
+let bcsHtml='';
+if(bcsInfo){bcsHtml='<div style="margin-top:12px;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0"><div style="font-size:.85rem;font-weight:700;color:var(--primary-blue);margin-bottom:6px;font-family:\'Poppins\',sans-serif">📊 Condición Corporal Estimada (BCS)</div><div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap"><span style="font-size:2rem;font-weight:800;color:'+bcsInfo.color+';font-family:\'Poppins\',sans-serif">'+bcsInfo.bcs+'/9</span><span style="font-size:.85rem;font-weight:700;padding:4px 10px;border-radius:20px;background:'+bcsInfo.bgColor+';color:'+bcsInfo.color+'">'+bcsInfo.categoria+'</span></div>'+generarEscalaBCS(bcsInfo.bcs)+'<div style="font-size:.82rem;color:var(--text-dark);line-height:1.5;margin-top:8px">'+bcsInfo.descripcion+'</div></div>';}
+const sa=getSeniorAge(species,breedKey,mestizoSize);
+const notaTamaño='<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(15,42,86,.12);font-size:.72rem;color:#555;font-style:italic">📚 La etapa Senior para un mestizo de este tamaño comienza a los '+sa+' años (AAHA/WSAVA). El peso ideal depende del cruce genético de los padres.</div>';
+resultBox.className=resultClass;
+resultBox.innerHTML=estadoHtml+bcsHtml+notaTamaño;
+resultBox.style.display='block';return;
+}
+const breeds=species==='dog'?dogBreeds:catBreeds;
+const breed=breeds[breedKey];
+const range={min:breed.min,max:breed.max};
+const bcsInfo=estimarBCS(species,peso,breedKey,ageInfo,range);
+const gananciaInfo=(esCria&&(ageKey==='a1'||ageKey==='a2'||ageKey==='a3'))?calcularGananciaPeso(species,range,ageKey):null;
+if(esCria){
+const factor=ageInfo.factor;const expectedMin=breed.min*factor;const expectedMax=breed.max*factor;const adultoFuturo=((breed.min+breed.max)/2).toFixed(1);
+let estadoHtml='';let resultClass='calc-result ideal';
+if(peso<expectedMin*.85){resultClass='calc-result underweight';estadoHtml='<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(230,81,0,.2);font-size:.82rem"><strong>⚠️ Está por debajo del rango esperado para su edad.</strong> Consulta a tu veterinario.</div>';}
+else if(peso>expectedMax*1.15){resultClass='calc-result overweight';estadoHtml='<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(211,47,47,.2);font-size:.82rem"><strong>⚠️ Está por encima del rango esperado para su edad.</strong> Consulta con tu veterinario.</div>';}
+else{estadoHtml='<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(46,125,50,.2);font-size:.82rem"><strong>✅ Peso dentro del rango esperado para su edad.</strong></div>';}
+let gananciaHtml='';
+if(gananciaInfo){gananciaHtml='<div style="margin-top:12px;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0"><div style="font-size:.85rem;font-weight:700;color:var(--primary-blue);margin-bottom:6px;font-family:\'Poppins\',sans-serif">📈 Ganancia de peso esperada</div><div style="font-size:1rem;font-weight:800;color:var(--primary-blue);font-family:\'Poppins\',sans-serif">'+gananciaInfo.texto+'</div><div style="font-size:.78rem;color:#555;margin-top:4px;line-height:1.5">'+gananciaInfo.detalle+'</div><div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:.75rem;color:#555;line-height:1.5">💡 <strong>Consejo:</strong> '+gananciaInfo.consejo+'</div></div>';}
+let bcsHtml='';
+if(bcsInfo){bcsHtml='<div style="margin-top:12px;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0"><div style="font-size:.85rem;font-weight:700;color:var(--primary-blue);margin-bottom:6px;font-family:\'Poppins\',sans-serif">📊 Condición Corporal Estimada (BCS)</div><div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap"><span style="font-size:2rem;font-weight:800;color:'+bcsInfo.color+';font-family:\'Poppins\',sans-serif">'+bcsInfo.bcs+'/9</span><span style="font-size:.85rem;font-weight:700;padding:4px 10px;border-radius:20px;background:'+bcsInfo.bgColor+';color:'+bcsInfo.color+'">'+bcsInfo.categoria+'</span></div>'+generarEscalaBCS(bcsInfo.bcs)+'<div style="font-size:.82rem;color:var(--text-dark);line-height:1.5;margin-top:8px">'+bcsInfo.descripcion+'</div></div>';}
+resultBox.className=resultClass;
+resultBox.innerHTML='<strong>'+emoji+' '+breed.nombre+' — '+ageInfo.label+'</strong><span class="big-number">'+peso.toFixed(1)+' kg</span><div class="result-row"><span>Rango esperado para su edad</span><strong>'+expectedMin.toFixed(1)+' - '+expectedMax.toFixed(1)+' kg</strong></div><div class="result-row"><span>Peso actual</span><strong>'+peso.toFixed(1)+' kg</strong></div><div class="result-row"><span>Peso adulto esperado</span><strong>'+breed.min+' - '+breed.max+' kg</strong></div><div class="result-row"><span>Peso adulto medio referencia</span><strong>~'+adultoFuturo+' kg</strong></div>'+estadoHtml+gananciaHtml+bcsHtml;
+resultBox.style.display='block';return;
+}
+const seniorAge=getSeniorAge(species,breedKey);
+let notaSenior='';
+if(ageInfo.grupo==='senior'){notaSenior='<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(15,42,86,.12);font-size:.78rem;color:#555"><strong>Nota senior:</strong> En animales mayores el peso puede mantenerse estable pero perderse masa muscular.</div>';}
+let estadoHtml='';let resultClass='calc-result ideal';
+if(peso<breed.min){const diff=((breed.min-peso)/breed.min*100).toFixed(1);resultClass='calc-result underweight';estadoHtml='<strong>'+emoji+' Bajo peso</strong><br>Tu '+breed.nombre+' está aproximadamente un <strong>'+diff+'%</strong> por debajo del rango ideal.<br><br><strong>Rango saludable:</strong> '+breed.min+' - '+breed.max+' kg<br><br><strong>Recomendación:</strong> Consulta a tu veterinario.'+notaSenior;}
+else if(peso>breed.max){const diff=((peso-breed.max)/breed.max*100).toFixed(1);resultClass='calc-result overweight';estadoHtml='<strong>⚠️ Sobrepeso</strong><br>Tu '+breed.nombre+' está aproximadamente un <strong>'+diff+'%</strong> por encima del rango ideal.<br><br><strong>Rango saludable:</strong> '+breed.min+' - '+breed.max+' kg<br><br><strong>Recomendación:</strong> Reduce las porciones gradualmente y aumenta el ejercicio. Consulta a tu veterinario.'+notaSenior;}
+else{resultClass='calc-result ideal';estadoHtml='<strong>✅ ¡Peso ideal!</strong><br>Tu '+breed.nombre+' está dentro del rango saludable para su raza.<br><br><strong>Rango saludable:</strong> '+breed.min+' - '+breed.max+' kg<br><br>¡Felicidades! Sigue manteniendo una buena alimentación y ejercicio.'+notaSenior;}
+let bcsHtml='';
+if(bcsInfo){bcsHtml='<div style="margin-top:12px;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0"><div style="font-size:.85rem;font-weight:700;color:var(--primary-blue);margin-bottom:6px;font-family:\'Poppins\',sans-serif">📊 Condición Corporal Estimada (BCS)</div><div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap"><span style="font-size:2rem;font-weight:800;color:'+bcsInfo.color+';font-family:\'Poppins\',sans-serif">'+bcsInfo.bcs+'/9</span><span style="font-size:.85rem;font-weight:700;padding:4px 10px;border-radius:20px;background:'+bcsInfo.bgColor+';color:'+bcsInfo.color+'">'+bcsInfo.categoria+'</span></div>'+generarEscalaBCS(bcsInfo.bcs)+'<div style="font-size:.82rem;color:var(--text-dark);line-height:1.5;margin-top:8px">'+bcsInfo.descripcion+'</div></div>';}
+const notaTamaño='<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(15,42,86,.12);font-size:.72rem;color:#555;font-style:italic">📚 La etapa Senior para esta raza comienza a los '+seniorAge+' años, según las guías AAHA/WSAVA.</div>';
+resultBox.className=resultClass;
+resultBox.innerHTML=estadoHtml+bcsHtml+notaTamaño;
+resultBox.style.display='block';
+}
+
+function actualizarPorciones(){
+const species=document.getElementById('portionSpecies').value;
+const breedSelect=document.getElementById('portionBreed');
+const stageSelect=document.getElementById('portionStage');
+llenarSelectorRazas(breedSelect,species);
+const stages=getPortionStages(species);
+stageSelect.innerHTML='';
+stages.forEach(s=>{const opt=document.createElement('option');opt.value=s.value;opt.textContent=s.label;stageSelect.appendChild(opt);});
+ocultarResultadoPorcion();
+}
+
+function ocultarResultadoPorcion(){const r=document.getElementById('portionResult');r.style.display='none';r.innerHTML='';r.className='calc-result';}
+
+function resetCalculadoraPorciones(){
+document.getElementById('portionSpecies').value='dog';
+actualizarPorciones();
+document.getElementById('portionWeight').value='';
+document.getElementById('portionMode').value='tipo';
+document.getElementById('portionFoodType').value='seco_estandar';
+document.getElementById('portionKcal').value='350';
+cambiarModoPorcion();
+}
+
+function cambiarModoPorcion(){
+const mode=document.getElementById('portionMode').value;
+document.getElementById('portionTipoGroup').style.display=mode==='tipo'?'block':'none';
+document.getElementById('portionKcalGroup').style.display=mode==='kcal'?'block':'none';
+ocultarResultadoPorcion();
+}
+
+function calcularPorciones(){
+const species=document.getElementById('portionSpecies').value;
+const breedKey=document.getElementById('portionBreed').value;
+const stage=document.getElementById('portionStage').value;
+const peso=parseFloat(document.getElementById('portionWeight').value);
+const mode=document.getElementById('portionMode').value;
+const resultBox=document.getElementById('portionResult');
+const emoji=species==='dog'?'🐕':'🐱';
+const info=portionFactors[species][stage];
+if(!breedKey){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona una raza.';resultBox.style.display='block';return}
+if(isNaN(peso)||peso<=0){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, ingresa un peso válido mayor a 0.';resultBox.style.display='block';return}
+let kcal,foodLabel,tipoAlimento,foodTypeKey=null;
+if(mode==='tipo'){
+foodTypeKey=document.getElementById('portionFoodType').value;
+kcal=foodTypeKcal[foodTypeKey].kcal;
+foodLabel=foodTypeKcal[foodTypeKey].label+' (~'+kcal+' kcal/100 g)';
+tipoAlimento=foodTypeKey;
+}else{
+kcal=parseFloat(document.getElementById('portionKcal').value);
+foodLabel='Valor personalizado ('+kcal+' kcal/100 g)';
+tipoAlimento='seco_estandar';
+}
+if(isNaN(kcal)||kcal<50||kcal>700){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Las kcal/100 g deben estar entre 50 y 700.';resultBox.style.display='block';return}
+const rer=70*Math.pow(peso,.75);const mer=rer*info.factor;const gramosPorDia=mer/(kcal/100);
+const numTomas=parseFloat(info.tomas.split('-')[0].replace('+',''))||2;
+const gramosPorComida=gramosPorDia/numTomas;
+const equivDia=equivalenciaPractica(gramosPorDia,tipoAlimento);
+const equivComida=equivalenciaPractica(gramosPorComida,tipoAlimento);
+resultBox.className='calc-result info';
+resultBox.innerHTML='<strong>'+emoji+' Recomendación diaria de porción</strong><span class="big-number">'+gramosPorDia.toFixed(0)+' g / día</span><span class="practical-equivalence">🥄 '+equivDia+'</span><div class="result-row"><span>Etapa de vida</span><strong>'+info.label+'</strong></div><div class="result-row"><span>Tipo de alimento</span><strong>'+foodLabel+'</strong></div><div class="result-row"><span>RER (necesidad en reposo)</span><strong>'+rer.toFixed(0)+' kcal/día</strong></div><div class="result-row"><span>MER (necesidad diaria total)</span><strong>'+mer.toFixed(0)+' kcal/día</strong></div><div class="result-row"><span>Tomas sugeridas / día</span><strong>'+info.tomas+'</strong></div><div class="result-row"><span>Aprox. por toma</span><strong>~'+gramosPorComida.toFixed(0)+' g · '+equivComida.replace('≈ ','')+'</strong></div><div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(15,42,86,.12);font-size:.75rem;color:#555"><strong>Nota:</strong> Valores orientativos basados en RER = 70 × (peso kg)^0.75 y factores MER estándar.</div>';
+resultBox.style.display='block';
+}
+
+function actualizarFormula(){
+const species=document.getElementById('formulaSpecies').value;
+const breedSelect=document.getElementById('formulaBreed');
+llenarSelectorRazas(breedSelect,species);
+}
+
+function ocultarResultadoFormula(){const r=document.getElementById('formulaResult');r.style.display='none';r.innerHTML='';r.className='calc-result';}
+
+function resetCalculadoraFormula(){
+document.getElementById('formulaSpecies').value='dog';
+document.getElementById('formulaType').value='comercial';
+actualizarFormula();
+document.getElementById('formulaAge').value='w1';
+document.getElementById('formulaWeight').value='';
+cambiarUnidadPesoFormula();
+}
+
+function cambiarUnidadPesoFormula(){
+const ageKey=document.getElementById('formulaAge').value;
+const weightInput=document.getElementById('formulaWeight');
+const weightLabel=document.getElementById('formulaWeightLabel');
+const weightHelper=document.getElementById('formulaWeightHelper');
+if(ageKey==='w1'||ageKey==='w2'){
+weightLabel.textContent='Peso actual (gramos):';
+weightInput.step='5';weightInput.min='50';weightInput.placeholder='Ej. 200';
+weightInput.dataset.unit='g';
+weightHelper.textContent='Usa una balanza de cocina o de bebé. En neonatos el peso se mide en gramos.';
+}else{
+weightLabel.textContent='Peso actual (kg):';
+weightInput.step='0.01';weightInput.min='0.1';weightInput.placeholder='Ej. 0.8';
+weightInput.dataset.unit='kg';
+weightHelper.textContent='En esta etapa el peso puede superar los 500 g (ej. 0,80 kg = 800 g).';
+}
+weightInput.value='';
+ocultarResultadoFormula();
+}
+
+function calcularFormula(){
+const species=document.getElementById('formulaSpecies').value;
+const breedKey=document.getElementById('formulaBreed').value;
+const ageKey=document.getElementById('formulaAge').value;
+const weightInput=document.getElementById('formulaWeight');
+const unit=weightInput.dataset.unit||'g';
+let valorPeso=parseFloat(weightInput.value);
+const tipo=document.getElementById('formulaType').value;
+const resultBox=document.getElementById('formulaResult');
+const nombreEspecie=species==='dog'?'cachorro':'gatito';
+if(!breedKey||breedKey==='mestizo'){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona una raza específica.';resultBox.style.display='block';return}
+if(isNaN(valorPeso)||valorPeso<=0){resultBox.className='calc-result error';resultBox.innerHTML=unit==='g'?'⚠️ Ingresa un peso válido en gramos.':'⚠️ Ingresa un peso válido en kg.';resultBox.style.display='block';return}
+const pesoGramos=unit==='kg'?valorPeso*1000:valorPeso;
+const pesoKg=pesoGramos/1000;
+if(pesoKg>4){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ El peso ingresado es muy alto para un neonato de 0-4 semanas.';resultBox.style.display='block';return}
+const ageInfo=formulaSchedule[ageKey];
+const mlPorDia=ageInfo.mlPorKgDia*pesoKg;
+const mlPorToma=mlPorDia/ageInfo.tomas;
+const equivDia=equivalenciaVolumen(mlPorDia);
+const equivToma=equivalenciaVolumen(mlPorToma);
+const breedName=species==='dog'?dogBreeds[breedKey].nombre:catBreeds[breedKey].nombre;
+const cat=getBreedSizeCategory(species,breedKey);
+const range=neonateWeightRanges[cat]?neonateWeightRanges[cat][ageKey]:null;
+let comparativa='';
+if(range){
+if(pesoGramos<range[0]*.8){comparativa='<div style="margin-top:10px;padding:10px;background-color:rgba(230,81,0,.1);border-left:3px solid #e65100;border-radius:6px;font-size:.8rem;color:#e65100"><strong>⚠️ Peso por debajo de lo esperado</strong><br>Consulta con tu veterinario.</div>';}
+else if(pesoGramos>range[1]*1.2){comparativa='<div style="margin-top:10px;padding:10px;background-color:rgba(211,47,47,.08);border-left:3px solid #d32f2f;border-radius:6px;font-size:.8rem;color:#c62828"><strong>⚠️ Peso por encima de lo esperado</strong><br>Ajusta la dosis según su peso real y consulta.</div>';}
+else{comparativa='<div style="margin-top:10px;padding:10px;background-color:rgba(46,125,50,.08);border-left:3px solid #2e7d32;border-radius:6px;font-size:.8rem;color:#2e7d32"><strong>✅ Peso dentro del rango esperado</strong></div>';}
+}
+const tipoFormula=tipo==='comercial'?'Fórmula comercial maternizada (recomendada).':'Fórmula casera de emergencia.';
+const pesoMostrar=unit==='kg'?pesoKg.toFixed(3)+' kg ('+pesoGramos.toFixed(0)+' g)':pesoGramos.toFixed(0)+' g ('+pesoKg.toFixed(3)+' kg)';
+resultBox.className='calc-result formula-info';
+resultBox.innerHTML='<strong>🍼 Fórmula maternizada para '+nombreEspecie+' '+breedName+' — '+ageInfo.descripcion+'</strong><span class="big-number">'+mlPorDia.toFixed(0)+' ml / día</span><span class="practical-equivalence">🥛 '+equivDia+'</span><div class="result-row"><span>Raza</span><strong>'+breedName+'</strong></div><div class="result-row"><span>Peso actual</span><strong>'+pesoMostrar+'</strong></div><div class="result-row"><span>Volumen total diario</span><strong>'+mlPorDia.toFixed(1)+' ml</strong></div><div class="result-row"><span>Tomas por día</span><strong>'+ageInfo.tomas+' tomas</strong></div><div class="result-row"><span>Frecuencia</span><strong>Cada '+ageInfo.frecuenciaHoras+' h</strong></div><div class="result-row"><span>Volumen por toma</span><strong>'+mlPorToma.toFixed(1)+' ml · '+equivToma.replace('≈ ','')+'</strong></div><div class="result-row"><span>Tipo</span><strong>'+(tipo==='comercial'?'📦 Comercial':'🥣 Casera')+'</strong></div>'+comparativa+'<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,140,90,.25);font-size:.8rem;color:var(--puppy-text)"><strong>💡 Nota:</strong> '+tipoFormula+'<br>'+ageInfo.nota+'</div><div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,140,90,.25);font-size:.75rem;color:var(--puppy-text)"><strong>⚠️ Reglas de seguridad:</strong><br>• Temperatura: <strong>38 °C</strong>.<br>• Postura: <strong>boca abajo</strong>.<br>• Neonato <strong>caliente</strong> antes de alimentar.<br>• Estimular eliminación después de cada toma.<br>• Esterilizar biberones tras cada uso.<br>• <strong>Pesar a diario</strong>.</div>';
+resultBox.style.display='block';
+}
+
+let lbState={scale:1,x:0,y:0,rotation:0};let lbDragging=false;let lbStartX=0,lbStartY=0,lbStartTX=0,lbStartTY=0;let lbImageReady=false;
+function abrirLightbox(src,alt,rotation){
+const lb=document.getElementById('lightbox');const img=document.getElementById('lightboxImage');const caption=document.getElementById('lightboxCaption');
+lbState={scale:1,x:0,y:0,rotation:rotation||0};lbImageReady=false;lbDragging=false;
+img.classList.remove('dragging');img.style.width='';img.style.height='';
+caption.textContent=alt||'';lb.classList.add('loading');
+const onReady=()=>{if(lbImageReady)return;lbImageReady=true;lb.classList.remove('loading');ajustarImagenLightbox();aplicarTransformLightbox();};
+img.onload=onReady;img.onerror=function(){lb.classList.remove('loading');caption.textContent='No se pudo cargar la imagen'};
+img.alt=alt||'';img.src=src;
+if(img.complete&&img.naturalWidth)onReady();
+lb.classList.add('active');document.body.style.overflow='hidden';
+document.getElementById('zoomLevel').textContent='100%';
+}
+function ajustarImagenLightbox(){
+const img=document.getElementById('lightboxImage');
+const nw=img.naturalWidth,nh=img.naturalHeight;if(!nw||!nh)return;
+const availW=window.innerWidth*.9,availH=window.innerHeight*.82;
+const rot=((lbState.rotation%180)+180)%180;
+let k=rot===90?Math.min(availW/nh,availH/nw):Math.min(availW/nw,availH/nh);
+if(!isFinite(k)||k<=0)k=1;
+img.style.width=(nw*k)+'px';img.style.height=(nh*k)+'px';
+}
+function aplicarTransformLightbox(){const img=document.getElementById('lightboxImage');img.style.transform='translate('+lbState.x+'px, '+lbState.y+'px) scale('+lbState.scale+') rotate('+lbState.rotation+'deg)';}
+function actualizarZoomLabel(){document.getElementById('zoomLevel').textContent=Math.round(lbState.scale*100)+'%'}
+function zoomLightbox(delta){const nuevo=Math.min(6,Math.max(1,lbState.scale+delta));if(nuevo===lbState.scale)return;lbState.scale=nuevo;if(lbState.scale===1){lbState.x=0;lbState.y=0}aplicarTransformLightbox();actualizarZoomLabel();}
+function rotarLightbox(){lbState.rotation=(lbState.rotation+90)%360;lbState.scale=1;lbState.x=0;lbState.y=0;ajustarImagenLightbox();aplicarTransformLightbox();actualizarZoomLabel()}
+function resetLightbox(){lbState.scale=1;lbState.x=0;lbState.y=0;ajustarImagenLightbox();aplicarTransformLightbox();actualizarZoomLabel()}
+function cerrarLightbox(){const lb=document.getElementById('lightbox');lb.classList.remove('active');lb.classList.remove('loading');document.body.style.overflow='';lbDragging=false}
+
+function renderizarPlantas(){
+const plantGrid=document.getElementById('plantGrid');
+plantGrid.innerHTML='';
+plantData.forEach(p=>{
+const card=document.createElement('div');card.className='plant-card';
+const imgWrapper=document.createElement('div');imgWrapper.className='plant-image-wrapper';
+const img=document.createElement('img');img.className='plant-image';img.src=p.img;img.alt=p.nombre;img.loading='lazy';img.decoding='async';
+img.onerror=function(){imgWrapper.classList.add('error')};
+imgWrapper.appendChild(img);card.appendChild(imgWrapper);
+const info=document.createElement('div');info.className='plant-info';
+info.innerHTML='<div class="plant-name">'+p.nombre+'</div><div class="plant-scientific">'+p.cientifico+'</div><span class="plant-danger">'+p.riesgo+'</span><div class="plant-desc">'+p.desc+'</div>';
+card.appendChild(info);plantGrid.appendChild(card);
+});
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',function(){switchTab(this.dataset.tab)});});
+document.getElementById('btnConsultar').addEventListener('click',consultarAlimento);
+document.getElementById('foodSearch').addEventListener('keypress',function(e){if(e.key==='Enter')consultarAlimento()});
+document.getElementById('foodSearch').addEventListener('input',function(){
+if(this.value.trim()===''){
+const resultBox=document.getElementById('searchResult');
+resultBox.style.display='none';
+resultBox.className='search-result';
+document.getElementById('searchError').style.display='none';
+}
+});
+llenarSelectorRazas(document.getElementById('calcBreed'),'dog');
+actualizarEdadesCalculadora();
+document.getElementById('calcSpecies').addEventListener('change',function(){llenarSelectorRazas(document.getElementById('calcBreed'),this.value);actualizarEdadesCalculadora();});
+document.getElementById('calcBreed').addEventListener('change',actualizarEdadesCalculadora);
+document.getElementById('calcMestizoSize').addEventListener('change',actualizarEdadesCalculadora);
+document.getElementById('calcAge').addEventListener('change',ocultarResultadoCalculadora);
+document.getElementById('calcWeight').addEventListener('input',function(){if(this.value.trim()==='')ocultarResultadoCalculadora();});
+document.getElementById('btnEvaluarPeso').addEventListener('click',calcularPesoIdeal);
+document.getElementById('btnResetPeso').addEventListener('click',resetCalculadora);
+actualizarPorciones();
+document.getElementById('portionSpecies').addEventListener('change',actualizarPorciones);
+document.getElementById('portionBreed').addEventListener('change',ocultarResultadoPorcion);
+document.getElementById('portionStage').addEventListener('change',ocultarResultadoPorcion);
+document.getElementById('portionWeight').addEventListener('input',function(){if(this.value.trim()==='')ocultarResultadoPorcion();});
+document.getElementById('portionMode').addEventListener('change',cambiarModoPorcion);
+document.getElementById('portionFoodType').addEventListener('change',ocultarResultadoPorcion);
+document.getElementById('portionKcal').addEventListener('input',ocultarResultadoPorcion);
+document.getElementById('btnCalcularPorcion').addEventListener('click',calcularPorciones);
+document.getElementById('btnResetPorcion').addEventListener('click',resetCalculadoraPorciones);
+llenarSelectorRazas(document.getElementById('formulaBreed'),'dog');
+document.getElementById('formulaSpecies').addEventListener('change',actualizarFormula);
+document.getElementById('formulaAge').addEventListener('change',cambiarUnidadPesoFormula);
+document.getElementById('formulaWeight').addEventListener('input',function(){if(this.value.trim()==='')ocultarResultadoFormula();});
+document.getElementById('formulaType').addEventListener('change',ocultarResultadoFormula);
+document.getElementById('btnCalcularFormula').addEventListener('click',calcularFormula);
+document.getElementById('btnResetFormula').addEventListener('click',resetCalculadoraFormula);
+renderizarPlantas();
+const lb=document.getElementById('lightbox');const img=document.getElementById('lightboxImage');
+img.addEventListener('pointerdown',function(e){if(!lb.classList.contains('active'))return;lbDragging=true;lbStartX=e.clientX;lbStartY=e.clientY;lbStartTX=lbState.x;lbStartTY=lbState.y;img.classList.add('dragging');try{img.setPointerCapture(e.pointerId)}catch(err){}e.preventDefault();});
+img.addEventListener('pointermove',function(e){if(!lbDragging)return;lbState.x=lbStartTX+(e.clientX-lbStartX);lbState.y=lbStartTY+(e.clientY-lbStartY);aplicarTransformLightbox();e.preventDefault();});
+function terminarArrastre(){if(!lbDragging)return;lbDragging=false;img.classList.remove('dragging')}
+img.addEventListener('pointerup',terminarArrastre);img.addEventListener('pointercancel',terminarArrastre);img.addEventListener('lostpointercapture',terminarArrastre);
+img.addEventListener('dblclick',function(e){e.preventDefault();if(lbState.scale>1){lbState.scale=1;lbState.x=0;lbState.y=0}else{lbState.scale=2.5}aplicarTransformLightbox();actualizarZoomLabel();});
+lb.addEventListener('wheel',function(e){if(!lb.classList.contains('active'))return;e.preventDefault();zoomLightbox(e.deltaY<0?.2:-.2);},{passive:false});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('active'))return;if(e.key==='Escape'){cerrarLightbox()}else if(e.key==='+'||e.key==='='){e.preventDefault();zoomLightbox(.25)}else if(e.key==='-'||e.key==='_'){e.preventDefault();zoomLightbox(-.25)}else if(e.key==='0'){resetLightbox()}else if(e.key==='ArrowLeft'){lbState.x-=40;aplicarTransformLightbox();e.preventDefault()}else if(e.key==='ArrowRight'){lbState.x+=40;aplicarTransformLightbox();e.preventDefault()}else if(e.key==='ArrowUp'){lbState.y-=40;aplicarTransformLightbox();e.preventDefault()}else if(e.key==='ArrowDown'){lbState.y+=40;aplicarTransformLightbox();e.preventDefault()}});
+});
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').catch(function (err) {
+      console.log('No se pudo registrar el service worker:', err);
+    });
+  });
+}
+</script>
+</body>
+</html>
