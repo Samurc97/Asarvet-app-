@@ -1,0 +1,32 @@
+{
+  "name": "ASARVET - Alimentación Segura para Mascotas",
+  "short_name": "ASARVET",
+  "description": "Consulta alimentos, plantas tóxicas, calculadoras de peso y porciones para perros y gatos.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4f7f9",
+  "theme_color": "#0f2a56",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
