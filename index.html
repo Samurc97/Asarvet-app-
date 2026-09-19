@@ -120,8 +120,8 @@ h1{font-size:1.35rem;color:var(--primary-blue);font-weight:700;margin-bottom:5px
 .plant-desc{font-size:.75rem;color:var(--text-dark);line-height:1.5}
 .lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(6,14,28,.95);z-index:9999;overflow:hidden;touch-action:none}
 .lightbox-overlay.active{display:block}
-.lightbox-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.lightbox-image{display:block;pointer-events:auto;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;border-radius:6px;box-shadow:0 12px 50px rgba(0,0,0,.6);background:#fff;max-width:none;max-height:none}
+.lightbox-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:none}
+.lightbox-image{display:block;pointer-events:auto;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;border-radius:6px;box-shadow:0 12px 50px rgba(0,0,0,.6);background:#fff;max-width:none;max-height:none;touch-action:none}
 .lightbox-image.dragging{cursor:grabbing}
 .lightbox-close{position:fixed;top:calc(16px + var(--safe-top));right:calc(16px + var(--safe-right));width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.35);font-size:1.25rem;cursor:pointer;z-index:10001;display:flex;align-items:center;justify-content:center;padding:0}
 .lightbox-close:hover{background:rgba(255,255,255,.3)}
@@ -162,14 +162,19 @@ h1{font-size:1.35rem;color:var(--primary-blue);font-weight:700;margin-bottom:5px
 .calc-result.overweight{background-color:var(--danger-bg);color:var(--danger);border-left:4px solid var(--danger)}
 .calc-result.error{background-color:var(--warning-bg);color:var(--warning-text);border-left:4px solid #ffc107}
 .calc-result.info{background-color:#e3f2fd;color:#0d47a1;border-left:4px solid #1976d2}
+.calc-result.plan-info{background-color:#f3e5f5;color:#4a148c;border-left:4px solid #6a1b9a;border-radius:12px;padding:18px}
 .calc-result.formula-info{background-color:var(--puppy-bg);color:var(--puppy-text);border-left:4px solid var(--puppy-accent);border-radius:12px;padding:18px}
 .calc-result .big-number{font-size:1.4rem;font-weight:800;color:var(--primary-blue);font-family:'Poppins',sans-serif;display:block;margin:4px 0 2px}
+.calc-result.plan-info .big-number{color:#6a1b9a;font-size:1.5rem}
 .calc-result.formula-info .big-number{color:var(--puppy-accent-dark);font-size:1.5rem}
 .calc-result .practical-equivalence{display:block;font-size:.95rem;font-weight:700;color:#1976d2;font-family:'Poppins',sans-serif;margin-bottom:10px;padding:6px 10px;background-color:rgba(25,118,210,.08);border-radius:6px;border-left:3px solid #1976d2}
+.calc-result.plan-info .practical-equivalence{color:#6a1b9a;background-color:rgba(106,27,154,.1);border-left-color:#6a1b9a}
 .calc-result.formula-info .practical-equivalence{color:var(--puppy-accent-dark);background-color:rgba(255,140,90,.1);border-left-color:var(--puppy-accent)}
 .calc-result .result-row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid rgba(15,42,86,.08);font-size:.82rem;flex-wrap:wrap}
 .calc-result .result-row:last-child{border-bottom:none}
 .calc-result .result-row strong{color:var(--primary-blue)}
+.calc-result.plan-info .result-row{border-bottom-color:rgba(106,27,154,.15)}
+.calc-result.plan-info .result-row strong{color:#6a1b9a}
 .calc-result.formula-info .result-row{border-bottom-color:rgba(255,140,90,.15)}
 .calc-result.formula-info .result-row strong{color:var(--puppy-accent-dark)}
 .helper-text{font-size:.72rem;color:var(--text-light);margin-top:4px;line-height:1.35;font-style:italic}
@@ -186,6 +191,11 @@ h1{font-size:1.35rem;color:var(--primary-blue);font-weight:700;margin-bottom:5px
 .bcs-scale-segment{flex:1;height:10px;border-radius:3px;transition:all .2s}
 .bcs-scale-segment.active{height:18px;box-shadow:0 0 0 2px rgba(15,42,86,.3)}
 .bcs-marker{font-size:.7rem;font-weight:700;color:var(--primary-blue);text-align:center;margin-top:2px;font-family:'Poppins',sans-serif}
+.thanks-card{background-color:#f8fafc;border-radius:12px;padding:20px;margin-top:20px;border:1px solid #e2e8f0;border-left:4px solid var(--primary-blue)}
+.thanks-card h4{font-family:'Poppins',sans-serif;font-size:.95rem;color:var(--primary-blue);margin-bottom:12px;font-weight:700}
+.thanks-card p{font-size:.83rem;color:var(--text-dark);line-height:1.7;margin-bottom:10px}
+.thanks-card p:last-child{margin-bottom:0}
+.thanks-card .thanks-signature{margin-top:14px;padding-top:12px;border-top:1px solid #e2e8f0;font-size:.8rem;color:var(--text-light);font-style:italic}
 .version-tag{position:fixed;bottom:calc(8px + var(--safe-bottom));right:calc(10px + var(--safe-right));font-size:.65rem;color:#9aa5b1;font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:.5px;pointer-events:none;z-index:50;opacity:.7}
 @media(max-width:480px){body{padding:10px;padding-left:calc(10px + var(--safe-left));padding-right:calc(10px + var(--safe-right));padding-top:calc(10px + var(--safe-top));padding-bottom:calc(10px + var(--safe-bottom))}.container{padding:18px;border-radius:12px}h1{font-size:1.15rem}.subtitle{font-size:.72rem}.logo{max-width:130px;margin-bottom:10px}.tabs{grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:18px;padding:5px}.tab-btn{font-size:.68rem;padding:10px 4px;min-height:48px}.search-box{padding:14px}.search-input-wrapper{flex-direction:column}.search-input-wrapper input,.search-input-wrapper button{width:100%;min-width:0}.section-title{font-size:.92rem}.info-card,.highlight-box,.warning-box,.danger-box{padding:12px}.info-card p,.highlight-box,.warning-box,.danger-box{font-size:.78rem}.calculator-box{padding:14px}.calculator-box h5{font-size:.92rem}.plant-grid{grid-template-columns:1fr}.bibliography-list li{padding:10px 10px 10px 38px;font-size:.74rem}.bcs-image-wrapper{max-width:100%}.lightbox-controls button{width:38px;height:38px;font-size:1.05rem}.lightbox-close{width:42px;height:42px}.data-table{font-size:.72rem}.data-table th,.data-table td{padding:9px 7px}}
 @media(orientation:landscape) and (max-height:520px){body{padding:8px;padding-left:calc(8px + var(--safe-left));padding-right:calc(8px + var(--safe-right));padding-top:calc(8px + var(--safe-top));padding-bottom:calc(8px + var(--safe-bottom))}.container{max-width:100%;padding:14px 20px}header{margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:14px}.logo{max-width:60px;margin-bottom:0}h1{font-size:1rem;margin-bottom:2px}.subtitle{font-size:.68rem}.tabs{grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:14px}.tab-btn{font-size:.62rem;padding:8px 3px;min-height:44px}.section-title{margin:12px 0 8px}.plant-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}.bcs-image-wrapper{max-width:75%}.pros-cons-grid{grid-template-columns:1fr 1fr}.calc-result .big-number{font-size:1.2rem}}
@@ -534,6 +544,16 @@ select,input,button,textarea{max-width:100%}
 <label for="portionBreed">Raza:</label>
 <select id="portionBreed"><option value="">-- Selecciona una raza --</option></select>
 </div>
+<div class="form-group" id="portionMestizoSizeGroup" style="display:none">
+<label for="portionMestizoSize">Tamaño estimado del mestizo (según los padres):</label>
+<select id="portionMestizoSize">
+<option value="">-- Selecciona el tamaño --</option>
+<option value="pequeno">🐕 Pequeño</option>
+<option value="mediano">🐕 Mediano</option>
+<option value="grande">🐕 Grande</option>
+<option value="gigante">🐕 Gigante</option>
+</select>
+</div>
 <div class="form-group">
 <label for="portionStage">Etapa de vida:</label>
 <select id="portionStage"></select>
@@ -544,7 +564,11 @@ select,input,button,textarea{max-width:100%}
 </div>
 <div class="form-group">
 <label for="portionMode">Modo de cálculo:</label>
-<select id="portionMode"><option value="tipo">📦 Por tipo de alimento (recomendado)</option><option value="kcal">🔬 Por kcal conocidas (avanzado)</option></select>
+<select id="portionMode">
+<option value="tipo">📦 Por tipo de alimento (recomendado)</option>
+<option value="kcal">🔬 Por kcal conocidas (avanzado)</option>
+<option value="plan">🎯 Plan de ajuste de peso (según BCS)</option>
+</select>
 </div>
 <div class="form-group" id="portionTipoGroup">
 <label for="portionFoodType">Tipo de alimento:</label>
@@ -626,7 +650,7 @@ select,input,button,textarea{max-width:100%}
 <span class="zoom-badge">🔍 Ampliar</span>
 <img src="https://i.postimg.cc/QM4gRT0q/Final-Dog-BCS-2026.webp" alt="Escala de Condición Corporal para Perros" class="bcs-image-dog" decoding="async" onerror="this.parentElement.classList.add('error')">
 </div>
-<p class="zoom-hint">🔍 Toca o haz clic en la imagen para ampliarla</p>
+<p class="zoom-hint">🔍 Toca o haz clic en la imagen para ampliarla · pellizca con 2 dedos para hacer zoom</p>
 </div>
 <h4 class="section-title">🐱 Escala de Condición Corporal - Gatos</h4>
 <div class="info-card">
@@ -635,7 +659,7 @@ select,input,button,textarea{max-width:100%}
 <span class="zoom-badge">🔍 Ampliar</span>
 <img src="https://i.postimg.cc/GmMs21YP/Final-Client-Cat-BCS-2026.webp" alt="Escala de Condición Corporal para Gatos" class="bcs-image-cat" decoding="async" onerror="this.parentElement.classList.add('error')">
 </div>
-<p class="zoom-hint">🔍 Toca o haz clic en la imagen para ampliarla</p>
+<p class="zoom-hint">🔍 Toca o haz clic en la imagen para ampliarla · pellizca con 2 dedos para hacer zoom</p>
 </div>
 <h4 class="section-title">🧮 Calculadora de Peso Ideal</h4>
 <div class="calculator-box">
@@ -786,32 +810,43 @@ select,input,button,textarea{max-width:100%}
 <div id="tab-referencias" class="tab-content">
 <h4 class="section-title">📚 Fuentes Bibliográficas</h4>
 <div class="info-card">
-<p style="font-size:.85rem;color:var(--text-dark);line-height:1.6;margin-bottom:15px">Esta guía ha sido elaborada a partir de las siguientes fuentes de referencia en nutrición, toxicología y bienestar animal.</p>
 <ol class="bibliography-list">
-<li>American Animal Hospital Association (2024) <em>AAHA Nutrition and Weight Management Guidelines for Dogs and Cats</em>. Lakewood, CO: AAHA Press. <em>[Nutrición general, BCS, manejo de peso]</em></li>
-<li>American Animal Hospital Association &amp; American Association of Feline Practitioners (2021) <em>AAHA/AAFP Feline Life Stage Guidelines</em>. Lakewood, CO: AAHA Press. <em>[Etapas de vida felinas, edad senior en gatos]</em></li>
+<li>American Animal Hospital Association (2024) <em>AAHA Nutrition and Weight Management Guidelines for Dogs and Cats</em>. Lakewood, CO: AAHA Press. <em>[Nutrición general, BCS, manejo de peso, factores MER para mantenimiento, pérdida y ganancia de peso]</em></li>
+<li>American Animal Hospital Association &amp; American Association of Feline Practitioners (2021) <em>AAHA/AAFP Feline Life Stage Guidelines</em>. Lakewood, CO: AAHA Press. <em>[Etapas de vida felinas, edad senior en gatos, requerimientos energéticos por etapa]</em></li>
 <li>American Society for the Prevention of Cruelty to Animals (2024) <em>People Foods to Avoid Feeding Your Pets</em>. New York: ASPCA. <em>[Alimentos tóxicos y peligrosos]</em></li>
-<li>Association of American Feed Control Officials (2024) <em>AAFCO Official Publication</em>. Champaign, IL: AAFCO. <em>[Estándares de piensos comerciales]</em></li>
+<li>Association of American Feed Control Officials (2024) <em>AAFCO Official Publication</em>. Champaign, IL: AAFCO. <em>[Estándares de piensos comerciales, perfiles nutricionales por etapa]</em></li>
 <li>Banfield Pet Hospital (2023) <em>State of Pet Health Report</em>. Portland, OR: Banfield Pet Hospital. <em>[Edades senior por tamaño de raza]</em></li>
+<li>Butterwick, R.F. and Hawthorne, A.J. (1998) 'Advances in dietary management of obesity in dogs and cats', <em>The Journal of Nutrition</em>, 128(12), pp. 2771S-2775S. <em>[Bases del cálculo de déficit calórico para pérdida de peso en perros y gatos; fundamento del factor 0.8-1.0 × RER]</em></li>
 <li>Cornell University College of Veterinary Medicine (2023) <em>Toxic Plants for Cats and Dogs</em>. Ithaca, NY: Cornell University. <em>[Plantas tóxicas]</em></li>
-<li>European Pet Food Industry Federation (2024) <em>Nutritional Guidelines for Complete and Complementary Pet Food for Cats and Dogs</em>. Brussels: FEDIAF. <em>[Estándares europeos de piensos]</em></li>
+<li>European Pet Food Industry Federation (2024) <em>Nutritional Guidelines for Complete and Complementary Pet Food for Cats and Dogs</em>. Brussels: FEDIAF. <em>[Estándares europeos de piensos, requerimientos mínimos y máximos]</em></li>
 <li>Freeman, L.M., Chandler, M.L., Hamper, B.A. and Weeth, L.P. (2018) 'Current knowledge about the risks and benefits of raw meat-based diets for dogs and cats', <em>JAVMA</em>, 243(11), pp. 1549-1558. <em>[Riesgos de dietas crudas / BARF]</em></li>
-<li>Hand, M.S., Thatcher, C.D., Remillard, R.L., Roudebush, P. and Novotny, B.J. (2010) <em>Small Animal Clinical Nutrition</em>. 5th edn. Topeka, KS: Mark Morris Institute. <em>[Nutrición clínica veterinaria]</em></li>
+<li>German, A.J. (2006) 'The growing problem of obesity in dogs and cats', <em>The Journal of Nutrition</em>, 136(7), pp. 1940S-1946S. <em>[Epidemiología de la obesidad, riesgos asociados, manejo del peso]</em></li>
+<li>Hand, M.S., Thatcher, C.D., Remillard, R.L., Roudebush, P. and Novotny, B.J. (2010) <em>Small Animal Clinical Nutrition</em>. 5th edn. Topeka, KS: Mark Morris Institute. <em>[Nutrición clínica veterinaria, factores MER, ganancia de peso, recuperación nutricional, planes de ajuste de peso]</em></li>
+<li>Laflamme, D.P. (1997) 'Development and validation of a body condition score system for dogs', <em>Canine Practice</em>, 22(4), pp. 10-15. <em>[Escala de condición corporal de 9 puntos para perros]</em></li>
+<li>Laflamme, D.P. (1997) 'Development and validation of a body condition score system for cats: a clinical tool', <em>Feline Practice</em>, 25(5-6), pp. 13-18. <em>[Escala de condición corporal de 9 puntos para gatos]</em></li>
 <li>Merck &amp; Co. (2025) <em>Merck Veterinary Manual</em>. 12th edn. Rahway, NJ: Merck &amp; Co. <em>[Referencia clínica general y toxicología de medicamentos]</em></li>
-<li>National Research Council (2006) <em>Nutrient Requirements of Dogs and Cats</em>. Washington, DC: National Academies Press. <em>[Fórmulas RER/MER, requerimientos nutricionales]</em></li>
+<li>National Research Council (2006) <em>Nutrient Requirements of Dogs and Cats</em>. Washington, DC: National Academies Press. <em>[Fórmulas RER/MER, requerimientos nutricionales, factores de energía metabolizable]</em></li>
 <li>Pet Poison Helpline (2024) <em>Toxic and Non-Toxic Plants</em>. Minneapolis: Pet Poison Helpline. <em>[Toxicidad de plantas y medicamentos]</em></li>
-<li>Purina Institute (2025) <em>Nutritional Assessment Guidelines</em>. St. Louis, MO: Nestlé Purina. <em>[Evaluación nutricional, BCS, MCS]</em></li>
-<li>Tufts University Cummings School of Veterinary Medicine (2023) <em>Pet Nutrition Resources</em>. North Grafton, MA: Tufts University. <em>[Recursos de nutrición para tutores]</em></li>
-<li>World Small Animal Veterinary Association (2024) <em>Global Nutrition Guidelines</em>. Gloucester: WSAVA. <em>[Guías globales de nutrición, etapas de vida]</em></li>
+<li>Purina Institute (2025) <em>Nutritional Assessment Guidelines</em>. St. Louis, MO: Nestlé Purina. <em>[Evaluación nutricional, BCS, MCS, planes de manejo de peso]</em></li>
+<li>Tufts University Cummings School of Veterinary Medicine (2023) <em>Pet Nutrition Resources</em>. North Grafton, MA: Tufts University. <em>[Recursos de nutrición para tutores, transición dietética, alimentación por etapas]</em></li>
+<li>World Small Animal Veterinary Association (2024) <em>Global Nutrition Guidelines</em>. Gloucester: WSAVA. <em>[Guías globales de nutrición, etapas de vida, evaluación del estado corporal, planes de pérdida y ganancia de peso]</em></li>
 </ol>
 </div>
 <div class="highlight-box"><strong>💡 Nota:</strong> Si deseas consultar alguna de estas fuentes, puedes buscar los títulos en Google Scholar o en la web oficial de cada organismo.</div>
 <div class="warning-box"><strong>⚠️ Aviso:</strong> Esta guía es material educativo para tutores y no sustituye la consulta con un médico veterinario. Cada mascota es única y requiere una evaluación individual.</div>
+
+<div class="thanks-card">
+<h4>Agradecimiento</h4>
+<p>Esta guía fue elaborada con el objetivo de proporcionar a los tutores información clara, accesible y basada en evidencia sobre el cuidado nutricional de sus mascotas. Su desarrollo se fundamenta en fuentes veterinarias de referencia internacional y en la convicción de que el acceso a información rigurosa contribuye directamente al bienestar animal.</p>
+<p>Agradecemos a los tutores que se toman el tiempo de informarse y de actuar con responsabilidad sobre la salud de sus animales, así como a los profesionales veterinarios cuyo trabajo diario inspira herramientas como esta.</p>
+<p>Recordamos que este material tiene fines exclusivamente educativos y no sustituye en ningún caso la valoración clínica, el diagnóstico ni el tratamiento que pueda realizar un médico veterinario.</p>
+<div class="thanks-signature">— Equipo ASARVET</div>
+</div>
 </div>
 
 </div>
 
-<div class="version-tag">V1.0.0</div>
+<div class="version-tag">V1.0.2</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox-overlay" id="lightbox" onclick="if(event.target===this)cerrarLightbox()">
@@ -831,7 +866,7 @@ select,input,button,textarea{max-width:100%}
 </div>
 
 <script>
-/* ========== BASE DE DATOS DE ALIMENTOS (solo alimentos, sin medicamentos) ========== */
+/* ========== BASE DE DATOS DE ALIMENTOS ========== */
 const foodDatabase={
 toxic:{
 'chocolate':'Tóxico. Contiene teobromina y cafeína, que perros y gatos no metabolizan bien. Los síntomas aparecen en 6-12 horas: vómitos, diarrea, hiperactividad, temblores, arritmias cardíacas, convulsiones y en casos graves la muerte. El chocolate negro y el cacao puro son más peligrosos que el con leche.',
@@ -1313,17 +1348,14 @@ const foodEmojis={
 'caguama':'🐢','tortuga marina':'🐢','carey':'🐢','tortuga verde':'🐢',
 'pulpo':'🐙','calamar':'🦑','langosta':'🦞','almejas':'🦪','ostiones':'🦪','mejillones':'🦪',
 'erizo de mar':'🦔','pepino de mar':'🥒','caracol de mar':'🐚','caracol':'🐌','concha':'🦪','conejo de mar':'🐚',
-/* ===== Emojis de cereales ===== */
 'arroz':'🍚','arroz blanco':'🍚','arroz integral':'🍚','maíz':'🌽','maíz dulce':'🌽','elote':'🌽','choclo':'🌽',
 'polenta':'🌽','palomitas de maíz':'🍿','palomitas':'🍿','palomitas naturales':'🍿','harina de maíz':'🌽',
 'avena':'🥣','copos de avena':'🥣','quinoa':'🌾','cebada':'🌾','centeno':'🌾','trigo':'🌾','trigo sarraceno':'🌾',
 'amaranto':'🌾','mijo':'🌾','sémola':'🌾','cuscús':'🌾','pan de centeno':'🍞',
-/* ===== Emojis de tubérculos y vegetales adicionales ===== */
 'yautía':'🥔','taro':'🥔','lerenes':'🥔','palmito':'🌴','corazón de palma':'🌴','hinojo':'🌿','rúcula':'🥬',
 'endibia':'🥬','escarola':'🥬','berza':'🥬','canónigo':'🌿','verdolaga verde':'🌿','calabaza de castilla':'🎃',
 'calabaza moscada':'🎃','auyama':'🎃','chilacayote':'🎃','chayotillo':'🥒','tindora':'🥒','quelite':'🌿',
 'chipilín':'🌿','flor de calabaza':'🌼','flor de izote':'🌼',
-/* ===== Emojis de frutas nativas ===== */
 'mamey':'🥭','zapote':'🥭','mamey colorado':'🥭','zapote colorado':'🥭','anón':'🍈','anona':'🍈','icaco':'🍑',
 'marañón':'🍎','fruta de marañón':'🍎','cajú':'🍎','tamarindo':'🌰','noni':'🥝','fruta bomba':'🥭',
 'torombolo':'🥝','curuba':'🥝','badea':'🥝','granadilla de monte':'🥝','zapote blanco':'🥭',
@@ -1427,6 +1459,34 @@ return[{value:'destete',label:'🐶 Destete (1 - 2 meses)'},{value:'cachorro',la
 
 const portionFactors={dog:{destete:{factor:3,tomas:'3-4',label:'Destete (1-2 meses)'},cachorro:{factor:3,tomas:'3-4',label:'Cachorro (2-4 meses)'},joven:{factor:2,tomas:'2-3',label:'Joven (4-12 meses)'},adulto:{factor:1.6,tomas:'2-3',label:'Adulto (1-7 años)'},senior:{factor:1.4,tomas:'2',label:'Senior (+7 años)'}},cat:{destete:{factor:2.5,tomas:'4-5',label:'Destete (1-2 meses)'},gatito:{factor:2.5,tomas:'3-4',label:'Gatito (2-6 meses)'},joven:{factor:2,tomas:'3',label:'Joven (6-12 meses)'},adulto:{factor:1.2,tomas:'2-3',label:'Adulto (1-10 años)'},senior:{factor:1.1,tomas:'2-3',label:'Senior (+10 años)'}}};
 
+const portionStageWeightFactors={
+dog:{
+destete:{min:0.12,max:0.20},
+cachorro:{min:0.25,max:0.42},
+joven:{min:0.60,max:0.95},
+adulto:{min:1.00,max:1.00},
+senior:{min:1.00,max:1.05}
+},
+cat:{
+destete:{min:0.20,max:0.30},
+gatito:{min:0.40,max:0.75},
+joven:{min:0.80,max:1.00},
+adulto:{min:1.00,max:1.00},
+senior:{min:1.00,max:1.05}
+}
+};
+
+function evaluarPesoVsRango(peso,expectedMin,expectedMax){
+if(peso<expectedMin*0.8)return{bcs:2,categoria:'Bajo peso',color:'#c62828',bgColor:'#ffebee',status:'underweight'};
+if(peso<expectedMin*0.9)return{bcs:3,categoria:'Bajo peso',color:'#e65100',bgColor:'#fff3e0',status:'underweight'};
+if(peso<expectedMin)return{bcs:4,categoria:'Delgado (ideal)',color:'#2e7d32',bgColor:'#e8f5e9',status:'ideal'};
+if(peso<=expectedMax)return{bcs:5,categoria:'Ideal',color:'#2e7d32',bgColor:'#e8f5e9',status:'ideal'};
+if(peso<=expectedMax*1.1)return{bcs:6,categoria:'Ligeramente sobrepeso',color:'#856404',bgColor:'#fff3cd',status:'slightly-overweight'};
+if(peso<=expectedMax*1.2)return{bcs:7,categoria:'Sobrepeso',color:'#e65100',bgColor:'#fff3e0',status:'overweight'};
+if(peso<=expectedMax*1.35)return{bcs:8,categoria:'Obeso',color:'#c62828',bgColor:'#ffebee',status:'obese'};
+return{bcs:9,categoria:'Obesidad severa',color:'#c62828',bgColor:'#ffebee',status:'obese'};
+}
+
 const neonateWeightRanges={mini:{w1:[100,250],w2:[200,350],w3:[300,500],w4:[400,700]},pequeno:{w1:[150,350],w2:[250,500],w3:[400,700],w4:[600,1000]},mediano:{w1:[250,450],w2:[400,700],w3:[600,1000],w4:[900,1400]},grande:{w1:[350,600],w2:[550,900],w3:[800,1300],w4:[1200,1800]},gigante:{w1:[500,800],w2:[800,1200],w3:[1100,1700],w4:[1500,2300]},cat_uniform:{w1:[100,180],w2:[180,280],w3:[280,400],w4:[400,550]}};
 
 const formulaSchedule={w1:{mlPorKgDia:130,tomas:12,descripcion:'Semana 1 (0-7 días)',frecuenciaHoras:2,nota:'Alimentación cada 2 horas, incluso de noche.'},w2:{mlPorKgDia:150,tomas:8,descripcion:'Semana 2 (7-14 días)',frecuenciaHoras:3,nota:'Alimentación cada 3 horas. Empiezan a abrir los ojos.'},w3:{mlPorKgDia:175,tomas:6,descripcion:'Semana 3 (14-21 días)',frecuenciaHoras:4,nota:'Alimentación cada 4 horas. Ya sostienen la cabeza.'},w4:{mlPorKgDia:200,tomas:5,descripcion:'Semana 4 (21-28 días)',frecuenciaHoras:5,nota:'Alimentación cada 5 horas. Comienzan a explorar.'}};
@@ -1434,6 +1494,57 @@ const formulaSchedule={w1:{mlPorKgDia:130,tomas:12,descripcion:'Semana 1 (0-7 d�
 const foodTypeKcal={seco_estandar:{kcal:350,label:'Croquetas secas estándar'},seco_premium:{kcal:390,label:'Croquetas secas premium / alta proteína'},seco_cachorro:{kcal:400,label:'Croquetas para cachorro / gatito'},humedo:{kcal:90,label:'Comida húmeda (lata o sobre)'},casero:{kcal:140,label:'Comida casera cocida'},barf:{kcal:170,label:'Dieta BARF / cruda'}};
 
 const foodTypeDensity={seco_estandar:120,seco_premium:115,seco_cachorro:118,humedo:240,casero:200,barf:200};
+
+const foodCompatMatrix={
+dog:{
+destete:{seco_estandar:'bad',seco_premium:'bad',seco_cachorro:'ok',humedo:'ok',casero:'warn',barf:'bad'},
+cachorro:{seco_estandar:'warn',seco_premium:'ok',seco_cachorro:'ok',humedo:'ok',casero:'warn',barf:'bad'},
+joven:{seco_estandar:'ok',seco_premium:'ok',seco_cachorro:'ok',humedo:'ok',casero:'warn',barf:'warn'},
+adulto:{seco_estandar:'ok',seco_premium:'ok',seco_cachorro:'warn',humedo:'ok',casero:'warn',barf:'warn'},
+senior:{seco_estandar:'ok',seco_premium:'ok',seco_cachorro:'warn',humedo:'ok',casero:'warn',barf:'bad'}
+},
+cat:{
+destete:{seco_estandar:'bad',seco_premium:'bad',seco_cachorro:'ok',humedo:'ok',casero:'warn',barf:'bad'},
+gatito:{seco_estandar:'warn',seco_premium:'ok',seco_cachorro:'ok',humedo:'ok',casero:'warn',barf:'bad'},
+joven:{seco_estandar:'ok',seco_premium:'ok',seco_cachorro:'ok',humedo:'ok',casero:'warn',barf:'bad'},
+adulto:{seco_estandar:'ok',seco_premium:'ok',seco_cachorro:'warn',humedo:'ok',casero:'warn',barf:'bad'},
+senior:{seco_estandar:'ok',seco_premium:'ok',seco_cachorro:'warn',humedo:'ok',casero:'warn',barf:'bad'}
+}
+};
+
+function evaluarCompatibilidadAlimento(species,stage,foodTypeKey){
+const row=foodCompatMatrix[species]&&foodCompatMatrix[species][stage];
+return(row&&row[foodTypeKey])||'ok';
+}
+
+function getAlternativaRecomendada(species,stage){
+if(stage==='destete'||stage==='cachorro'||stage==='gatito'||stage==='joven')return'seco_cachorro';
+return'seco_estandar';
+}
+
+function generarNotaCompatibilidad(species,stage,foodTypeKey){
+const status=evaluarCompatibilidadAlimento(species,stage,foodTypeKey);
+const mensajes={
+seco_estandar:{ok:'Las croquetas estándar son apropiadas para esta etapa. Aportan un balance adecuado de nutrientes.',warn:'Las croquetas estándar no son las más apropiadas para esta etapa. Se recomienda un alimento específico para la etapa.',bad:'Las croquetas estándar no están formuladas para cubrir las necesidades nutricionales de esta etapa.'},
+seco_premium:{ok:'Las croquetas premium son apropiadas para esta etapa y aportan mayor calidad proteica.',warn:'Las croquetas premium pueden ser demasiado ricas (calóricas/proteicas) para esta etapa.',bad:'Las croquetas premium no están formuladas para esta etapa de vida.'},
+seco_cachorro:{ok:'Las croquetas para cachorro/gatito son las ideales para esta etapa de crecimiento.',warn:'Las croquetas para cachorro/gatito son muy calóricas para un animal adulto y pueden favorecer el sobrepeso.',bad:'Las croquetas para cachorro/gatito no son apropiadas para esta etapa.'},
+humedo:{ok:'La comida húmeda es excelente para esta etapa, especialmente por su aporte de agua.',warn:'La comida húmeda es aceptable, pero vigila que cubra todos los requerimientos nutricionales.',bad:'La comida húmeda por sí sola no cubre todos los requerimientos nutricionales de esta etapa.'},
+casero:{ok:'La comida casera es viable siempre que esté formulada y suplementada por un veterinario nutricionista.',warn:'La comida casera requiere formulación profesional y suplementación obligatoria (calcio, omega-3, vitaminas). No improvisar.',bad:'La comida casera no debe usarse en esta etapa sin supervisión veterinaria estricta.'},
+barf:{ok:'La dieta BARF debe ser supervisada por un veterinario nutricionista.',warn:'La dieta BARF conlleva riesgos microbiológicos y de desequilibrio. Requiere supervisión profesional obligatoria.',bad:'La dieta BARF está desaconsejada en esta etapa por riesgos microbiológicos (Salmonella, E. coli) y de desequilibrio nutricional.'}
+};
+const msg=mensajes[foodTypeKey]?mensajes[foodTypeKey][status]:'';
+if(status==='ok'){
+return '<div style="margin-top:12px;padding:12px;background-color:rgba(46,125,50,.1);border-left:4px solid #2e7d32;border-radius:8px;font-size:.82rem;color:#2e7d32;line-height:1.5"><strong>✅ Alimento recomendado para esta etapa:</strong><br>'+msg+'</div>';
+}
+const alt=getAlternativaRecomendada(species,stage);
+const altLabel=foodTypeKcal[alt]?foodTypeKcal[alt].label:alt;
+const color=status==='bad'?'#c62828':'#856404';
+const bg=status==='bad'?'rgba(211,47,47,.08)':'rgba(255,193,7,.18)';
+const border=status==='bad'?'#d32f2f':'#ffc107';
+const icon=status==='bad'?'❌':'⚠️';
+const title=status==='bad'?'Alimento NO recomendado para esta etapa':'Precaución con este alimento';
+return '<div style="margin-top:12px;padding:12px;background-color:'+bg+';border-left:4px solid '+border+';border-radius:8px;font-size:.82rem;color:'+color+';line-height:1.5"><strong>'+icon+' '+title+':</strong><br>'+msg+'<div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,.1)"><strong>💡 Alternativa recomendada:</strong> '+altLabel+'</div></div>';
+}
 
 const plantData=[
 {nombre:'Malanga de corazón',cientifico:'Alocasia cucullata',riesgo:'Muy tóxica',desc:'Cristales de oxalato de calcio. Irritación oral intensa, inflamación de boca y lengua.',img:'https://i.postimg.cc/437KRM6S/Alocasia-cucullata-%28Philippines%29-01.jpg'},
@@ -1524,10 +1635,12 @@ resultBox.style.display='block';
 
 function llenarSelectorRazas(selectEl,species){
 selectEl.innerHTML='<option value="">-- Selecciona una raza --</option>';
+if(species==='dog'){
 const mestizo=document.createElement('option');
 mestizo.value='mestizo';
-mestizo.textContent=species==='dog'?'🐾 Mestizo / Sin raza específica':'🐾 Común Europeo (referencia general)';
+mestizo.textContent='🐾 Mestizo / Sin raza específica';
 selectEl.appendChild(mestizo);
+}
 const breeds=species==='dog'?dogBreeds:catBreeds;
 if(species==='dog'){
 for(const grupo in dogBreedGroups){
@@ -1546,7 +1659,7 @@ const breedKey=document.getElementById('calcBreed').value;
 const mestizoSize=document.getElementById('calcMestizoSize').value;
 const ageSelect=document.getElementById('calcAge');
 const mestizoGroup=document.getElementById('mestizoSizeGroup');
-if(breedKey==='mestizo'){mestizoGroup.style.display='block';}else{mestizoGroup.style.display='none';}
+if(breedKey==='mestizo' && species==='dog'){mestizoGroup.style.display='block';}else{mestizoGroup.style.display='none';}
 const stages=getAgeStages(species,breedKey,mestizoSize);
 ageSelect.innerHTML='<option value="">-- Selecciona la edad --</option>';
 stages.forEach(s=>{const opt=document.createElement('option');opt.value=s.value;opt.textContent=s.label;ageSelect.appendChild(opt);});
@@ -1613,14 +1726,15 @@ return '<div class="bcs-scale-bar">'+segmentos.join('')+'</div>'+
 
 function calcularPesoIdeal(){
 const species=document.getElementById('calcSpecies').value;
-const breedKey=document.getElementById('calcBreed').value;
+let breedKey=document.getElementById('calcBreed').value;
 const mestizoSize=document.getElementById('calcMestizoSize').value;
 const ageKey=document.getElementById('calcAge').value;
 const peso=parseFloat(document.getElementById('calcWeight').value);
 const resultBox=document.getElementById('calcResult');
 const emoji=species==='dog'?'🐕':'🐱';
+if(species==='cat' && breedKey==='mestizo'){breedKey='comun';}
 if(!breedKey){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona una raza.';resultBox.style.display='block';return}
-if(breedKey==='mestizo'&&!mestizoSize){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona el tamaño estimado del mestizo.';resultBox.style.display='block';return}
+if(breedKey==='mestizo' && species==='dog' && !mestizoSize){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona el tamaño estimado del mestizo.';resultBox.style.display='block';return}
 if(!ageKey){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona la edad.';resultBox.style.display='block';return}
 if(isNaN(peso)||peso<=0){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, ingresa un peso válido mayor a 0.';resultBox.style.display='block';return}
 const ageInfo=getAgeInfo(species,breedKey,mestizoSize,ageKey);
@@ -1691,14 +1805,18 @@ resultBox.innerHTML=estadoHtml+bcsHtml+notaTamaño;
 resultBox.style.display='block';
 }
 
+/* ========== CALCULADORA DE PORCIONES ========== */
 function actualizarPorciones(){
 const species=document.getElementById('portionSpecies').value;
 const breedSelect=document.getElementById('portionBreed');
 const stageSelect=document.getElementById('portionStage');
 llenarSelectorRazas(breedSelect,species);
 const stages=getPortionStages(species);
-stageSelect.innerHTML='';
+stageSelect.innerHTML='<option value="">-- Selecciona la etapa --</option>';
 stages.forEach(s=>{const opt=document.createElement('option');opt.value=s.value;opt.textContent=s.label;stageSelect.appendChild(opt);});
+const mestizoGroup=document.getElementById('portionMestizoSizeGroup');
+const breedValue=breedSelect.value;
+if(species==='dog' && breedValue==='mestizo'){mestizoGroup.style.display='block';}else{mestizoGroup.style.display='none';}
 ocultarResultadoPorcion();
 }
 
@@ -1711,30 +1829,184 @@ document.getElementById('portionWeight').value='';
 document.getElementById('portionMode').value='tipo';
 document.getElementById('portionFoodType').value='seco_estandar';
 document.getElementById('portionKcal').value='350';
+document.getElementById('portionMestizoSize').value='';
+document.getElementById('portionMestizoSizeGroup').style.display='none';
 cambiarModoPorcion();
 }
 
 function cambiarModoPorcion(){
 const mode=document.getElementById('portionMode').value;
-document.getElementById('portionTipoGroup').style.display=mode==='tipo'?'block':'none';
-document.getElementById('portionKcalGroup').style.display=mode==='kcal'?'block':'none';
+document.getElementById('portionTipoGroup').style.display=(mode==='tipo'||mode==='plan')?'block':'none';
+document.getElementById('portionKcalGroup').style.display=(mode==='kcal')?'block':'none';
 ocultarResultadoPorcion();
+}
+
+function mostrarAdvertenciaSobrepeso(resultBox,species,breedDisplayName,peso,expectedMin,expectedMax,wStatus,emoji,stageLabel){
+const color=wStatus.status==='obese'?'#c62828':'#e65100';
+const bg=wStatus.status==='obese'?'rgba(211,47,47,.1)':'rgba(230,81,0,.1)';
+const border=wStatus.status==='obese'?'#d32f2f':'#e65100';
+const titulo=wStatus.status==='obese'?'🚨 OBESIDAD — No se calcula porción':'⚠️ SOBREPESO — No se calcula porción';
+resultBox.className='calc-result error';
+resultBox.innerHTML=
+'<div style="background-color:'+bg+';border-left:4px solid '+border+';border-radius:10px;padding:14px;font-size:.85rem;color:'+color+';line-height:1.6">'+
+'<strong style="font-size:1rem;display:block;margin-bottom:8px">'+titulo+'</strong>'+
+'<p style="margin-bottom:8px">Tu '+breedDisplayName.toLowerCase()+' ('+stageLabel.toLowerCase()+') pesa <strong>'+peso.toFixed(1)+' kg</strong>, cuando el peso ideal para su etapa es <strong>'+expectedMin.toFixed(1)+' – '+expectedMax.toFixed(1)+' kg</strong>.</p>'+
+'<div style="background:#fff;border-radius:8px;padding:10px;margin-top:10px">'+
+'<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap">'+
+'<span style="font-size:2rem;font-weight:800;color:'+wStatus.color+';font-family:\'Poppins\',sans-serif">'+wStatus.bcs+'/9</span>'+
+'<span style="font-size:.85rem;font-weight:700;padding:4px 10px;border-radius:20px;background:'+wStatus.bgColor+';color:'+wStatus.color+'">'+wStatus.categoria+'</span>'+
+'</div>'+
+generarEscalaBCS(wStatus.bcs)+
+'</div>'+
+'<p style="margin-top:10px;margin-bottom:6px"><strong>❌ No se recomienda calcular una porción de mantenimiento para este peso:</strong> alimentar según el peso actual solo mantendría o aumentaría el sobrepeso. Usa el <strong>Plan de ajuste de peso</strong> para un plan de pérdida supervisado.</p>'+
+'<div style="background:#fff;border-radius:8px;padding:10px;margin-top:10px">'+
+'<strong style="display:block;margin-bottom:6px;color:var(--primary-blue)">💡 Qué hacer:</strong>'+
+'<ol style="margin-left:18px;line-height:1.7">'+
+'<li>Cambia el modo de cálculo a <strong>🎯 Plan de ajuste de peso (según BCS)</strong> para obtener el plan de pérdida.</li>'+
+'<li>Consulta la <strong>Calculadora de Peso Ideal</strong> para conocer el peso objetivo.</li>'+
+'<li>Solicita a tu veterinario un <strong>plan de pérdida de peso</strong> supervisado.</li>'+
+'<li>Aumenta gradualmente el ejercicio y controla los premios (máx. 10% de las calorías diarias).</li>'+
+'</ol>'+
+'</div>'+
+'<button type="button" onclick="switchTab(\'pesaje\')" style="margin-top:12px;padding:10px 16px;background:'+border+';color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:\'Poppins\',sans-serif;font-size:.85rem">📊 Ir a la Calculadora de Peso Ideal</button>'+
+'</div>';
+resultBox.style.display='block';
+}
+
+function calcularPlanAjustePeso(species,stage,peso,idealRange,expectedMin,expectedMax,wStatus,kcal,foodLabel,tipoAlimento,info,emoji,breedDisplayName,resultBox){
+const idealMid=(expectedMin+expectedMax)/2;
+
+let pesoObjetivo,merFactor,objetivo,color,bgColor,borderColor,icono,mensaje,metaTexto;
+let semanasEstimadas='';
+
+if(wStatus.status==='underweight'){
+pesoObjetivo=idealMid;
+merFactor=1.3;
+objetivo='📈 Aumento de peso';
+color='#e65100';bgColor='rgba(230,81,0,.1)';borderColor='#e65100';icono='📈';
+mensaje='Plan para <strong>aumentar peso de forma segura</strong>. El cálculo se basa en el <strong>peso ideal</strong> de tu mascota (no en el peso actual) y aplica un factor de '+merFactor+' para promover una ganancia gradual y saludable.';
+metaTexto='Alcanzar <strong>'+pesoObjetivo.toFixed(1)+' kg</strong> (peso ideal para su etapa)';
+const gananciaSemanal=pesoObjetivo*0.015;
+semanasEstimadas='📅 Ganancia esperada: <strong>~'+(gananciaSemanal*1000).toFixed(0)+' g/semana</strong> (1-2% del peso objetivo). Tiempo estimado: ~'+Math.ceil((pesoObjetivo-peso)/(gananciaSemanal||1))+' semanas.';
+}else if(wStatus.status==='ideal'){
+pesoObjetivo=peso;
+merFactor=1.4;
+objetivo='⚖️ Mantenimiento';
+color='#2e7d32';bgColor='rgba(46,125,50,.1)';borderColor='#2e7d32';icono='✅';
+mensaje='Plan de <strong>mantenimiento</strong>. Tu mascota está en su peso ideal. Este cálculo reproduce las condiciones energéticas estándar para su especie y etapa.';
+metaTexto='Mantener el peso actual (<strong>'+peso.toFixed(1)+' kg</strong>)';
+semanasEstimadas='📅 Revisa el peso cada 2-4 semanas para detectar cambios.';
+}else if(wStatus.status==='slightly-overweight'){
+pesoObjetivo=peso;
+merFactor=1.0;
+objetivo='📉 Pérdida gradual de peso';
+color='#856404';bgColor='rgba(255,193,7,.18)';borderColor='#ffc107';icono='⚠️';
+mensaje='Plan para <strong>pérdida gradual de peso</strong>. El cálculo se hace con el peso actual y un ligero déficit calórico ('+merFactor+' × RER) para una reducción segura y sostenible.';
+metaTexto='Reducir hacia el rango ideal (<strong>'+expectedMin.toFixed(1)+' – '+expectedMax.toFixed(1)+' kg</strong>)';
+semanasEstimadas='📅 Pérdida esperada: <strong>1-2% del peso corporal por semana</strong>. Reevalúa cada 2-4 semanas.';
+}else if(wStatus.status==='overweight'){
+pesoObjetivo=peso;
+merFactor=0.9;
+objetivo='📉 Pérdida de peso supervisada';
+color='#e65100';bgColor='rgba(230,81,0,.1)';borderColor='#e65100';icono='⚠️';
+mensaje='Plan para <strong>pérdida de peso supervisada</strong>. Déficit calórico moderado ('+merFactor+' × RER) calculado con el peso actual. Requiere control veterinario.';
+metaTexto='Reducir hacia el rango ideal (<strong>'+expectedMin.toFixed(1)+' – '+expectedMax.toFixed(1)+' kg</strong>)';
+semanasEstimadas='📅 Pérdida esperada: <strong>1-2% del peso corporal por semana</strong>. Reevalúa cada 2 semanas.';
+}else{
+pesoObjetivo=peso;
+merFactor=0.8;
+objetivo='🚨 Pérdida de peso controlada';
+color='#c62828';bgColor='rgba(211,47,47,.1)';borderColor='#d32f2f';icono='🚨';
+mensaje='Plan de <strong>pérdida de peso controlada</strong>. Déficit calórico significativo ('+merFactor+' × RER) calculado con el peso actual. <strong>Requiere supervisión veterinaria obligatoria.</strong>';
+metaTexto='Reducir hacia el rango ideal (<strong>'+expectedMin.toFixed(1)+' – '+expectedMax.toFixed(1)+' kg</strong>)';
+semanasEstimadas='📅 Pérdida esperada: <strong>1-2% del peso corporal por semana</strong>. Reevaluación veterinaria cada 2-4 semanas.';
+}
+
+const rer=70*Math.pow(pesoObjetivo,0.75);
+const mer=rer*merFactor;
+const gramosPorDia=mer/(kcal/100);
+const numTomas=parseFloat(info.tomas.split('-')[0].replace('+',''))||2;
+const gramosPorComida=gramosPorDia/numTomas;
+const equivDia=equivalenciaPractica(gramosPorDia,tipoAlimento);
+const equivComida=equivalenciaPractica(gramosPorComida,tipoAlimento);
+
+let compatHtml='';
+if(tipoAlimento){compatHtml=generarNotaCompatibilidad(species,stage,tipoAlimento);}
+
+const indicadorPeso='<div style="margin-top:12px;padding:10px;background-color:'+wStatus.bgColor+';border-left:4px solid '+wStatus.color+';border-radius:8px;font-size:.82rem;color:'+wStatus.color+';line-height:1.5"><strong>Diagnóstico: '+wStatus.categoria+' (BCS '+wStatus.bcs+'/9)</strong> — Rango esperado para su etapa: '+expectedMin.toFixed(1)+' – '+expectedMax.toFixed(1)+' kg</div>';
+
+const fuentePeso=(wStatus.status==='underweight')?'Peso ideal (rango medio)':'Peso actual';
+
+const tituloPrincipal='<div style="background:#fff;border-radius:10px;padding:14px;margin-bottom:12px;border-left:4px solid '+borderColor+'"><div style="font-size:1rem;font-weight:800;color:'+color+';margin-bottom:6px;font-family:\'Poppins\',sans-serif">'+icono+' '+objetivo+'</div><div style="font-size:.82rem;line-height:1.5;color:var(--text-dark)">'+mensaje+'</div><div style="margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,0,0,.1);font-size:.85rem"><strong>🎯 Objetivo:</strong> '+metaTexto+'</div></div>';
+
+const progresoHtml='<div style="margin-top:12px;padding:12px;background:#fff;border-radius:8px;border-left:4px solid #6a1b9a;font-size:.82rem;color:#4a148c;line-height:1.5"><strong>📊 Seguimiento y progreso</strong><br>'+semanasEstimadas+'<br><br>💡 <strong>Consejo:</strong> Pesa a tu mascota en la misma báscula y a la misma hora (preferiblemente antes de la primera comida). Anota los resultados para que tu veterinario pueda ajustar el plan.</div>';
+
+const avisoSupervision='<div style="margin-top:12px;padding:12px;background:rgba(106,27,154,.08);border-left:4px solid #6a1b9a;border-radius:8px;font-size:.82rem;color:#4a148c;line-height:1.5"><strong>⚕️ Aviso importante:</strong> Este plan es orientativo. Los planes de ajuste de peso <strong>deben ser supervisados por un médico veterinario</strong>, especialmente en casos de obesidad, bajo peso crónico, cachorros, gestación/lactancia o animales con enfermedades concurrentes.</div>';
+
+resultBox.className='calc-result plan-info';
+resultBox.innerHTML=
+tituloPrincipal+
+'<span class="big-number">'+gramosPorDia.toFixed(0)+' g / día</span>'+
+'<span class="practical-equivalence">🥄 '+equivDia+'</span>'+
+'<div class="result-row"><span>Raza</span><strong>'+breedDisplayName+'</strong></div>'+
+'<div class="result-row"><span>Etapa de vida</span><strong>'+info.label+'</strong></div>'+
+'<div class="result-row"><span>Tipo de alimento</span><strong>'+foodLabel+'</strong></div>'+
+'<div class="result-row"><span>Peso base del cálculo</span><strong>'+pesoObjetivo.toFixed(1)+' kg ('+fuentePeso+')</strong></div>'+
+'<div class="result-row"><span>RER ('+pesoObjetivo.toFixed(1)+' kg)</span><strong>'+rer.toFixed(0)+' kcal/día</strong></div>'+
+'<div class="result-row"><span>Factor de ajuste (MER/RER)</span><strong>'+merFactor+' × RER</strong></div>'+
+'<div class="result-row"><span>MER ajustado</span><strong>'+mer.toFixed(0)+' kcal/día</strong></div>'+
+'<div class="result-row"><span>Tomas sugeridas / día</span><strong>'+info.tomas+'</strong></div>'+
+'<div class="result-row"><span>Aprox. por toma</span><strong>~'+gramosPorComida.toFixed(0)+' g · '+equivComida.replace('≈ ','')+'</strong></div>'+
+indicadorPeso+
+progresoHtml+
+compatHtml+
+avisoSupervision+
+'<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(106,27,154,.2);font-size:.75rem;color:#555"><strong>Nota:</strong> Valores orientativos basados en RER = 70 × (peso kg)^0.75 y factores MER ajustados según el estado de condición corporal (BCS) y pautas actuales AAHA/WSAVA. El plan debe confirmarse con tu veterinario.</div>';
+resultBox.style.display='block';
 }
 
 function calcularPorciones(){
 const species=document.getElementById('portionSpecies').value;
-const breedKey=document.getElementById('portionBreed').value;
+let breedKey=document.getElementById('portionBreed').value;
 const stage=document.getElementById('portionStage').value;
 const peso=parseFloat(document.getElementById('portionWeight').value);
 const mode=document.getElementById('portionMode').value;
 const resultBox=document.getElementById('portionResult');
 const emoji=species==='dog'?'🐕':'🐱';
 const info=portionFactors[species][stage];
+
 if(!breedKey){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona una raza.';resultBox.style.display='block';return}
+if(!stage){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona la etapa de vida.';resultBox.style.display='block';return}
+
+if(species==='cat' && breedKey==='mestizo'){breedKey='comun';}
+
+let idealRange=null;
+let breedDisplayName='';
+const breeds=species==='dog'?dogBreeds:catBreeds;
+if(breedKey==='mestizo' && species==='dog'){
+const mestizoSize=document.getElementById('portionMestizoSize').value;
+if(!mestizoSize){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona el tamaño estimado del mestizo.';resultBox.style.display='block';return}
+const m=mestizoRanges[mestizoSize];
+idealRange={min:m.min,max:m.max};
+breedDisplayName='Mestizo '+m.label.toLowerCase();
+}else{
+const breed=breeds[breedKey];
+if(!breed){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Raza no válida.';resultBox.style.display='block';return}
+idealRange={min:breed.min,max:breed.max};
+breedDisplayName=breed.nombre;
+}
+
 if(isNaN(peso)||peso<=0){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, ingresa un peso válido mayor a 0.';resultBox.style.display='block';return}
-let kcal,foodLabel,tipoAlimento,foodTypeKey=null;
-if(mode==='tipo'){
-foodTypeKey=document.getElementById('portionFoodType').value;
+
+const factor=portionStageWeightFactors[species][stage];
+const expectedMin=idealRange.min*factor.min;
+const expectedMax=idealRange.max*factor.max;
+
+const wStatus=evaluarPesoVsRango(peso,expectedMin,expectedMax);
+
+let kcal,foodLabel,tipoAlimento=null;
+if(mode==='tipo'||mode==='plan'){
+const foodTypeKey=document.getElementById('portionFoodType').value;
 kcal=foodTypeKcal[foodTypeKey].kcal;
 foodLabel=foodTypeKcal[foodTypeKey].label+' (~'+kcal+' kcal/100 g)';
 tipoAlimento=foodTypeKey;
@@ -1744,20 +2016,54 @@ foodLabel='Valor personalizado ('+kcal+' kcal/100 g)';
 tipoAlimento='seco_estandar';
 }
 if(isNaN(kcal)||kcal<50||kcal>700){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Las kcal/100 g deben estar entre 50 y 700.';resultBox.style.display='block';return}
-const rer=70*Math.pow(peso,.75);const mer=rer*info.factor;const gramosPorDia=mer/(kcal/100);
+
+if(mode==='plan'){
+calcularPlanAjustePeso(species,stage,peso,idealRange,expectedMin,expectedMax,wStatus,kcal,foodLabel,tipoAlimento,info,emoji,breedDisplayName,resultBox);
+return;
+}
+
+if(wStatus.status==='overweight'||wStatus.status==='obese'){
+mostrarAdvertenciaSobrepeso(resultBox,species,breedDisplayName,peso,expectedMin,expectedMax,wStatus,emoji,info.label);
+return;
+}
+
+let pesoParaCalculo=peso;
+let avisoPeso='';
+if(wStatus.status==='slightly-overweight'){
+pesoParaCalculo=expectedMax;
+avisoPeso='<div style="margin-top:12px;padding:12px;background-color:rgba(255,193,7,.18);border-left:4px solid #ffc107;border-radius:8px;font-size:.82rem;color:#856404;line-height:1.5"><strong>⚠️ Ligeramente sobrepeso ('+wStatus.bcs+'/9):</strong> El cálculo se ha ajustado al <strong>peso máximo ideal ('+expectedMax.toFixed(1)+' kg)</strong> para favorecer una pérdida de peso gradual y segura. Para un plan de pérdida más estructurado, usa el modo <strong>🎯 Plan de ajuste de peso</strong>. Consulta la Calculadora de Peso Ideal para confirmar.</div>';
+}else if(wStatus.status==='underweight'){
+avisoPeso='<div style="margin-top:12px;padding:12px;background-color:rgba(230,81,0,.1);border-left:4px solid #e65100;border-radius:8px;font-size:.82rem;color:#e65100;line-height:1.5"><strong>⚠️ Bajo peso ('+wStatus.bcs+'/9):</strong> Este cálculo reproduce una porción de mantenimiento con el peso actual. Para un plan estructurado de <strong>ganancia de peso</strong>, cambia el modo a <strong>🎯 Plan de ajuste de peso (según BCS)</strong>. Verifica con tu veterinario que no haya enfermedad subyacente.</div>';
+}
+
+const rer=70*Math.pow(pesoParaCalculo,.75);
+const mer=rer*info.factor;
+const gramosPorDia=mer/(kcal/100);
 const numTomas=parseFloat(info.tomas.split('-')[0].replace('+',''))||2;
 const gramosPorComida=gramosPorDia/numTomas;
 const equivDia=equivalenciaPractica(gramosPorDia,tipoAlimento);
 const equivComida=equivalenciaPractica(gramosPorComida,tipoAlimento);
+
+let compatHtml='';
+if(mode==='tipo'&&tipoAlimento){
+compatHtml=generarNotaCompatibilidad(species,stage,tipoAlimento);
+}
+
+const indicadorPeso='<div style="margin-top:10px;padding:10px;background-color:'+wStatus.bgColor+';border-left:4px solid '+wStatus.color+';border-radius:8px;font-size:.82rem;color:'+wStatus.color+';line-height:1.5"><strong>'+wStatus.categoria+' (BCS '+wStatus.bcs+'/9)</strong> — Rango esperado para su etapa: '+expectedMin.toFixed(1)+' – '+expectedMax.toFixed(1)+' kg</div>';
+
+const pesoUsadoTexto=(pesoParaCalculo!==peso)?'<div class="result-row"><span>Peso usado para el cálculo</span><strong>'+pesoParaCalculo.toFixed(1)+' kg (ajustado)</strong></div><div class="result-row"><span>Peso real ingresado</span><strong>'+peso.toFixed(1)+' kg</strong></div>':'<div class="result-row"><span>Peso usado para el cálculo</span><strong>'+pesoParaCalculo.toFixed(1)+' kg</strong></div>';
+
 resultBox.className='calc-result info';
-resultBox.innerHTML='<strong>'+emoji+' Recomendación diaria de porción</strong><span class="big-number">'+gramosPorDia.toFixed(0)+' g / día</span><span class="practical-equivalence">🥄 '+equivDia+'</span><div class="result-row"><span>Etapa de vida</span><strong>'+info.label+'</strong></div><div class="result-row"><span>Tipo de alimento</span><strong>'+foodLabel+'</strong></div><div class="result-row"><span>RER (necesidad en reposo)</span><strong>'+rer.toFixed(0)+' kcal/día</strong></div><div class="result-row"><span>MER (necesidad diaria total)</span><strong>'+mer.toFixed(0)+' kcal/día</strong></div><div class="result-row"><span>Tomas sugeridas / día</span><strong>'+info.tomas+'</strong></div><div class="result-row"><span>Aprox. por toma</span><strong>~'+gramosPorComida.toFixed(0)+' g · '+equivComida.replace('≈ ','')+'</strong></div><div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(15,42,86,.12);font-size:.75rem;color:#555"><strong>Nota:</strong> Valores orientativos basados en RER = 70 × (peso kg)^0.75 y factores MER estándar.</div>';
+resultBox.innerHTML='<strong>'+emoji+' Recomendación diaria de porción</strong><span class="big-number">'+gramosPorDia.toFixed(0)+' g / día</span><span class="practical-equivalence">🥄 '+equivDia+'</span><div class="result-row"><span>Raza</span><strong>'+breedDisplayName+'</strong></div><div class="result-row"><span>Etapa de vida</span><strong>'+info.label+'</strong></div><div class="result-row"><span>Tipo de alimento</span><strong>'+foodLabel+'</strong></div>'+pesoUsadoTexto+'<div class="result-row"><span>RER (necesidad en reposo)</span><strong>'+rer.toFixed(0)+' kcal/día</strong></div><div class="result-row"><span>MER (necesidad diaria total)</span><strong>'+mer.toFixed(0)+' kcal/día</strong></div><div class="result-row"><span>Tomas sugeridas / día</span><strong>'+info.tomas+'</strong></div><div class="result-row"><span>Aprox. por toma</span><strong>~'+gramosPorComida.toFixed(0)+' g · '+equivComida.replace('≈ ','')+'</strong></div>'+indicadorPeso+avisoPeso+compatHtml+'<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(15,42,86,.12);font-size:.75rem;color:#555"><strong>Nota:</strong> Valores orientativos basados en RER = 70 × (peso kg)^0.75 y factores MER estándar.</div>';
 resultBox.style.display='block';
 }
 
+/* ========== CALCULADORA DE FÓRMULA MATERNIZADA ========== */
 function actualizarFormula(){
 const species=document.getElementById('formulaSpecies').value;
 const breedSelect=document.getElementById('formulaBreed');
 llenarSelectorRazas(breedSelect,species);
+ocultarResultadoFormula();
 }
 
 function ocultarResultadoFormula(){const r=document.getElementById('formulaResult');r.style.display='none';r.innerHTML='';r.className='calc-result';}
@@ -1801,7 +2107,27 @@ let valorPeso=parseFloat(weightInput.value);
 const tipo=document.getElementById('formulaType').value;
 const resultBox=document.getElementById('formulaResult');
 const nombreEspecie=species==='dog'?'cachorro':'gatito';
-if(!breedKey||breedKey==='mestizo'){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona una raza específica.';resultBox.style.display='block';return}
+
+if(!breedKey){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Por favor, selecciona una raza.';resultBox.style.display='block';return}
+
+let breedName='';
+let sizeCategory=null;
+
+if(species==='dog' && breedKey==='mestizo'){
+breedName='Mestizo';
+sizeCategory='mediano';
+}else if(species==='dog'){
+const b=dogBreeds[breedKey];
+if(!b){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Raza no válida.';resultBox.style.display='block';return}
+breedName=b.nombre;
+sizeCategory=getBreedSizeCategory('dog',breedKey);
+}else{
+const b=catBreeds[breedKey];
+if(!b){resultBox.className='calc-result error';resultBox.innerHTML='⚠️ Raza no válida.';resultBox.style.display='block';return}
+breedName=b.nombre;
+sizeCategory='cat_uniform';
+}
+
 if(isNaN(valorPeso)||valorPeso<=0){resultBox.className='calc-result error';resultBox.innerHTML=unit==='g'?'⚠️ Ingresa un peso válido en gramos.':'⚠️ Ingresa un peso válido en kg.';resultBox.style.display='block';return}
 const pesoGramos=unit==='kg'?valorPeso*1000:valorPeso;
 const pesoKg=pesoGramos/1000;
@@ -1811,9 +2137,7 @@ const mlPorDia=ageInfo.mlPorKgDia*pesoKg;
 const mlPorToma=mlPorDia/ageInfo.tomas;
 const equivDia=equivalenciaVolumen(mlPorDia);
 const equivToma=equivalenciaVolumen(mlPorToma);
-const breedName=species==='dog'?dogBreeds[breedKey].nombre:catBreeds[breedKey].nombre;
-const cat=getBreedSizeCategory(species,breedKey);
-const range=neonateWeightRanges[cat]?neonateWeightRanges[cat][ageKey]:null;
+const range=neonateWeightRanges[sizeCategory]?neonateWeightRanges[sizeCategory][ageKey]:null;
 let comparativa='';
 if(range){
 if(pesoGramos<range[0]*.8){comparativa='<div style="margin-top:10px;padding:10px;background-color:rgba(230,81,0,.1);border-left:3px solid #e65100;border-radius:6px;font-size:.8rem;color:#e65100"><strong>⚠️ Peso por debajo de lo esperado</strong><br>Consulta con tu veterinario.</div>';}
@@ -1827,10 +2151,17 @@ resultBox.innerHTML='<strong>🍼 Fórmula maternizada para '+nombreEspecie+' '+
 resultBox.style.display='block';
 }
 
-let lbState={scale:1,x:0,y:0,rotation:0};let lbDragging=false;let lbStartX=0,lbStartY=0,lbStartTX=0,lbStartTY=0;let lbImageReady=false;
+let lbState={scale:1,x:0,y:0,rotation:0};
+let lbDragging=false;
+let lbStartX=0,lbStartY=0,lbStartTX=0,lbStartTY=0;
+let lbImageReady=false;
+const lbActivePointers=new Map();
+let lbPinchStartDist=0,lbPinchStartScale=1,lbPinchStartCenter={x:0,y:0},lbPinchStartTx=0,lbPinchStartTy=0;
+
 function abrirLightbox(src,alt,rotation){
 const lb=document.getElementById('lightbox');const img=document.getElementById('lightboxImage');const caption=document.getElementById('lightboxCaption');
 lbState={scale:1,x:0,y:0,rotation:rotation||0};lbImageReady=false;lbDragging=false;
+lbActivePointers.clear();
 img.classList.remove('dragging');img.style.width='';img.style.height='';
 caption.textContent=alt||'';lb.classList.add('loading');
 const onReady=()=>{if(lbImageReady)return;lbImageReady=true;lb.classList.remove('loading');ajustarImagenLightbox();aplicarTransformLightbox();};
@@ -1854,7 +2185,7 @@ function actualizarZoomLabel(){document.getElementById('zoomLevel').textContent=
 function zoomLightbox(delta){const nuevo=Math.min(6,Math.max(1,lbState.scale+delta));if(nuevo===lbState.scale)return;lbState.scale=nuevo;if(lbState.scale===1){lbState.x=0;lbState.y=0}aplicarTransformLightbox();actualizarZoomLabel();}
 function rotarLightbox(){lbState.rotation=(lbState.rotation+90)%360;lbState.scale=1;lbState.x=0;lbState.y=0;ajustarImagenLightbox();aplicarTransformLightbox();actualizarZoomLabel()}
 function resetLightbox(){lbState.scale=1;lbState.x=0;lbState.y=0;ajustarImagenLightbox();aplicarTransformLightbox();actualizarZoomLabel()}
-function cerrarLightbox(){const lb=document.getElementById('lightbox');lb.classList.remove('active');lb.classList.remove('loading');document.body.style.overflow='';lbDragging=false}
+function cerrarLightbox(){const lb=document.getElementById('lightbox');lb.classList.remove('active');lb.classList.remove('loading');document.body.style.overflow='';lbDragging=false;lbActivePointers.clear()}
 
 function renderizarPlantas(){
 const plantGrid=document.getElementById('plantGrid');
@@ -1892,9 +2223,18 @@ document.getElementById('calcAge').addEventListener('change',ocultarResultadoCal
 document.getElementById('calcWeight').addEventListener('input',function(){if(this.value.trim()==='')ocultarResultadoCalculadora();});
 document.getElementById('btnEvaluarPeso').addEventListener('click',calcularPesoIdeal);
 document.getElementById('btnResetPeso').addEventListener('click',resetCalculadora);
+
 actualizarPorciones();
-document.getElementById('portionSpecies').addEventListener('change',actualizarPorciones);
-document.getElementById('portionBreed').addEventListener('change',ocultarResultadoPorcion);
+document.getElementById('portionSpecies').addEventListener('change',function(){
+actualizarPorciones();
+});
+document.getElementById('portionBreed').addEventListener('change',function(){
+const species=document.getElementById('portionSpecies').value;
+const mestizoGroup=document.getElementById('portionMestizoSizeGroup');
+if(species==='dog' && this.value==='mestizo'){mestizoGroup.style.display='block';}else{mestizoGroup.style.display='none';}
+ocultarResultadoPorcion();
+});
+document.getElementById('portionMestizoSize').addEventListener('change',ocultarResultadoPorcion);
 document.getElementById('portionStage').addEventListener('change',ocultarResultadoPorcion);
 document.getElementById('portionWeight').addEventListener('input',function(){if(this.value.trim()==='')ocultarResultadoPorcion();});
 document.getElementById('portionMode').addEventListener('change',cambiarModoPorcion);
@@ -1902,6 +2242,7 @@ document.getElementById('portionFoodType').addEventListener('change',ocultarResu
 document.getElementById('portionKcal').addEventListener('input',ocultarResultadoPorcion);
 document.getElementById('btnCalcularPorcion').addEventListener('click',calcularPorciones);
 document.getElementById('btnResetPorcion').addEventListener('click',resetCalculadoraPorciones);
+
 llenarSelectorRazas(document.getElementById('formulaBreed'),'dog');
 document.getElementById('formulaSpecies').addEventListener('change',actualizarFormula);
 document.getElementById('formulaAge').addEventListener('change',cambiarUnidadPesoFormula);
@@ -1910,16 +2251,76 @@ document.getElementById('formulaType').addEventListener('change',ocultarResultad
 document.getElementById('btnCalcularFormula').addEventListener('click',calcularFormula);
 document.getElementById('btnResetFormula').addEventListener('click',resetCalculadoraFormula);
 renderizarPlantas();
-const lb=document.getElementById('lightbox');const img=document.getElementById('lightboxImage');
-img.addEventListener('pointerdown',function(e){if(!lb.classList.contains('active'))return;lbDragging=true;lbStartX=e.clientX;lbStartY=e.clientY;lbStartTX=lbState.x;lbStartTY=lbState.y;img.classList.add('dragging');try{img.setPointerCapture(e.pointerId)}catch(err){}e.preventDefault();});
-img.addEventListener('pointermove',function(e){if(!lbDragging)return;lbState.x=lbStartTX+(e.clientX-lbStartX);lbState.y=lbStartTY+(e.clientY-lbStartY);aplicarTransformLightbox();e.preventDefault();});
-function terminarArrastre(){if(!lbDragging)return;lbDragging=false;img.classList.remove('dragging')}
-img.addEventListener('pointerup',terminarArrastre);img.addEventListener('pointercancel',terminarArrastre);img.addEventListener('lostpointercapture',terminarArrastre);
+
+const lb=document.getElementById('lightbox');
+const img=document.getElementById('lightboxImage');
+lb.addEventListener('pointerdown',function(e){
+if(!lb.classList.contains('active'))return;
+lbActivePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+try{lb.setPointerCapture(e.pointerId)}catch(err){}
+if(lbActivePointers.size===1){
+lbDragging=true;lbStartX=e.clientX;lbStartY=e.clientY;lbStartTX=lbState.x;lbStartTY=lbState.y;
+img.classList.add('dragging');
+}else if(lbActivePointers.size===2){
+lbDragging=false;img.classList.remove('dragging');
+const pts=Array.from(lbActivePointers.values());
+lbPinchStartDist=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y);
+lbPinchStartScale=lbState.scale;
+lbPinchStartCenter={x:(pts[0].x+pts[1].x)/2,y:(pts[0].y+pts[1].y)/2};
+lbPinchStartTx=lbState.x;lbPinchStartTy=lbState.y;
+}
+e.preventDefault();
+},{passive:false});
+lb.addEventListener('pointermove',function(e){
+if(!lb.classList.contains('active'))return;
+if(!lbActivePointers.has(e.pointerId))return;
+lbActivePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+if(lbActivePointers.size===1&&lbDragging){
+lbState.x=lbStartTX+(e.clientX-lbStartX);
+lbState.y=lbStartTY+(e.clientY-lbStartY);
+aplicarTransformLightbox();
+}else if(lbActivePointers.size===2){
+const pts=Array.from(lbActivePointers.values());
+const dist=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y);
+const centerX=(pts[0].x+pts[1].x)/2;
+const centerY=(pts[0].y+pts[1].y)/2;
+const newScale=Math.min(6,Math.max(1,lbPinchStartScale*(dist/lbPinchStartDist)));
+const scaleDelta=newScale/lbPinchStartScale;
+const cx=window.innerWidth/2,cy=window.innerHeight/2;
+lbState.scale=newScale;
+lbState.x=(centerX-cx)-scaleDelta*(lbPinchStartCenter.x-cx-lbPinchStartTx);
+lbState.y=(centerY-cy)-scaleDelta*(lbPinchStartCenter.y-cy-lbPinchStartTy);
+if(lbState.scale<=1.02){lbState.scale=1;lbState.x=0;lbState.y=0;}
+aplicarTransformLightbox();
+actualizarZoomLabel();
+}
+e.preventDefault();
+},{passive:false});
+function lbPointerEnd(e){
+if(!lbActivePointers.has(e.pointerId))return;
+lbActivePointers.delete(e.pointerId);
+if(lbActivePointers.size===0){
+lbDragging=false;img.classList.remove('dragging');
+}else if(lbActivePointers.size===1){
+const rem=Array.from(lbActivePointers.values())[0];
+lbDragging=true;lbStartX=rem.x;lbStartY=rem.y;lbStartTX=lbState.x;lbStartTY=lbState.y;
+}
+}
+lb.addEventListener('pointerup',lbPointerEnd);
+lb.addEventListener('pointercancel',lbPointerEnd);
+lb.addEventListener('lostpointercapture',lbPointerEnd);
 img.addEventListener('dblclick',function(e){e.preventDefault();if(lbState.scale>1){lbState.scale=1;lbState.x=0;lbState.y=0}else{lbState.scale=2.5}aplicarTransformLightbox();actualizarZoomLabel();});
-lb.addEventListener('wheel',function(e){if(!lb.classList.contains('active'))return;e.preventDefault();zoomLightbox(e.deltaY<0?.2:-.2);},{passive:false});
+lb.addEventListener('wheel',function(e){
+if(!lb.classList.contains('active'))return;
+e.preventDefault();
+if(e.ctrlKey){zoomLightbox(-e.deltaY*0.01);}
+else{zoomLightbox(e.deltaY<0?0.2:-0.2);}
+},{passive:false});
 document.addEventListener('keydown',function(e){if(!lb.classList.contains('active'))return;if(e.key==='Escape'){cerrarLightbox()}else if(e.key==='+'||e.key==='='){e.preventDefault();zoomLightbox(.25)}else if(e.key==='-'||e.key==='_'){e.preventDefault();zoomLightbox(-.25)}else if(e.key==='0'){resetLightbox()}else if(e.key==='ArrowLeft'){lbState.x-=40;aplicarTransformLightbox();e.preventDefault()}else if(e.key==='ArrowRight'){lbState.x+=40;aplicarTransformLightbox();e.preventDefault()}else if(e.key==='ArrowUp'){lbState.y-=40;aplicarTransformLightbox();e.preventDefault()}else if(e.key==='ArrowDown'){lbState.y+=40;aplicarTransformLightbox();e.preventDefault()}});
 });
+</script>
 
+<script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker.register('./sw.js').catch(function (err) {

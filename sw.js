@@ -1,7 +1,7 @@
 // Service Worker de ASARVET
 // Cambia este número cada vez que actualices el HTML/CSS/JS para forzar
 // que los teléfonos descarguen la nueva versión.
-const CACHE_VERSION = "asarvet-v3";
+const CACHE_VERSION = "asarvet-v4";
 const APP_SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
