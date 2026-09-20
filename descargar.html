@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#0f2a56">
+<title>Descargar ASARVET</title>
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<style>
+:root{--primary-blue:#0f2a56;--accent-blue:#1e4b8f;--bg:#f4f7f9}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+body{background:var(--bg);min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{background:#fff;max-width:420px;width:100%;border-radius:20px;padding:36px 28px;text-align:center;box-shadow:0 10px 30px rgba(15,42,86,.12)}
+.logo{width:120px;height:120px;border-radius:24px;margin-bottom:18px;box-shadow:0 6px 18px rgba(15,42,86,.25)}
+h1{color:var(--primary-blue);font-size:1.5rem;margin-bottom:6px}
+p.subtitle{color:#666;font-size:.9rem;margin-bottom:28px;line-height:1.5}
+a.download-btn{display:block;width:100%;padding:16px;background:var(--primary-blue);color:#fff;border:none;border-radius:12px;font-size:1.05rem;font-weight:700;cursor:pointer;margin-bottom:10px;text-decoration:none}
+a.download-btn:active{background:var(--accent-blue)}
+.filesize{font-size:.78rem;color:#999;margin-bottom:22px}
+.steps{text-align:left;background:#f0f4f8;border-radius:12px;padding:16px 18px;font-size:.85rem;color:#333;line-height:1.7;margin-bottom:16px}
+.steps ol{padding-left:18px}
+.badge{display:inline-block;background:#e8eef5;color:var(--primary-blue);font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:20px;margin-bottom:14px;letter-spacing:.5px}
+.ios-note{display:none;font-size:.85rem;color:#666;background:#fff8ec;border:1px solid #f0dfb8;border-radius:10px;padding:12px 14px;line-height:1.5}
+.ios-note a{color:var(--primary-blue);font-weight:600}
+</style>
+</head>
+<body>
+<div class="card">
+  <img src="./icon-512.png" alt="ASARVET" class="logo">
+  <div class="badge">APLICACIÓN OFICIAL</div>
+  <h1>ASARVET</h1>
+  <p class="subtitle">Alimentación segura para mascotas. Descarga la app directo a tu teléfono, funciona incluso sin internet.</p>
+
+  <a href="./ASARVET.apk" class="download-btn" id="downloadBtn" download>Descargar para Android</a>
+  <p class="filesize">Archivo .apk · Android 8.0 o superior</p>
+
+  <div class="steps" id="androidSteps">
+    <strong>Después de descargar:</strong>
+    <ol>
+      <li>Abre el archivo descargado.</li>
+      <li>Si tu teléfono te pide permiso, activa <strong>"Permitir de esta fuente"</strong> o <strong>"Instalar apps desconocidas"</strong> — es normal, solo pasa la primera vez.</li>
+      <li>Toca <strong>"Instalar"</strong>. Listo.</li>
+    </ol>
+  </div>
+
+  <div class="ios-note" id="iosNote">
+    ¿Tienes iPhone? Los archivos .apk son solo para Android. <a href="./instalar.html">Toca aquí para instalar la versión para iPhone</a>.
+  </div>
+</div>
+
+<script>
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+if (isIOS) {
+  document.getElementById('downloadBtn').style.display = 'none';
+  document.getElementById('androidSteps').style.display = 'none';
+  document.getElementById('iosNote').style.display = 'block';
+}
+</script>
+</body>
+</html>
